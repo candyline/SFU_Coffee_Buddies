@@ -14,6 +14,7 @@
 		ACB9BBB51DADD2C600F550FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACB9BBB31DADD2C600F550FF /* LaunchScreen.storyboard */; };
 		ACB9BBC01DADD2C600F550FF /* SFU_Coffee_BuddiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9BBBF1DADD2C600F550FF /* SFU_Coffee_BuddiesTests.swift */; };
 		ACB9BBCB1DADD2C600F550FF /* SFU_Coffee_BuddiesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9BBCA1DADD2C600F550FF /* SFU_Coffee_BuddiesUITests.swift */; };
+		D0B438841DC41387009C5FFC /* ViewControllerTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B438831DC41387009C5FFC /* ViewControllerTwo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		ACB9BBC61DADD2C600F550FF /* SFU Coffee BuddiesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SFU Coffee BuddiesUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACB9BBCA1DADD2C600F550FF /* SFU_Coffee_BuddiesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFU_Coffee_BuddiesUITests.swift; sourceTree = "<group>"; };
 		ACB9BBCC1DADD2C600F550FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D0B438831DC41387009C5FFC /* ViewControllerTwo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerTwo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 		ACB9BBA91DADD2C600F550FF /* SFU Coffee Buddies */ = {
 			isa = PBXGroup;
 			children = (
+				D0B438831DC41387009C5FFC /* ViewControllerTwo.swift */,
 				ACB9BBAA1DADD2C600F550FF /* AppDelegate.swift */,
 				ACB9BBAC1DADD2C600F550FF /* ViewController.swift */,
 				ACB9BBAE1DADD2C600F550FF /* Main.storyboard */,
@@ -188,7 +191,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "CMPT275-3";
 				TargetAttributes = {
 					ACB9BBA61DADD2C600F550FF = {
@@ -261,6 +264,7 @@
 			files = (
 				ACB9BBAD1DADD2C600F550FF /* ViewController.swift in Sources */,
 				ACB9BBAB1DADD2C600F550FF /* AppDelegate.swift in Sources */,
+				D0B438841DC41387009C5FFC /* ViewControllerTwo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,6 +337,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -383,6 +388,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -505,6 +511,7 @@
 				ACB9BBD11DADD2C600F550FF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ACB9BBD21DADD2C600F550FF /* Build configuration list for PBXNativeTarget "SFU Coffee BuddiesTests" */ = {
 			isa = XCConfigurationList;
@@ -513,6 +520,7 @@
 				ACB9BBD41DADD2C600F550FF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ACB9BBD51DADD2C600F550FF /* Build configuration list for PBXNativeTarget "SFU Coffee BuddiesUITests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +529,7 @@
 				ACB9BBD71DADD2C600F550FF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
