@@ -14,6 +14,10 @@
 		ACB9BBB51DADD2C600F550FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACB9BBB31DADD2C600F550FF /* LaunchScreen.storyboard */; };
 		ACB9BBC01DADD2C600F550FF /* SFU_Coffee_BuddiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9BBBF1DADD2C600F550FF /* SFU_Coffee_BuddiesTests.swift */; };
 		ACB9BBCB1DADD2C600F550FF /* SFU_Coffee_BuddiesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9BBCA1DADD2C600F550FF /* SFU_Coffee_BuddiesUITests.swift */; };
+		ACB9BBE51DC5228200F550FF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9BBE41DC5228200F550FF /* LoginViewController.swift */; };
+		ACB9BBE71DC5267300F550FF /* NewAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9BBE61DC5267300F550FF /* NewAccountViewController.swift */; };
+		ACB9BBE91DC5282E00F550FF /* CodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9BBE81DC5282E00F550FF /* CodeViewController.swift */; };
+		ACB9BBEB1DC52CA200F550FF /* ProfileSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9BBEA1DC52CA200F550FF /* ProfileSetupViewController.swift */; };
 		D0B438841DC41387009C5FFC /* ViewControllerTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B438831DC41387009C5FFC /* ViewControllerTwo.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +52,10 @@
 		ACB9BBC61DADD2C600F550FF /* SFU Coffee BuddiesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SFU Coffee BuddiesUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACB9BBCA1DADD2C600F550FF /* SFU_Coffee_BuddiesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFU_Coffee_BuddiesUITests.swift; sourceTree = "<group>"; };
 		ACB9BBCC1DADD2C600F550FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ACB9BBE41DC5228200F550FF /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		ACB9BBE61DC5267300F550FF /* NewAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewAccountViewController.swift; sourceTree = "<group>"; };
+		ACB9BBE81DC5282E00F550FF /* CodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeViewController.swift; sourceTree = "<group>"; };
+		ACB9BBEA1DC52CA200F550FF /* ProfileSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSetupViewController.swift; sourceTree = "<group>"; };
 		D0B438831DC41387009C5FFC /* ViewControllerTwo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerTwo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,10 +107,14 @@
 		ACB9BBA91DADD2C600F550FF /* SFU Coffee Buddies */ = {
 			isa = PBXGroup;
 			children = (
+				ACB9BBE41DC5228200F550FF /* LoginViewController.swift */,
 				D0B438831DC41387009C5FFC /* ViewControllerTwo.swift */,
 				ACB9BBAA1DADD2C600F550FF /* AppDelegate.swift */,
 				ACB9BBAC1DADD2C600F550FF /* ViewController.swift */,
 				ACB9BBAE1DADD2C600F550FF /* Main.storyboard */,
+				ACB9BBEA1DC52CA200F550FF /* ProfileSetupViewController.swift */,
+				ACB9BBE81DC5282E00F550FF /* CodeViewController.swift */,
+				ACB9BBE61DC5267300F550FF /* NewAccountViewController.swift */,
 				ACB9BBB11DADD2C600F550FF /* Assets.xcassets */,
 				ACB9BBB31DADD2C600F550FF /* LaunchScreen.storyboard */,
 				ACB9BBB61DADD2C600F550FF /* Info.plist */,
@@ -262,8 +274,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACB9BBE51DC5228200F550FF /* LoginViewController.swift in Sources */,
 				ACB9BBAD1DADD2C600F550FF /* ViewController.swift in Sources */,
 				ACB9BBAB1DADD2C600F550FF /* AppDelegate.swift in Sources */,
+				ACB9BBE91DC5282E00F550FF /* CodeViewController.swift in Sources */,
+				ACB9BBE71DC5267300F550FF /* NewAccountViewController.swift in Sources */,
+				ACB9BBEB1DC52CA200F550FF /* ProfileSetupViewController.swift in Sources */,
 				D0B438841DC41387009C5FFC /* ViewControllerTwo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
