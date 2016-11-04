@@ -1,5 +1,5 @@
 //
-//  ViewControllerTwo.swift
+//  ShakePage.swift
 //  SFU Coffee Buddies
 //
 //  Created by Eton Kan on 2016-10-28.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ViewControllerTwo: UIViewController {
+class ShakePage: UIViewController {
     
     @IBOutlet weak var shakephone: UILabel!
     @IBOutlet weak var placedinqueue: UILabel!
