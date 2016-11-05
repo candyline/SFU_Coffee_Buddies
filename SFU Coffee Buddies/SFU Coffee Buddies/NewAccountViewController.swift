@@ -16,6 +16,9 @@ class NewAccountViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         emailTextField.delegate = self
+        
+        let myGesture = UITapGestureRecognizer(target: self, action: #selector(NewAccountViewController.tappedAwayFunction(sender:)))
+        self.view.addGestureRecognizer(myGesture)
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,11 +28,11 @@ class NewAccountViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var emailTextField: UITextField!
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    /*func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Hide the keyboard
         textField.resignFirstResponder()
         return true
-    }
+    }*/
     
     func textFieldDidEndEditing(_ textField: UITextField){
         email = emailTextField.text!
@@ -49,12 +52,23 @@ class NewAccountViewController: UIViewController, UITextFieldDelegate {
             //    return true
             // else
             //    return false
+            return true
         }
         else {
             return true
         }
     }
+<<<<<<< HEAD
+    
+    func tappedAwayFunction(sender: UITapGestureRecognizer)
+    {
+        emailTextField.resignFirstResponder()
+    }
+    
+    
+=======
     */
+>>>>>>> 2fee2f9ca33ae03e048c16f55af3a752e970f69c
     /*
     // MARK: - Navigation
 

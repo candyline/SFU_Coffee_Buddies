@@ -18,6 +18,9 @@ class CodeViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
         confirmationCodeTextField.delegate = self
+        
+        let myGesture = UITapGestureRecognizer(target: self, action: #selector(CodeViewController.tappedAwayFunction(sender:)))
+        self.view.addGestureRecognizer(myGesture)
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,8 +41,13 @@ class CodeViewController: UIViewController, UITextFieldDelegate {
     @IBAction func submitCodePressed(_ sender: UIButton) {
         // somehow validate the code which will lead to the profile setup
     }
+<<<<<<< HEAD
+    
+    // go to the next page (profile page setup) after confirming if the user entered the correct code		
+=======
     /*
     // go to the next page (profile page setup) after confirming if the user entered the correct code
+>>>>>>> 2fee2f9ca33ae03e048c16f55af3a752e970f69c
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool
     {
         if (identifier == "submitCode")
@@ -48,13 +56,23 @@ class CodeViewController: UIViewController, UITextFieldDelegate {
             //    return true
             // else
             //    return false
+            return true
             
         }
         else {
             return true
         }
     }
+<<<<<<< HEAD
+    
+    func tappedAwayFunction(sender: UITapGestureRecognizer)
+    {
+        confirmationCodeTextField.resignFirstResponder()
+    }
+    
+=======
     */
+>>>>>>> 2fee2f9ca33ae03e048c16f55af3a752e970f69c
 
     /*
     // MARK: - Navigation
