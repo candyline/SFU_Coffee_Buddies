@@ -393,10 +393,14 @@
             </objects>
             <point key="canvasLocation" x="1538" y="38"/>
         </scene>
+<<<<<<< HEAD
         <!--Home-->
+=======
+        <!--Main Page-->
+>>>>>>> 2fee2f9ca33ae03e048c16f55af3a752e970f69c
         <scene sceneID="a4P-hH-1vw">
             <objects>
-                <viewController id="Ybf-jb-5kR" customClass="ViewController" customModule="SFU_Coffee_Buddies" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ybf-jb-5kR" customClass="MainPage" customModule="SFU_Coffee_Buddies" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LDa-v6-hN2"/>
                         <viewControllerLayoutGuide type="bottom" id="BbV-iH-VMN"/>
@@ -501,7 +505,11 @@
         <image name="user_male_circle_filled1600 (1).png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
+<<<<<<< HEAD
         <segue reference="4n2-2w-IAL"/>
         <segue reference="QGm-Ze-gTz"/>
+=======
+        <segue reference="Vc5-PG-viY"/>
+>>>>>>> 2fee2f9ca33ae03e048c16f55af3a752e970f69c
     </inferredMetricsTieBreakers>
 </document>
