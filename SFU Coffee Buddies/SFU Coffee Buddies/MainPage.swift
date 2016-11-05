@@ -10,7 +10,7 @@ import UIKit
 
 class MainPage: UIViewController {
 
-    let Serverhost = NSURL(string: "http://127.0.0.1:8080/messages/")
+    let Serverhost = URL(string: "http://127.0.0.1:8080/messages/")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,7 @@ class MainPage: UIViewController {
             "postman-token": "57360440-8cde-0e19-314a-edc1975c4b7f"
         ]
     
-        let request = NSMutableURLRequest(url: Serverhost! as URL,                                          cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10.0)
+        let request = NSMutableURLRequest(url: Serverhost!,                                          cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10.0)
         
         request.httpMethod = "POST"
         request.allHTTPHeaderFields = headers
@@ -49,35 +49,23 @@ class MainPage: UIViewController {
     //This function takes in appended strings using NSMutableData() and post it on to the localhost
     //Author: Eton Kan
     //Last Update: Nov 5, 2016
-    /*
-    func read(postData:Data)
+    func readDataFromURL()
     {
-    let headers = [
-        "content-type": "application/x-www-form-urlencoded",
-        "authorization": "Basic Og==",
-        "cache-control": "no-cache",
-        "postman-token": "eb877819-96eb-269c-b3af-31370eff649d"
-    ]
-    
-    let request = NSMutableURLRequest(url: Serverhost! as URL,                                          cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10.0)
-        
-    request.httpMethod = "GET"
-    request.allHTTPHeaderFields = headers
-    request.httpBody = postData
-        
-    let config = URLSessionConfiguration.default
-        let session = URLSession(configuration: config)
-        //Why doesnt it work
-        let task = session.dataTask(with: request as URLRequest, completionHandler: {_,_,_ in (Data, URLResponse, NSError).self})
-        if (error != nil) {
-            print(error)
-        } else {
-            let httpResponse = response as? NSHTTPURLResponse
-            print(httpResponse)
+        let task = URLSession.shared.dataTask(with: Serverhost!) {data, response, error in
+            guard error == nil else {
+                print (error)
+                return
+                }
+            guard let data = data else {
+                print ("Data is empty")
+                return
+            }
+            
+            let json = try! JSONSerialization.jsonObject(with: data, options: [])
+            print (json)
         }
     task.resume()
     }
-    */
     
 
     override func didReceiveMemoryWarning() {
