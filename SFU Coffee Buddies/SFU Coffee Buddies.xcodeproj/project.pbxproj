@@ -18,6 +18,9 @@
 		ACB9BBE71DC5267300F550FF /* NewAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9BBE61DC5267300F550FF /* NewAccountViewController.swift */; };
 		ACB9BBE91DC5282E00F550FF /* CodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9BBE81DC5282E00F550FF /* CodeViewController.swift */; };
 		ACB9BBEB1DC52CA200F550FF /* ProfileSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9BBEA1DC52CA200F550FF /* ProfileSetupViewController.swift */; };
+		ACB9BBF01DCD469A00F550FF /* 171410-200 (1).png in Resources */ = {isa = PBXBuildFile; fileRef = ACB9BBEF1DCD469A00F550FF /* 171410-200 (1).png */; };
+		ACB9BBF21DCD49FF00F550FF /* home-512 (1).png in Resources */ = {isa = PBXBuildFile; fileRef = ACB9BBF11DCD49FF00F550FF /* home-512 (1).png */; };
+		ACB9BBF41DCD4A0900F550FF /* user_male_circle_filled1600 (1).png in Resources */ = {isa = PBXBuildFile; fileRef = ACB9BBF31DCD4A0900F550FF /* user_male_circle_filled1600 (1).png */; };
 		D0B438841DC41387009C5FFC /* ShakePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B438831DC41387009C5FFC /* ShakePage.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +59,10 @@
 		ACB9BBE61DC5267300F550FF /* NewAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewAccountViewController.swift; sourceTree = "<group>"; };
 		ACB9BBE81DC5282E00F550FF /* CodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeViewController.swift; sourceTree = "<group>"; };
 		ACB9BBEA1DC52CA200F550FF /* ProfileSetupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSetupViewController.swift; sourceTree = "<group>"; };
+		ACB9BBEF1DCD469A00F550FF /* 171410-200 (1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "171410-200 (1).png"; sourceTree = "<group>"; };
+		ACB9BBF11DCD49FF00F550FF /* home-512 (1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-512 (1).png"; sourceTree = "<group>"; };
+		ACB9BBF31DCD4A0900F550FF /* user_male_circle_filled1600 (1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_male_circle_filled1600 (1).png"; sourceTree = "<group>"; };
+		ACB9BBFC1DCD99BF00F550FF /* SFU Coffee Buddies-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SFU Coffee Buddies-Bridging-Header.h"; sourceTree = "<group>"; };
 		D0B438831DC41387009C5FFC /* ShakePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShakePage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,6 +114,7 @@
 		ACB9BBA91DADD2C600F550FF /* SFU Coffee Buddies */ = {
 			isa = PBXGroup;
 			children = (
+				ACB9BBEC1DCD44ED00F550FF /* Icons */,
 				ACB9BBE41DC5228200F550FF /* LoginViewController.swift */,
 				D0B438831DC41387009C5FFC /* ShakePage.swift */,
 				ACB9BBAA1DADD2C600F550FF /* AppDelegate.swift */,
@@ -118,6 +126,7 @@
 				ACB9BBB11DADD2C600F550FF /* Assets.xcassets */,
 				ACB9BBB31DADD2C600F550FF /* LaunchScreen.storyboard */,
 				ACB9BBB61DADD2C600F550FF /* Info.plist */,
+				ACB9BBFC1DCD99BF00F550FF /* SFU Coffee Buddies-Bridging-Header.h */,
 			);
 			path = "SFU Coffee Buddies";
 			sourceTree = "<group>";
@@ -140,6 +149,16 @@
 			path = "SFU Coffee BuddiesUITests";
 			sourceTree = "<group>";
 		};
+		ACB9BBEC1DCD44ED00F550FF /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				ACB9BBEF1DCD469A00F550FF /* 171410-200 (1).png */,
+				ACB9BBF11DCD49FF00F550FF /* home-512 (1).png */,
+				ACB9BBF31DCD4A0900F550FF /* user_male_circle_filled1600 (1).png */,
+			);
+			name = Icons;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -147,8 +166,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ACB9BBCF1DADD2C600F550FF /* Build configuration list for PBXNativeTarget "SFU Coffee Buddies" */;
 			buildPhases = (
-				ACB9BBA31DADD2C600F550FF /* Sources */,
 				ACB9BBA41DADD2C600F550FF /* Frameworks */,
+				ACB9BBA31DADD2C600F550FF /* Sources */,
 				ACB9BBA51DADD2C600F550FF /* Resources */,
 			);
 			buildRules = (
@@ -208,6 +227,7 @@
 				TargetAttributes = {
 					ACB9BBA61DADD2C600F550FF = {
 						CreatedOnToolsVersion = 8.0;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
 					ACB9BBBA1DADD2C600F550FF = {
@@ -247,9 +267,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACB9BBF01DCD469A00F550FF /* 171410-200 (1).png in Resources */,
 				ACB9BBB51DADD2C600F550FF /* LaunchScreen.storyboard in Resources */,
 				ACB9BBB21DADD2C600F550FF /* Assets.xcassets in Resources */,
 				ACB9BBB01DADD2C600F550FF /* Main.storyboard in Resources */,
+				ACB9BBF41DCD4A0900F550FF /* user_male_circle_filled1600 (1).png in Resources */,
+				ACB9BBF21DCD49FF00F550FF /* home-512 (1).png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,10 +457,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "SFU Coffee Buddies/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Group3Genius.SFU-Coffee-Buddies";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SFU Coffee Buddies/SFU Coffee Buddies-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -446,10 +472,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "SFU Coffee Buddies/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Group3Genius.SFU-Coffee-Buddies";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "SFU Coffee Buddies/SFU Coffee Buddies-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
