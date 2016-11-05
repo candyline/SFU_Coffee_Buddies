@@ -38,7 +38,7 @@ class CodeViewController: UIViewController, UITextFieldDelegate {
     @IBAction func submitCodePressed(_ sender: UIButton) {
         // somehow validate the code which will lead to the profile setup
     }
-    
+    /*
     // go to the next page (profile page setup) after confirming if the user entered the correct code
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool
     {
@@ -54,7 +54,7 @@ class CodeViewController: UIViewController, UITextFieldDelegate {
             return true
         }
     }
-    
+    */
 
     /*
     // MARK: - Navigation

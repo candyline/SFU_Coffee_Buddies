@@ -39,7 +39,7 @@ class NewAccountViewController: UIViewController, UITextFieldDelegate {
         // 1 - Check if valid email maybe? just @ something.com
         // 2 - somehow make a script to send emails to them
     }
-    
+    /*
     // go to the next view (code confirmation page) after checking for valid emails
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool
     {
@@ -54,6 +54,7 @@ class NewAccountViewController: UIViewController, UITextFieldDelegate {
             return true
         }
     }
+    */
     /*
     // MARK: - Navigation
 

@@ -298,10 +298,10 @@
             </objects>
             <point key="canvasLocation" x="1080.8" y="805.54722638680664"/>
         </scene>
-        <!--View Controller-->
+        <!--Main Page-->
         <scene sceneID="a4P-hH-1vw">
             <objects>
-                <viewController id="Ybf-jb-5kR" customClass="ViewController" customModule="SFU_Coffee_Buddies" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ybf-jb-5kR" customClass="MainPage" customModule="SFU_Coffee_Buddies" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LDa-v6-hN2"/>
                         <viewControllerLayoutGuide type="bottom" id="BbV-iH-VMN"/>
@@ -401,6 +401,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="e6N-TE-RM4"/>
+        <segue reference="Vc5-PG-viY"/>
     </inferredMetricsTieBreakers>
 </document>
