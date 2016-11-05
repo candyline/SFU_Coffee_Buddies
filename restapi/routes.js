@@ -34,6 +34,9 @@ router.route('/messages')
     // Set text and user values from the request
   message.text = req.body.text;
   message.user = req.body.user;
+  message.password = req.body.password;
+  message.gender = req.body.gender;
+  message.meeting = req.body.meeting;
 
     // save message and check for errors
     message.save(function(err) {
