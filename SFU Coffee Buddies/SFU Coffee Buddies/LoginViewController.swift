@@ -26,6 +26,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         // Handle the text field's user input through delegate callbacks
         usernameTextField.delegate = self
         passwordTextField.delegate = self
+        
+        let myGesture = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.tappedAwayFunction(sender:)))
+        self.view.addGestureRecognizer(myGesture)
     }
 
     override func didReceiveMemoryWarning() {
@@ -82,6 +85,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         else {
             return true
         }
+    }
+    
+    func tappedAwayFunction(sender: UITapGestureRecognizer)
+    {
+        usernameTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
     }
 
     /*
