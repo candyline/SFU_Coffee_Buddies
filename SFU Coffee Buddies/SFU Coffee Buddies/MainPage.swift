@@ -10,10 +10,15 @@ import UIKit
 
 class MainPage: UIViewController {
 
+    let Serverhost = NSURL(string: "http://127.0.0.1:8080/messages/")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
+    //This function takes in appended strings using NSMutableData() and post it on to the localhost
+    //Author: Eton Kan
+    //Last Update: Nov 4, 2016
     func postDataToURL(postData:Data)
     {
         let headers = [
@@ -22,10 +27,9 @@ class MainPage: UIViewController {
             "cache-control": "no-cache",
             "postman-token": "57360440-8cde-0e19-314a-edc1975c4b7f"
         ]
+    
+        let request = NSMutableURLRequest(url: Serverhost! as URL,                                          cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10.0)
         
-        let request = NSMutableURLRequest(url: NSURL(string: "http://127.0.0.1:8080/messages/")! as URL,
-                                          cachePolicy: .useProtocolCachePolicy,
-                                          timeoutInterval: 10.0)
         request.httpMethod = "POST"
         request.allHTTPHeaderFields = headers
         request.httpBody = postData as Data
