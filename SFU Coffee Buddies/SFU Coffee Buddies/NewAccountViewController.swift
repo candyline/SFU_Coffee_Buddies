@@ -42,7 +42,7 @@ class NewAccountViewController: UIViewController, UITextFieldDelegate {
         // 1 - Check if valid email maybe? just @ something.com
         // 2 - somehow make a script to send emails to them
     }
-    /*
+    
     // go to the next view (code confirmation page) after checking for valid emails
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool
     {
@@ -58,17 +58,12 @@ class NewAccountViewController: UIViewController, UITextFieldDelegate {
             return true
         }
     }
-<<<<<<< HEAD
     
     func tappedAwayFunction(sender: UITapGestureRecognizer)
     {
         emailTextField.resignFirstResponder()
     }
-    
-    
-=======
-    */
->>>>>>> 2fee2f9ca33ae03e048c16f55af3a752e970f69c
+
     /*
     // MARK: - Navigation
 
