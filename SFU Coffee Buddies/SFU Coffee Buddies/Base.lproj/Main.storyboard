@@ -123,7 +123,8 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Please enter your SFU email e.g example@sfu.ca" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="H1E-8Y-P6e">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Please enter your SFU email
+e.g example@sfu.ca" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="H1E-8Y-P6e">
                                 <frame key="frameInset" minX="67" minY="269" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -393,11 +394,7 @@
             </objects>
             <point key="canvasLocation" x="1538" y="38"/>
         </scene>
-<<<<<<< HEAD
         <!--Home-->
-=======
-        <!--Main Page-->
->>>>>>> 2fee2f9ca33ae03e048c16f55af3a752e970f69c
         <scene sceneID="a4P-hH-1vw">
             <objects>
                 <viewController id="Ybf-jb-5kR" customClass="MainPage" customModule="SFU_Coffee_Buddies" customModuleProvider="target" sceneMemberID="viewController">
@@ -505,11 +502,7 @@
         <image name="user_male_circle_filled1600 (1).png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-<<<<<<< HEAD
         <segue reference="4n2-2w-IAL"/>
         <segue reference="QGm-Ze-gTz"/>
-=======
-        <segue reference="Vc5-PG-viY"/>
->>>>>>> 2fee2f9ca33ae03e048c16f55af3a752e970f69c
     </inferredMetricsTieBreakers>
 </document>
