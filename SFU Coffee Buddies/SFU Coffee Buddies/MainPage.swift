@@ -16,7 +16,7 @@ class MainPage: UIViewController {
         super.viewDidLoad()
 
     }
-    //This function takes in appended strings using NSMutableData() and post it on to the localhost
+    //(Tested) This function takes in appended strings using NSMutableData() and post it on to the localhost
     //Author: Eton Kan
     //Last Update: Nov 4, 2016
     func postDataToURL(postData:Data)
@@ -46,6 +46,39 @@ class MainPage: UIViewController {
         
         dataTask.resume()
     }
+    //This function takes in appended strings using NSMutableData() and post it on to the localhost
+    //Author: Eton Kan
+    //Last Update: Nov 5, 2016
+    /*
+    func read(postData:Data)
+    {
+    let headers = [
+        "content-type": "application/x-www-form-urlencoded",
+        "authorization": "Basic Og==",
+        "cache-control": "no-cache",
+        "postman-token": "eb877819-96eb-269c-b3af-31370eff649d"
+    ]
+    
+    let request = NSMutableURLRequest(url: Serverhost! as URL,                                          cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10.0)
+        
+    request.httpMethod = "GET"
+    request.allHTTPHeaderFields = headers
+    request.httpBody = postData
+        
+    let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
+        //Why doesnt it work
+        let task = session.dataTask(with: request as URLRequest, completionHandler: {_,_,_ in (Data, URLResponse, NSError).self})
+        if (error != nil) {
+            print(error)
+        } else {
+            let httpResponse = response as? NSHTTPURLResponse
+            print(httpResponse)
+        }
+    task.resume()
+    }
+    */
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
