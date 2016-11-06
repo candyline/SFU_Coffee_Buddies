@@ -21,6 +21,7 @@
 		ACB9BBF01DCD469A00F550FF /* 171410-200 (1).png in Resources */ = {isa = PBXBuildFile; fileRef = ACB9BBEF1DCD469A00F550FF /* 171410-200 (1).png */; };
 		ACB9BBF21DCD49FF00F550FF /* home-512 (1).png in Resources */ = {isa = PBXBuildFile; fileRef = ACB9BBF11DCD49FF00F550FF /* home-512 (1).png */; };
 		ACB9BBF41DCD4A0900F550FF /* user_male_circle_filled1600 (1).png in Resources */ = {isa = PBXBuildFile; fileRef = ACB9BBF31DCD4A0900F550FF /* user_male_circle_filled1600 (1).png */; };
+		ACFB4E581DCECBCC00E159D4 /* ProfilePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFB4E571DCECBCC00E159D4 /* ProfilePageViewController.swift */; };
 		D0B438841DC41387009C5FFC /* ShakePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B438831DC41387009C5FFC /* ShakePage.swift */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		ACB9BBF11DCD49FF00F550FF /* home-512 (1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-512 (1).png"; sourceTree = "<group>"; };
 		ACB9BBF31DCD4A0900F550FF /* user_male_circle_filled1600 (1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_male_circle_filled1600 (1).png"; sourceTree = "<group>"; };
 		ACB9BBFC1DCD99BF00F550FF /* SFU Coffee Buddies-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SFU Coffee Buddies-Bridging-Header.h"; sourceTree = "<group>"; };
+		ACFB4E571DCECBCC00E159D4 /* ProfilePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePageViewController.swift; sourceTree = "<group>"; };
 		D0B438831DC41387009C5FFC /* ShakePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShakePage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,6 +116,7 @@
 		ACB9BBA91DADD2C600F550FF /* SFU Coffee Buddies */ = {
 			isa = PBXGroup;
 			children = (
+				ACFB4E571DCECBCC00E159D4 /* ProfilePageViewController.swift */,
 				ACB9BBEC1DCD44ED00F550FF /* Icons */,
 				ACB9BBE41DC5228200F550FF /* LoginViewController.swift */,
 				D0B438831DC41387009C5FFC /* ShakePage.swift */,
@@ -304,6 +307,7 @@
 				ACB9BBE71DC5267300F550FF /* NewAccountViewController.swift in Sources */,
 				ACB9BBEB1DC52CA200F550FF /* ProfileSetupViewController.swift in Sources */,
 				D0B438841DC41387009C5FFC /* ShakePage.swift in Sources */,
+				ACFB4E581DCECBCC00E159D4 /* ProfilePageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
