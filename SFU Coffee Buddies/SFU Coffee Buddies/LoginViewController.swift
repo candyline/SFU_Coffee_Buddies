@@ -62,8 +62,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField){
-        username = usernameTextField.text!
-        password = passwordTextField.text!
+        if (textField == usernameTextField)
+        {
+            username = usernameTextField.text!
+        }
+        else
+        {
+            password = passwordTextField.text!
+        }
     }
     
     // Condition Activated Segue for the login

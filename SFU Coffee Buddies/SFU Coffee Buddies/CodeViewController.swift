@@ -13,6 +13,7 @@ class CodeViewController: UIViewController, UITextFieldDelegate {
     var code = ""
     
     @IBOutlet weak var confirmationCodeTextField: UITextField!
+    @IBOutlet weak var incorrectCodeLabel: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,8 @@ class CodeViewController: UIViewController, UITextFieldDelegate {
         
         let myGesture = UITapGestureRecognizer(target: self, action: #selector(CodeViewController.tappedAwayFunction(sender:)))
         self.view.addGestureRecognizer(myGesture)
+        
+        incorrectCodeLabel.isHidden = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,6 +55,7 @@ class CodeViewController: UIViewController, UITextFieldDelegate {
             //    return true
             // else
             //    return false
+            //    show message
             return true
             
         }
@@ -64,6 +68,8 @@ class CodeViewController: UIViewController, UITextFieldDelegate {
     {
         confirmationCodeTextField.resignFirstResponder()
     }
+    
+    
 
     /*
     // MARK: - Navigation
