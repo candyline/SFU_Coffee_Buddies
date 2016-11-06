@@ -8,13 +8,16 @@
 
 import Foundation
 import UIKit
+import Alamofire
+import SwiftyJSON
+
 
 struct profile{
     var id = "581e99fd58b03c3c0831dd98"
     var meeting = "0"
     var gender = "0"
     var password = "0"
-    var user = "0"
+    var user = "she"
     var text = "0"
     var unknown = "0"
 }
@@ -25,6 +28,7 @@ class ShakePage: UIViewController {
     @IBOutlet weak var placedinqueue: UILabel!
     @IBOutlet weak var currentlyinqueue: UILabel!
     let Serverhost = "http://127.0.0.1:8080/messages/"
+    var jsonArray: NSMutableArray? //added
         override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -44,6 +48,29 @@ class ShakePage: UIViewController {
             shakephone.isHidden = true
             placedinqueue.isHidden = false
             let userprofile = profile()
+            Alamofire.request(Serverhost).responseJSON {
+               response in
+                    //print(response.request)  // original URL request
+                    //print(response.response) // HTTP URL response
+                    //print(response.data)     // server data
+                    //print(response.result)   // result of response serialization
+                
+                    let testing = JSON(response.result.value!)
+                    print(testing)
+                    print(testing.count)
+                for index in 0 ... testing.count {
+                    if let username  = testing[index]["user"].string{
+                        if username == userprofile.user{
+                            print("Yes, it work, i am etonkan")}
+                        else{
+                        print("No, it doesn't work")}
+                    }
+                }
+                
+            }
+        
+        
+        
             //let generalhost = URL(string: Serverhost)
             let appendUserUrl = Serverhost + userprofile.id
             let userhost = URL(string: appendUserUrl)
@@ -51,6 +78,7 @@ class ShakePage: UIViewController {
             //MainPage().readDataFromURL()
             //let linktohost = URL(generalhost)
             print("before read")
+/*
             //Does it even go in?
             let task = URLSession.shared.dataTask(with: userhost!) {data, response, error in
                 guard error == nil else {
@@ -74,7 +102,7 @@ class ShakePage: UIViewController {
             print("dataTask read  should be failed")
             
             task.resume()
-
+*/
             
             //Look for another user with meeting = one
             //If found, display the other user's information
