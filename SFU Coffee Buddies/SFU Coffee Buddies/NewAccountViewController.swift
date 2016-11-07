@@ -65,7 +65,7 @@ class NewAccountViewController: UIViewController, UITextFieldDelegate {
     // go to the next view (code confirmation page) after checking for valid emails
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool
     {
-        if (identifier == "SubmitEmail")
+        if (identifier == "submitEmail")
         {
             // if (emailIsValid)
             //    return true

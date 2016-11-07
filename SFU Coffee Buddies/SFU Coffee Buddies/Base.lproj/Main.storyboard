@@ -26,14 +26,14 @@
                                 </items>
                             </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="quf-nM-vNs">
-                                <frame key="frameInset" minX="16" minY="337" width="79" height="21"/>
+                                <frame key="frameInset" minX="21" minY="382" width="79" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U2a-E6-uij">
-                                <frame key="frameInset" minX="168" minY="370" width="38" height="30"/>
+                                <frame key="frameInset" minX="166" minY="411" width="38" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Login"/>
                                 <connections>
@@ -42,21 +42,21 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MGf-wP-MEw">
-                                <frame key="frameInset" minX="108" minY="303" width="251" height="30"/>
+                                <frame key="frameInset" minX="108" minY="348" width="251" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FJ1-eD-f1T">
-                                <frame key="frameInset" minX="108" minY="332" width="251" height="30"/>
+                                <frame key="frameInset" minX="108" minY="377" width="251" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NeQ-br-NKc">
-                                <frame key="frameInset" minX="160" minY="524" width="55" height="30"/>
+                                <frame key="frameInset" minX="160" minY="571" width="55" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Sign Up"/>
                                 <connections>
@@ -71,15 +71,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Incorrect username or password entered, please try again" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wT5-tX-Pqa">
-                                <frame key="frameInset" minX="67" minY="397" width="240" height="128"/>
+                                <frame key="frameInset" minX="67" minY="445" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="textColor" red="1" green="0.11630535202737013" blue="0.13393362920258944" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="coffee cup.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="4CZ-4J-CNM">
+                                <frame key="frameInset" minX="49" minY="91" width="297" height="237"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9WF-Mq-pH1">
-                                <frame key="frameInset" minX="49" minY="308" width="46" height="21"/>
+                                <frame key="frameInset" minX="49" minY="353" width="46" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -96,7 +100,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uhp-e7-bDu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-505" y="37"/>
+            <point key="canvasLocation" x="-506.39999999999998" y="36.431784107946029"/>
         </scene>
         <!--New Account View Controller-->
         <scene sceneID="9Wr-7o-ZtV">
@@ -150,7 +154,7 @@
                                 <state key="normal" title="Submit"/>
                                 <connections>
                                     <action selector="submitEmailPressed:" destination="YAV-dU-4kY" eventType="touchUpInside" id="Wbp-kS-M1Z"/>
-                                    <segue destination="Bnr-kw-ecd" kind="presentation" identifier="SubmitEmail" id="ssB-ez-hnP"/>
+                                    <segue destination="T6X-4f-Nbd" kind="presentation" identifier="submitEmail" id="03Q-8J-RbC"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Sg-qg-qGf">
@@ -234,7 +238,6 @@
                                 <state key="normal" title="Submit"/>
                                 <connections>
                                     <action selector="submitCodePressed:" destination="Bnr-kw-ecd" eventType="touchUpInside" id="ygl-bj-5Nd"/>
-                                    <segue destination="T6X-4f-Nbd" kind="presentation" identifier="SubmitCode" id="jzG-k3-4tx"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Incorrect code entered, please check your email and enter the confirmation code provided" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="afH-Hk-Nz7">
@@ -255,7 +258,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XSb-NC-MZ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="212" y="806"/>
+            <point key="canvasLocation" x="129" y="2203"/>
         </scene>
         <!--Profile Setup View Controller-->
         <scene sceneID="wDp-bw-x4N">
@@ -422,7 +425,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5qf-nx-Owc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="932" y="805.54722638680664"/>
+            <point key="canvasLocation" x="442" y="825"/>
         </scene>
         <!--Profile-->
         <scene sceneID="7wp-Fm-TDB">
@@ -715,11 +718,12 @@
     </scenes>
     <resources>
         <image name="171410-200 (1).png" width="30" height="30"/>
+        <image name="coffee cup.jpg" width="148" height="194"/>
         <image name="home-512 (1).png" width="30" height="30"/>
         <image name="user_male_circle_filled1600 (1).png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="QGm-Ze-gTz"/>
-        <segue reference="4n2-2w-IAL"/>
+        <segue reference="03Q-8J-RbC"/>
+        <segue reference="y2g-wL-n26"/>
     </inferredMetricsTieBreakers>
 </document>
