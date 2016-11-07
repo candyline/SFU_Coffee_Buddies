@@ -18,7 +18,7 @@ struct profile{
     var meeting = "0"
     var gender = "0"
     var password = "0"
-    var user = "David"
+    var user = "0"
     var text = "0"
     var unknown = "0"
 }
@@ -129,6 +129,10 @@ class ShakePage: UIViewController {
                                 if let gender = dataBaseArray[index]["gender"].string{
                                     targetProfile.gender = gender
                                     print(targetProfile.gender)
+                                }
+                                if let userName = dataBaseArray[index]["user"].string{
+                                    targetProfile.user = userName
+                                    print(targetProfile.user)
                                 }
                                 if let password = dataBaseArray[index]["password"].string{
                                     targetProfile.password = password
