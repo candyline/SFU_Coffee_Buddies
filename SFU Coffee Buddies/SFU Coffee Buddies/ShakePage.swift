@@ -18,7 +18,7 @@ struct profile{
     var meeting = "0"
     var gender = "0"
     var password = "0"
-    var user = "she"
+    var user = "David"
     var text = "0"
     var unknown = "0"
 }
@@ -67,6 +67,7 @@ class ShakePage: UIViewController {
             var userProfile = profile()
             var targetProfile = profile()
             let yesMeeting = "true"
+            var error = "1"
             //Getting information from user
             Alamofire.request(Serverhost).responseJSON {
                response in
@@ -99,13 +100,20 @@ class ShakePage: UIViewController {
                             }
                             if let meeting = dataBaseArray[index]["meeting"].string{
                                 userProfile.meeting = meeting
+                                error = "0"
                                 //print(userProfile.meeting)
                             }
+                            break;
                         }
-                        else{
-                        print("User NOT Found")}
                     }
+                    //error = "0"
                 }
+                if error == "1"{
+                    print("User NOT Found")
+                    print("Please create User Profile first")
+                    return
+                    }
+            
                 //Look for another user who want to meet
                 //If found, display the other user's information
                 for index in 0 ... dataBaseArray.count {
@@ -150,12 +158,10 @@ class ShakePage: UIViewController {
                                 return
                             }
                         }
-                        else{
-                            print("NO Match Found")}
                     }
                 }
-
-            
+            print("NO Match Found")
+            print("Putting User ON Queue")
             //Change meeting to true on DataBase and let the other user look for you
             let headers = [
                     "content-type": "application/x-www-form-urlencoded",
@@ -172,7 +178,7 @@ class ShakePage: UIViewController {
                 print(userUser)
             //Sending the information of the user to Database
             var postData = NSMutableData(data: "text=SFU".data(using: String.Encoding.utf8)!)
-            postData.append("&user=she".data(using: String.Encoding.utf8)!)
+            postData.append(userUser.data(using: String.Encoding.utf8)!)
             postData.append("&password=789".data(using: String.Encoding.utf8)!)
             postData.append("&gender=male".data(using: String.Encoding.utf8)!)
             postData.append("&meeting=true".data(using: String.Encoding.utf8)!)
@@ -195,13 +201,6 @@ class ShakePage: UIViewController {
             })
             
             dataTask.resume()
-            
-            
-            
-            
-            
-            
-            
         }
     }
     
