@@ -8,6 +8,8 @@
 
 import UIKit
 
+var globalcode : String = ""
+
 class CodeViewController: UIViewController, UITextFieldDelegate {
 
     var code = ""

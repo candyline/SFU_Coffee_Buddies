@@ -79,7 +79,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         if (identifier == "LoginSuccessful")
         {
             // change this later based on validating off the database stored user and pws
-            if (username == "test"){
+            if (username == "dzt2" && password == "hunter2"){
                 return true
             }
         

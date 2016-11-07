@@ -20,6 +20,17 @@ class ProfilePageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        nameLabel.text = globalname
+        busRouteLabel.text = globalbusroute
+        genderLabel.text = globalgender
+        majorLabel.text = globalmajor
+        
+        interestTextView.isEditable = false
+        bioTextView.isEditable = false
+        
+        interestTextView.text = globalinterest
+        bioTextView.text = globalbio
 
         // Do any additional setup after loading the view.
     }
