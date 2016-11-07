@@ -38,9 +38,9 @@ First set up a server and database on localhost
 
      - node server.js
 
-### 7) to test, get chrome extension Postman
+### 7) to test, get chrome extension Postman ###
 in the body field,
-add text, and user, and specify x-www-form-urlencoded ###
+add text, and user, and specify x-www-form-urlencoded
 
 --------------------------------------------------------------------------------------
 ## To Fix compile errors + use carthage for project, Follow these steps: ##
