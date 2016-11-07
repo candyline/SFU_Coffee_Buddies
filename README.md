@@ -20,7 +20,7 @@ First set up a server and database on localhost
 
      - brew install node
 
-### 3) install mongoldb ###
+### 3) install mongodb ###
 
      - brew install mongodb
 
@@ -30,7 +30,7 @@ First set up a server and database on localhost
 
      - sudo chown -R $USER /data/db
 
-### 5) in terminal anywhere run mongoldb ###
+### 5) in terminal anywhere run mongodb ###
 
      - mongod
 
