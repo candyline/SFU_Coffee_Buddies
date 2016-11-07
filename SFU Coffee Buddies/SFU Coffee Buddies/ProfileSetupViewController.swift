@@ -129,10 +129,54 @@ class ProfileSetupViewController: UIViewController,
         busRouteTextField.resignFirstResponder()
     }
     
-    // Save button action
+    //This function saves the data it got from user to database when
+    //user tap on the save button
+    //Author: Daniel Tan
+    //Las Modify Author: Eton Kan
+    //Last Modify Date: Nov 6,2016
+    //Known Bugs: Unable to POST data to database
     @IBAction func saveProfile(_ sender: UIBarButtonItem) {
         // Store the information on the DB
+        /*
+        let Serverhost = URL(string: "http://127.0.0.1:8080/messages/")
+        let userUser = "&user="+globalname
+        //print(userUser)
+        let userPass = "&password="+globalpw
+        //print(userPass)
+        let userGender = "&gender="+globalgender
+        //print(userGender)
+        let userText = "&text="+globalbio
+        //print(userText)
+        var postData = NSMutableData(data: "meeting=true".data(using: String.Encoding.utf8)!)
+        postData.append(userUser.data(using: String.Encoding.utf8)!)
+        postData.append(userPass.data(using: String.Encoding.utf8)!)
+        postData.append(userGender.data(using: String.Encoding.utf8)!)
+        postData.append(userText.data(using: String.Encoding.utf8)!)
+        let headers = [
+                    "content-type": "application/x-www-form-urlencoded",
+                    "authorization": "Basic Og==",
+                    "cache-control": "no-cache",
+                    "postman-token": "57360440-8cde-0e19-314a-edc1975c4b7f"
+                ]
         
+                let request = NSMutableURLRequest(url: Serverhost!,                                          cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10.0)
+        
+                request.httpMethod = "POST"
+                request.allHTTPHeaderFields = headers
+                request.httpBody = postData as Data
+        
+                let session = URLSession.shared
+              let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+                        if (error != nil) {
+                                print(error)
+                            } else {
+                            let httpResponse = response as? HTTPURLResponse
+                                print(httpResponse)
+                            }
+                    })
+                
+                   dataTask.resume()
+         */
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool
