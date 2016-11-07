@@ -67,6 +67,7 @@ class ShakePage: UIViewController {
             var userProfile = profile()
             var targetProfile = profile()
             let yesMeeting = "true"
+            userProfile.user = globalname
             var error = "1"
             //Getting information from user
             Alamofire.request(Serverhost).responseJSON {
