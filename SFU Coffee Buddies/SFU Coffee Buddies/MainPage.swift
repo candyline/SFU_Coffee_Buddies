@@ -1,13 +1,25 @@
 //
-//  ViewController.swift
-//  SFU Coffee Buddies
+//  File Name: ShakePage.swift
+//  Project Name: SFU Coffee Buddies
+//  Team Name: Group3Genius (G3G)
+//  Author: Daniel Tan
+//  Creation Date: Oct 28, 2016
+//  List of Changes:
+//  V1.0: Created by Daniel Tan
+//  V1.1: default server address added
 //
-//  Created by Daniel Tan on 2016-10-11.
-//  Copyright © 2016 CMPT275-3. All rights reserved.
+//  Last Modified Author: Eton Kan
+//  Last Modified Date: Nov 6, 2016
 //
-
+//  List of Bugs: none
+//
+//  Copyright © 2016 Daniel Tan. All rights reserved.
+//
 import UIKit
 
+//This classs is the main manual of the app
+//Author: Eton Kan
+//Last Modifty: Nov 6,2016
 class MainPage: UIViewController {
 
     let Serverhost = URL(string: "http://127.0.0.1:8080/messages/")
@@ -16,63 +28,4 @@ class MainPage: UIViewController {
         super.viewDidLoad()
 
     }
-    //(Tested) This function takes in appended strings using NSMutableData() and post it on to the localhost
-    //Author: Eton Kan
-    //Last Update: Nov 4, 2016
-    func postDataToURL(postData:Data)
-    {
-        let headers = [
-            "content-type": "application/x-www-form-urlencoded",
-            "authorization": "Basic Og==",
-            "cache-control": "no-cache",
-            "postman-token": "57360440-8cde-0e19-314a-edc1975c4b7f"
-        ]
-    
-        let request = NSMutableURLRequest(url: Serverhost!,                                          cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10.0)
-        
-        request.httpMethod = "POST"
-        request.allHTTPHeaderFields = headers
-        request.httpBody = postData as Data
-        
-        let session = URLSession.shared
-        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-            if (error != nil) {
-                print(error)
-            } else {
-                let httpResponse = response as? HTTPURLResponse
-                print(httpResponse)
-            }
-        })
-        
-        dataTask.resume()
-    }
-    //This function takes in appended strings using NSMutableData() and post it on to the localhost
-    //Author: Eton Kan
-    //Last Update: Nov 5, 2016
-    func readDataFromURL()
-    {
-        let task = URLSession.shared.dataTask(with: Serverhost!) {data, response, error in
-            guard error == nil else {
-                print (error)
-                return
-                }
-            guard let data = data else {
-                print ("Data is empty")
-                return
-            }
-            
-            let json = try! JSONSerialization.jsonObject(with: data, options: [])
-            print (json)
-        }
-    task.resume()
-    }
-    
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
 }
-

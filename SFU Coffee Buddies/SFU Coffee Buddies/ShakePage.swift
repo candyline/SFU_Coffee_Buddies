@@ -43,10 +43,6 @@ struct Profile{
 //placed on the queue
 //Author: Eton Kan
 //Last Modifty: Nov 6,2016
-//Known Bugs:
-//In motionEnded():
-//            1) it will crash the database if zero entries are in it
-//            2) types used for variables are not efficient
 class ShakePage: UIViewController {
     
     //Declare all variables used in the storyboard
