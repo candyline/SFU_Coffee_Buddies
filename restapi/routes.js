@@ -61,7 +61,12 @@ router.route('/messages/:message_id')
     Message.findById(req.params.message_id, function(err,message) {
       if(err)
         res.send(err);
-    message.text = req.body.text;
+      message.text = req.body.text;
+      message.user = req.body.user;
+      message.password = req.body.password;
+      message.gender = req.body.gender;
+      message.meeting = req.body.meeting;
+
       message.save(function(err) {
         if (err)
           res.send(err);

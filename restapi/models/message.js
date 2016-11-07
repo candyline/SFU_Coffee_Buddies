@@ -7,7 +7,7 @@ var messageSchema = new Schema({
   user: String,
   password: String,
   gender: String,
-  meeting: Boolean
+  meeting: String
 });
 
 module.exports = mongoose.model('Message', messageSchema);
