@@ -8,6 +8,10 @@
 
 import UIKit
 
+var globalemail : String = ""
+var globalpw : String = ""
+//var globalcode : String = ""
+
 class NewAccountViewController: UIViewController, UITextFieldDelegate {
 
     var email = ""
@@ -44,10 +48,12 @@ class NewAccountViewController: UIViewController, UITextFieldDelegate {
         if (textField == emailTextField)
         {
             email = emailTextField.text!
+            globalemail = email
         }
         else
         {
             pw = pwTextField.text!
+            globalpw = pw
         }
     }
 
@@ -67,6 +73,7 @@ class NewAccountViewController: UIViewController, UITextFieldDelegate {
             //    return false
             if (email.hasSuffix("@sfu.ca"))
             {
+                sendEmail()
                 return true
             }
             else
@@ -84,6 +91,30 @@ class NewAccountViewController: UIViewController, UITextFieldDelegate {
     {
         emailTextField.resignFirstResponder()
         pwTextField.resignFirstResponder()
+    }
+
+    func sendEmail() {
+        let session = URLSession.shared
+        let request = NSMutableURLRequest(url: NSURL(string: "https://api.mailgun.net/v3/sandbox41849eb2be4f4d379370e7bddb90820f.mailgun.org/messages/")! as URL)
+        request.httpMethod = "POST"
+        let data = "from: SFU Coffee Buddies <aa493c2a596cc4cd26c5fa6172aa7523>&to: [daniel_tzj@hotmail.com,(Personal info)]&subject:Hello&text:Testinggsome Mailgun awesomness!"
+        request.httpBody = data.data(using: String.Encoding.ascii)
+        request.setValue("key-552a5e53b123297db8fd30749e26cefb", forHTTPHeaderField: "api")
+        let task = session.dataTask(with: request as URLRequest, completionHandler: {(data, response, error) in
+            
+            if let error = error {
+                print(error)
+            }
+            if let response = response {
+                print("url = \(response.url!)")
+                print("response = \(response)")
+                let httpResponse = response as! HTTPURLResponse
+                print("response code = \(httpResponse.statusCode)")
+            }
+            
+            
+        })
+        task.resume()
     }
     
     func randomString(length: Int) -> String {
