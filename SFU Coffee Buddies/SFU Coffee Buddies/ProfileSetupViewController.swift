@@ -9,6 +9,13 @@
 import UIKit
 //import DLRadioButton
 
+var globalname : String = ""
+var globalmajor : String = ""
+var globalbusroute : String = ""
+var globalinterest : String = ""
+var globalbio : String = ""
+var globalgender : String = ""
+
 class ProfileSetupViewController: UIViewController,
                                   UIImagePickerControllerDelegate,
                                   UINavigationControllerDelegate,
@@ -80,7 +87,7 @@ class ProfileSetupViewController: UIViewController,
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -107,6 +114,7 @@ class ProfileSetupViewController: UIViewController,
         default:
             break
         }
+        globalgender = gender
     }
     
     
@@ -120,9 +128,12 @@ class ProfileSetupViewController: UIViewController,
         busRouteTextField.resignFirstResponder()
     }
     
+    // Save button action
     @IBAction func saveProfile(_ sender: UIBarButtonItem) {
         // Store the information on the DB
+        
     }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Hide the keyboard
         textField.resignFirstResponder()
@@ -130,18 +141,9 @@ class ProfileSetupViewController: UIViewController,
     }
     
     func textFieldDidEndEditing(_ textField: UITextField){
-        if (textField == nameTextField)
-        {
-            name = nameTextField.text!
-        }
-        else if (textField == busRouteTextField)
-        {
-            busRoute = busRouteTextField.text!
-        }
-        else
-        {
-            major = majorTextField.text!
-        }
+        name = nameTextField.text!
+        globalname = name
+        
     }
     
     func textViewDidEndEditing(_ textView: UITextView)
@@ -149,10 +151,12 @@ class ProfileSetupViewController: UIViewController,
         if (textView == interestTextField)
         {
             interest = interestTextField.text
+            globalinterest = interest
         }
         else
         {
             bio = bioTextView.text
+            globalbio = bio
         }
     }
     
@@ -191,11 +195,15 @@ class ProfileSetupViewController: UIViewController,
         {
             busRouteTextField.text = busList[row]
             busRouteDropDown.isHidden = true
+            busRoute = busRouteTextField.text!
+            globalbusroute = busRoute
         }
         else if (pickerView == majorDropDown)
         {
             majorTextField.text = majorList[row]
             majorDropDown.isHidden = true
+            major = majorTextField.text!
+            globalmajor = major
         }
         
     }
