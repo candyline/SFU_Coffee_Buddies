@@ -170,7 +170,7 @@ class ShakePage: UIViewController {
                 print(userText)
             let userUser = "&user="+userProfile.user
                 print(userUser)
-            //hard coded
+            //Sending the information of the user to Database
             var postData = NSMutableData(data: "text=SFU".data(using: String.Encoding.utf8)!)
             postData.append("&user=she".data(using: String.Encoding.utf8)!)
             postData.append("&password=789".data(using: String.Encoding.utf8)!)
