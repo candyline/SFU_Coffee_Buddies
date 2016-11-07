@@ -38,7 +38,7 @@ class ShakePage: UIViewController {
     @IBOutlet weak var TargetNameDisplay: UILabel!
     //Default Server Address
     let Serverhost = "http://127.0.0.1:8080/messages/"
-        override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         shakephone.isHidden = false
@@ -52,13 +52,17 @@ class ShakePage: UIViewController {
         TargetNameLabel.isHidden = true
         TargetGenderLabel.isHidden = true
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     //A function that detects shake motion either match or put the current user on the queue
     //Author: Eton Kan
     //Last Modify: Nov 6,2016
+    //Known Bugs: 1) it will crash the database if zero entries are in it
+    //            2) types used for variables are not efficient
+    //Possible improvements: .PUT should be in a separate function
+    //                       .READ should be in a separate function
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         if event?.subtype == UIEventSubtype.motionShake
         {
@@ -71,13 +75,13 @@ class ShakePage: UIViewController {
             var error = "1"
             //Getting information from user
             Alamofire.request(Serverhost).responseJSON {
-               response in
-                    //print(response.request)  // original URL request
-                    //print(response.response) // HTTP URL response
-                    //print(response.data)     // server data
-                    //print(response.result)   // result of response serialization
+                response in
+                //print(response.request)  // original URL request
+                //print(response.response) // HTTP URL response
+                //print(response.data)     // server data
+                //print(response.result)   // result of response serialization
                 
-                    let dataBaseArray = JSON(response.result.value!)
+                let dataBaseArray = JSON(response.result.value!)
                 //Search the user inside the testing array
                 for index in 0 ... dataBaseArray.count {
                     if let user  = dataBaseArray[index]["user"].string{
@@ -113,8 +117,8 @@ class ShakePage: UIViewController {
                     print("User NOT Found")
                     print("Please create User Profile first")
                     return
-                    }
-            
+                }
+                
                 //Look for another user who want to meet
                 //If found, display the other user's information
                 for index in 0 ... dataBaseArray.count {
@@ -130,10 +134,6 @@ class ShakePage: UIViewController {
                                     targetProfile.gender = gender
                                     print(targetProfile.gender)
                                 }
-                                if let userName = dataBaseArray[index]["user"].string{
-                                    targetProfile.user = userName
-                                    print(targetProfile.user)
-                                }
                                 if let password = dataBaseArray[index]["password"].string{
                                     targetProfile.password = password
                                     print(targetProfile.password)
@@ -145,6 +145,10 @@ class ShakePage: UIViewController {
                                 if let meeting = dataBaseArray[index]["meeting"].string{
                                     targetProfile.meeting = meeting
                                     print(targetProfile.meeting)
+                                }
+                                if let userName = dataBaseArray[index]["user"].string{
+                                    targetProfile.user = userName
+                                    print(targetProfile.user)
                                 }
                                 //.put change targetProfile.meeting to false
                                 
@@ -160,54 +164,103 @@ class ShakePage: UIViewController {
                                 self.TargetNameLabel.text = targetProfile.user
                                 self.TargetGenderLabel.text = targetProfile.gender
                                 self.TargetBioLabel.text = targetProfile.text
+                                
+                                //Updateing Target meeting information
+                                let headers = [
+                                    "content-type": "application/x-www-form-urlencoded",
+                                    "authorization": "Basic Og==",
+                                    "cache-control": "no-cache",
+                                    "postman-token": "6f01f645-96bb-f323-a5db-4abe6ba03694"
+                                ]
+                                
+                                let appendedUserUrl = self.Serverhost + targetProfile.id
+                                let userUrl = NSURL(string: appendedUserUrl)
+                                let userUser = "&user="+targetProfile.user
+                                print(userUser)
+                                let userPass = "&password="+targetProfile.password
+                                print(userPass)
+                                let userGender = "&gender="+targetProfile.gender
+                                print(userGender)
+                                let userText = "&text="+targetProfile.text
+                                print(userText)
+                                //Sending the information of the user to Database
+                                var postData = NSMutableData(data: "meeting=false".data(using: String.Encoding.utf8)!)
+                                postData.append(userUser.data(using: String.Encoding.utf8)!)
+                                postData.append(userPass.data(using: String.Encoding.utf8)!)
+                                postData.append(userGender.data(using: String.Encoding.utf8)!)
+                                postData.append(userText.data(using: String.Encoding.utf8)!)
+                                
+                                var request = NSMutableURLRequest(url: userUrl! as URL,
+                                                                  cachePolicy: .useProtocolCachePolicy,
+                                                                  timeoutInterval: 10.0)
+                                request.httpMethod = "PUT"
+                                request.allHTTPHeaderFields = headers
+                                request.httpBody = postData as Data
+                                
+                                let session = URLSession.shared
+                                let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+                                    if (error != nil) {
+                                        print(error)
+                                    } else {
+                                        let httpResponse = response as? HTTPURLResponse
+                                        print(httpResponse)
+                                    }
+                                })
+                                
+                                dataTask.resume()
+                                
                                 return
                             }
                         }
                     }
                 }
-            print("NO Match Found")
-            print("Putting User ON Queue")
-            //Change meeting to true on DataBase and let the other user look for you
-            let headers = [
+                print("NO Match Found")
+                print("Putting User ON Queue")
+                //Change meeting to true on DataBase and let the other user look for you
+                let headers = [
                     "content-type": "application/x-www-form-urlencoded",
                     "authorization": "Basic Og==",
                     "cache-control": "no-cache",
                     "postman-token": "6f01f645-96bb-f323-a5db-4abe6ba03694"
-            ]
-            print(userProfile.id)
-            let appendedUserUrl = self.Serverhost + userProfile.id
-            let userUrl = NSURL(string: appendedUserUrl)
-            let userText = "text="+userProfile.text
-                print(userText)
-            let userUser = "&user="+userProfile.user
+                ]
+                print(userProfile.id)
+                let appendedUserUrl = self.Serverhost + userProfile.id
+                let userUrl = NSURL(string: appendedUserUrl)
+                let userUser = "&user="+userProfile.user
                 print(userUser)
-            //Sending the information of the user to Database
-            var postData = NSMutableData(data: "text=SFU".data(using: String.Encoding.utf8)!)
-            postData.append(userUser.data(using: String.Encoding.utf8)!)
-            postData.append("&password=789".data(using: String.Encoding.utf8)!)
-            postData.append("&gender=male".data(using: String.Encoding.utf8)!)
-            postData.append("&meeting=true".data(using: String.Encoding.utf8)!)
-            
-            var request = NSMutableURLRequest(url: userUrl! as URL,
-                                              cachePolicy: .useProtocolCachePolicy,
-                                              timeoutInterval: 10.0)
-            request.httpMethod = "PUT"
-            request.allHTTPHeaderFields = headers
-            request.httpBody = postData as Data
-            
-            let session = URLSession.shared
-            let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-                if (error != nil) {
-                    print(error)
-                } else {
-                    let httpResponse = response as? HTTPURLResponse
-                    print(httpResponse)
-                }
-            })
-            
-            dataTask.resume()
+                let userPass = "&password="+userProfile.password
+                print(userPass)
+                let userGender = "&gender="+userProfile.gender
+                print(userGender)
+                let userText = "&text="+userProfile.text
+                print(userText)
+                //Sending the information of the user to Database
+                var postData = NSMutableData(data: "meeting=true".data(using: String.Encoding.utf8)!)
+                postData.append(userUser.data(using: String.Encoding.utf8)!)
+                postData.append(userPass.data(using: String.Encoding.utf8)!)
+                postData.append(userGender.data(using: String.Encoding.utf8)!)
+                postData.append(userText.data(using: String.Encoding.utf8)!)
+                
+                var request = NSMutableURLRequest(url: userUrl! as URL,
+                                                  cachePolicy: .useProtocolCachePolicy,
+                                                  timeoutInterval: 10.0)
+                request.httpMethod = "PUT"
+                request.allHTTPHeaderFields = headers
+                request.httpBody = postData as Data
+                
+                let session = URLSession.shared
+                let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+                    if (error != nil) {
+                        print(error)
+                    } else {
+                        let httpResponse = response as? HTTPURLResponse
+                        print(httpResponse)
+                    }
+                })
+                
+                dataTask.resume()
+            }
         }
+        
     }
-    
-}
 }
