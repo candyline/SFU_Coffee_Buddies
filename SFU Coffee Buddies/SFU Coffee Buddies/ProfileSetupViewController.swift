@@ -14,7 +14,8 @@ var globalmajor : String = ""
 var globalbusroute : String = ""
 var globalinterest : String = ""
 var globalbio : String = ""
-var globalgender : String = ""
+var globalgender : String = "male"
+var globalpicture : UIImage? = nil
 
 class ProfileSetupViewController: UIViewController,
                                   UIImagePickerControllerDelegate,
@@ -31,7 +32,7 @@ class ProfileSetupViewController: UIViewController,
     @IBOutlet weak var busRouteDropDown: UIPickerView!
     @IBOutlet weak var majorDropDown: UIPickerView!
     var name = ""
-    var gender = ""
+    var gender = "male"
     var interest = ""
     var bio = ""
     var busRoute = ""
@@ -96,7 +97,7 @@ class ProfileSetupViewController: UIViewController,
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
     {
         profilePictureImageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
-        
+        globalpicture = profilePictureImageView.image
         // Store the image in the db
         self.dismiss(animated: true, completion: nil)
     }
@@ -132,6 +133,24 @@ class ProfileSetupViewController: UIViewController,
     @IBAction func saveProfile(_ sender: UIBarButtonItem) {
         // Store the information on the DB
         
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool
+    {
+        if (identifier == "saveProfile")
+        {
+            // check if any field is empty
+            if (name == "" || busRoute == "" || gender == "" || major == "" || interest == "" || bio == ""){
+                return false
+            }
+                
+            else{
+                return true
+            }
+        }
+        else {
+            return true
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

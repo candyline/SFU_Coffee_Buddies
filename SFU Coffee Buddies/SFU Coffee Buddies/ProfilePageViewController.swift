@@ -11,6 +11,7 @@ import UIKit
 class ProfilePageViewController: UIViewController {
 
     // Outlets
+    @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var busRouteLabel: UILabel!
     @IBOutlet weak var genderLabel: UILabel!
@@ -31,6 +32,8 @@ class ProfilePageViewController: UIViewController {
         
         interestTextView.text = globalinterest
         bioTextView.text = globalbio
+        
+        profileImage.image = globalpicture
 
         // Do any additional setup after loading the view.
     }
