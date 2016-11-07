@@ -5,6 +5,13 @@
 //  Created by Daniel Tan on 2016-10-29.
 //  Copyright © 2016 CMPT275-3. All rights reserved.
 //
+//  Team : Group3Genius
+//
+//  Changelog:
+//      -File Created and Fundamental Functions Implemented
+//
+//  Known Bugs:
+//      - Email sending and code generation doesn't work - November 6
 
 import UIKit
 
@@ -12,39 +19,51 @@ var globalemail : String = ""
 var globalpw : String = ""
 //var globalcode : String = ""
 
-class NewAccountViewController: UIViewController, UITextFieldDelegate {
+class NewAccountViewController: UIViewController, UITextFieldDelegate
+{
 
+    // Outlets and Variables
     var email = ""
     var pw = ""
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        emailTextField.delegate = self
-        pwTextField.delegate = self
-        
-        let myGesture = UITapGestureRecognizer(target: self, action: #selector(NewAccountViewController.tappedAwayFunction(sender:)))
-        self.view.addGestureRecognizer(myGesture)
-        
-        incorrectEmailLabel.isHidden = true
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     @IBOutlet weak var incorrectEmailLabel: UITextView!
     @IBOutlet weak var pwTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     
+    // viewDidLoad function, anyhting that needs to be declared or initialized before the view loads is done here
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        
+        // Assign delegates
+        emailTextField.delegate = self
+        pwTextField.delegate = self
+        
+        // Tap Gesture will close the keyboard, when tapping the view, will call the tappedAwayFunction
+        let myGesture = UITapGestureRecognizer(target: self, action: #selector(NewAccountViewController.tappedAwayFunction(sender:)))
+        self.view.addGestureRecognizer(myGesture)
+        
+        // Hide the warning label
+        incorrectEmailLabel.isHidden = true
+    }
+    override func didReceiveMemoryWarning()
+    {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    // Creator : Daniel Tan
+    // Purpose : Implementing the optional functions to handle what the textField does, it resigns the first responder thus hide keyboard
     /*func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Hide the keyboard
         textField.resignFirstResponder()
         return true
     }*/
     
-    func textFieldDidEndEditing(_ textField: UITextField){
+    // Creator : Daniel Tan
+    // Purpose : Implementing the optional functions to handle what the textField does when it ends editting
+    //           read which text field and stores the text from that field into the corresponding variable
+    func textFieldDidEndEditing(_ textField: UITextField)
+    {
         if (textField == emailTextField)
         {
             email = emailTextField.text!
@@ -57,12 +76,9 @@ class NewAccountViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
-    @IBAction func submitEmailPressed(_ sender: UIButton) {
-        // 1 - Check if valid email maybe? just @ something.com
-        // 2 - somehow make a script to send emails to them
-    }
-    
-    // go to the next view (code confirmation page) after checking for valid emails
+    // Creator : Daniel Tan
+    // Purpose : Condition Activated Segue for the submit button
+    //           go to the next view (code confirmation page) after checking for valid emails
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool
     {
         if (identifier == "submitEmail")
@@ -73,7 +89,7 @@ class NewAccountViewController: UIViewController, UITextFieldDelegate {
             //    return false
             if (email.hasSuffix("@sfu.ca"))
             {
-                sendEmail()
+                //sendEmail()
                 return true
             }
             else
@@ -87,12 +103,17 @@ class NewAccountViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    // Creator : Daniel Tan
+    // Purpose : function that determines what happens when the user taps away from the textfield
     func tappedAwayFunction(sender: UITapGestureRecognizer)
     {
         emailTextField.resignFirstResponder()
         pwTextField.resignFirstResponder()
     }
 
+    // Purpose : Sends an email to the user to verify the authenticity of the SFU email
+    //           Doesn't work currently
+    /*
     func sendEmail() {
         let session = URLSession.shared
         let request = NSMutableURLRequest(url: NSURL(string: "https://api.mailgun.net/v3/sandbox41849eb2be4f4d379370e7bddb90820f.mailgun.org/messages/")! as URL)
@@ -131,7 +152,7 @@ class NewAccountViewController: UIViewController, UITextFieldDelegate {
         }
         
         return randomString
-    }
+    }*/
 
     /*
     // MARK: - Navigation

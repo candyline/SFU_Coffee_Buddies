@@ -5,6 +5,16 @@
 //  Created by Daniel Tan on 2016-10-29.
 //  Copyright © 2016 CMPT275-3. All rights reserved.
 //
+//
+//  Team : Group3Genius
+//
+//  Changelog:
+//      -File Created and Fundamental Functions Implemented
+//
+//  Known Bugs:
+//      - Save button doesn't work if not tapped out from a text field
+//      - Save button doesn't store the data on the database
+//      - Profile edit doesn't save the profile fields because there is no database
 
 import UIKit
 //import DLRadioButton
@@ -22,8 +32,11 @@ class ProfileSetupViewController: UIViewController,
                                   UINavigationControllerDelegate,
                                   UITextFieldDelegate,
                                   UITextViewDelegate,
-                                  UIPickerViewDelegate{
+                                  UIPickerViewDelegate
+{
 
+    // Variables and Outlets
+    // Array for majors and bus routes
     @IBOutlet weak var majorTextField: UITextField!
     @IBOutlet weak var busRouteTextField: UITextField!
     @IBOutlet weak var bioTextView: UITextView!
@@ -40,6 +53,9 @@ class ProfileSetupViewController: UIViewController,
     var busList = ["135", "143", "144" ,"145"]
     var majorList = ["Actuarial Science", "Anthropology", "Applied Mathematics", "Applied Physics", "Archeology", "Art,Performance and Cinema Studies", "Behavioural Neuroscience", "Biological Physics", "Biological Sciences", "Biomedical Physiology", "Business", "Chemical Physics", "Chemistry", "Cognitive Science", "Communication", "Computing Science", "Criminology", "Dance", "Earth Sciences", "Economics", "Engineering Science", "English", "Environment One", "Environmental Resource Management", "Environmental Science", "Environmental Specialty", "Film", "First Nations Study", "French", "French Cohort Program", "Gender, Sexuality and Women's Studies", "General Studies in Education", "Geographic Information Science", "Geography", "Global Environmental Systems", "Health Sciences", "History", "Humanities", "Interactive Arts and Technology", "International Studies", "Kinesiology", "Linguistics", "Management and System Science", "Mathematical Physics", "Mathematics", "Mechatronic Systems Engineering", "Molecular Biology and Biochemistry", "Music", "Operations Research", "Philosophy", "Resource and Environmental Management", "Sociology", "Software Systems", "Statistics", "Theatre", "Visual Art", "World Literature"]
     @IBOutlet weak var profilePictureImageView: UIImageView!
+    
+    // Purpose : The action that happens when the button is tapped
+    //           Allows the user to select a picture from their photo library
     @IBAction func selectProfilePictureTapped(_ sender: AnyObject)
     {
         let iPickerController = UIImagePickerController()
@@ -48,7 +64,10 @@ class ProfileSetupViewController: UIViewController,
         
         self.present(iPickerController, animated: true, completion: nil)
     }
-    override func viewDidLoad() {
+    
+    // viewDidLoad function, anyhting that needs to be declared or initialized before the view loads is done here
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         
         // Set the border and color of the text view
@@ -68,6 +87,7 @@ class ProfileSetupViewController: UIViewController,
         majorDropDown.layer.borderColor = UIColor.black.cgColor
         majorDropDown.layer.borderWidth = 0.8
         
+        // Assign Delegates
         nameTextField.delegate = self
         interestTextField.delegate = self
         bioTextView.delegate = self
@@ -77,25 +97,30 @@ class ProfileSetupViewController: UIViewController,
         busRouteDropDown.delegate = self
         majorDropDown.delegate = self
         
-        
+        // Tap Gesture will close the keyboard, when tapping the view, will call the tappedAwayFunction
         let myGesture = UITapGestureRecognizer(target: self, action: #selector(ProfileSetupViewController.tappedAwayFunction(sender:)))
         self.view.addGestureRecognizer(myGesture)
         
         majorDropDown.isHidden = true
         busRouteDropDown.isHidden = true
         
+        // Adds Observer for the view
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
     }
 
-    override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning()
+    {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    // Purpose : Overrided public function in the UIImagePickerDelegate
+    //           Dictates what happens after the image is picked
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
     {
+        // Image will be set to the UIImageView on the view controller
         profilePictureImageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
         globalpicture = profilePictureImageView.image
         // Store the image in the db
@@ -103,7 +128,10 @@ class ProfileSetupViewController: UIViewController,
     }
     @IBOutlet weak var SegmentedControl: UISegmentedControl!
     
-    @IBAction func switched(_ sender: UISegmentedControl) {
+    // Creator : Daniel Tan
+    // Purpose : Stores the variable whenever the switch switches
+    @IBAction func switched(_ sender: UISegmentedControl)
+    {
         switch SegmentedControl.selectedSegmentIndex
         {
         case 0:
@@ -118,8 +146,8 @@ class ProfileSetupViewController: UIViewController,
         globalgender = gender
     }
     
-    
-    
+    // Creator : Daniel Tan
+    // Purpose : function that determines what happens when the user taps away from the textfield
     func tappedAwayFunction(sender: UITapGestureRecognizer)
     {
         interestTextField.resignFirstResponder()
@@ -179,6 +207,9 @@ class ProfileSetupViewController: UIViewController,
          */
     }
     
+    // Creator : Daniel Tan
+    // Purpose : Condition Activated Segue for the save button
+    //           go to the next view (profile page) after checking if all fields are filled in
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool
     {
         if (identifier == "saveProfile")
@@ -197,18 +228,28 @@ class ProfileSetupViewController: UIViewController,
         }
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    // Creator : Daniel Tan
+    // Purpose : Implementing the optional functions to handle what the textField does, it resigns the first responder thus hide keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
+    {
         // Hide the keyboard
         textField.resignFirstResponder()
         return true
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField){
+    // Creator : Daniel Tan
+    // Purpose : Implementing the optional functions to handle what the textField does when it ends editting
+    //           read which text field and stores the text from that field into the corresponding variable
+    func textFieldDidEndEditing(_ textField: UITextField)
+    {
         name = nameTextField.text!
         globalname = name
         
     }
     
+    // Creator : Daniel Tan
+    // Purpose : Implementing the optional functions to handle what the textView does when it ends editting
+    //           read which text view and stores the text from that view into the corresponding variable
     func textViewDidEndEditing(_ textView: UITextView)
     {
         if (textView == interestTextField)
@@ -223,13 +264,15 @@ class ProfileSetupViewController: UIViewController,
         }
     }
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    // Purpose : overrided function to assign how many components in the picker view
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int
+    {
         return 1
-        
     }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        
+    // Purpose : overrided function that returns the number of rows in a picker view according to the list that populates it
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
+    {
         if (pickerView == busRouteDropDown)
         {
             return busList.count
@@ -240,8 +283,9 @@ class ProfileSetupViewController: UIViewController,
         }
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        
+    // Purpose : overrided optional func from delegates that will return the value of the picker view
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
+    {
         self.view.endEditing(true)
         if (pickerView == busRouteDropDown)
         {
@@ -253,9 +297,13 @@ class ProfileSetupViewController: UIViewController,
         }
     }
     
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    // Purpose : overrided function called when the user selects a row in the picker view
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+    {
         if (pickerView == busRouteDropDown)
         {
+            // Assign the text field to the returned value
+            // Hide the picker view
             busRouteTextField.text = busList[row]
             busRouteDropDown.isHidden = true
             busRoute = busRouteTextField.text!
@@ -263,6 +311,8 @@ class ProfileSetupViewController: UIViewController,
         }
         else if (pickerView == majorDropDown)
         {
+            // Assign the text field to the returned value
+            // Hide the picker view
             majorTextField.text = majorList[row]
             majorDropDown.isHidden = true
             major = majorTextField.text!
@@ -270,9 +320,11 @@ class ProfileSetupViewController: UIViewController,
         }
         
     }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        
+   
+    // Purpose : overrided public function that is called when the user starts editting the text field
+    //           shows the picker view when the user starts "editting" the text field
+    func textFieldDidBeginEditing(_ textField: UITextField)
+    {
         if (textField == busRouteTextField) {
             busRouteDropDown.isHidden = false
             //if you dont want the users to se the keyboard type:
@@ -286,8 +338,10 @@ class ProfileSetupViewController: UIViewController,
         }
     }
     
-    func keyboardWillShow(notification: NSNotification) {
-        
+    // Creator : Daniel Tan
+    // Purpose : When the keyboard pops up, the view will move up so the user can see the text view it is blocking
+    func keyboardWillShow(notification: NSNotification)
+    {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0{
                 self.view.frame.origin.y -= keyboardSize.height
@@ -296,7 +350,10 @@ class ProfileSetupViewController: UIViewController,
         
     }
     
-    func keyboardWillHide(notification: NSNotification) {
+    // Creator : Daniel Tan
+    // Purpose : When the keyboard is retracted, will move the view back to the original position
+    func keyboardWillHide(notification: NSNotification)
+    {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y != 0{
                 self.view.frame.origin.y += keyboardSize.height

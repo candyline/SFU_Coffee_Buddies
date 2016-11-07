@@ -5,6 +5,14 @@
 //  Created by Daniel Tan on 2016-11-05.
 //  Copyright © 2016 CMPT275-3. All rights reserved.
 //
+//
+//  Team : Group3Genius
+//
+//  Changelog:
+//      -File Created and Fundamental Functions Implemented
+//
+//  Known Bugs:
+//      - N/A
 
 import UIKit
 
@@ -19,9 +27,11 @@ class ProfilePageViewController: UIViewController {
     @IBOutlet weak var interestTextView: UITextView!
     @IBOutlet weak var bioTextView: UITextView!
     
+    // viewDidLoad function, anyhting that needs to be declared or initialized before the view loads is done here
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Assign the labels on the view as the values saved from the ProfileSetupViewController
         nameLabel.text = globalname
         busRouteLabel.text = globalbusroute
         genderLabel.text = globalgender

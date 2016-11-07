@@ -1,0 +1,11 @@
+Coding Conventions:
+1) All Variables and Function names (unless optional functions provided by delegates) have to be camel case. e.g. myVariable
+                 myFunction()
+2) All Classes have to be capitalized both words e.g. MyClass
+3) Use tab for indents, everything after the class declaration should be indented
+4) Use Aliman brace placement for functions and classes
+e.g. 
+myFunc()
+{
+    // Do something
+}
