@@ -53,11 +53,10 @@ class ShakePage: UIViewController {
     @IBOutlet weak var targetGenderDisplay: UILabel!
     @IBOutlet weak var shakePhone: UILabel!
     @IBOutlet weak var placedInQueue: UILabel!
-    @IBOutlet weak var currentlyInQueue: UILabel!
     @IBOutlet weak var matched: UILabel!
     @IBOutlet weak var targetNameDisplay: UILabel!
     //Default Server Address (localhost)
-    let Serverhost = "http://127.0.0.1:8080/messages/"
+    //let Serverhost = "http://127.0.0.1:8080/messages/"
    
     //Initilize the page when user enter the page
     //Author: Eton Kan
@@ -69,7 +68,6 @@ class ShakePage: UIViewController {
         shakePhone.isHidden = false
         //Hiding the labels from the user
         placedInQueue.isHidden = true
-        currentlyInQueue.isHidden = true
         matched.isHidden = true
         targetNameDisplay.isHidden = true
         targetGenderDisplay.isHidden = true
@@ -99,7 +97,7 @@ class ShakePage: UIViewController {
             userProfile.user = globalname
             var error = "1"
             //Getting user information from database
-            Alamofire.request(Serverhost).responseJSON {
+            Alamofire.request(serverhost).responseJSON {
                 response in
                 //Used for testing outputs
                 //print(response.request)  // original URL request
@@ -200,7 +198,7 @@ class ShakePage: UIViewController {
                                     "postman-token": "6f01f645-96bb-f323-a5db-4abe6ba03694"
                                 ]
                                 
-                                let appendedUserUrl = self.Serverhost + targetProfile.id
+                                let appendedUserUrl = serverhost + targetProfile.id
                                 let userUrl = NSURL(string: appendedUserUrl)
                                 let userUser = "&user="+targetProfile.user
                                 //print(userUser)
@@ -251,7 +249,7 @@ class ShakePage: UIViewController {
                     "postman-token": "6f01f645-96bb-f323-a5db-4abe6ba03694"
                 ]
                 print(userProfile.id)
-                let appendedUserUrl = self.Serverhost + userProfile.id
+                let appendedUserUrl = serverhost + userProfile.id
                 let userUrl = NSURL(string: appendedUserUrl)
                 let userUser = "&user="+userProfile.user
                 print(userUser)
