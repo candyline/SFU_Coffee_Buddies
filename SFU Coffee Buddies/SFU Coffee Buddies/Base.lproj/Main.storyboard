@@ -633,7 +633,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please Shake your phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zb7-XB-5RG">
-                                <rect key="frame" x="89" y="73" width="193" height="21"/>
+                                <rect key="frame" x="98" y="83" width="193" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -675,7 +675,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Disconnected from Server Please Connect to Internet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QlZ-aj-qAe">
-                                <rect key="frame" x="76" y="131" width="222" height="42"/>
+                                <rect key="frame" x="85" y="126" width="222" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -748,14 +748,40 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SXf-nQ-hyS">
+                                <rect key="frame" x="89" y="566" width="66" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Lets Chat"/>
+                                <connections>
+                                    <action selector="letChat:" destination="EPm-qU-i5S" eventType="touchUpInside" id="5Ks-Uo-hd0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c8X-tb-ci2">
+                                <rect key="frame" x="227" y="566" width="64" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Next One"/>
+                                <connections>
+                                    <action selector="nextOne:" destination="EPm-qU-i5S" eventType="touchUpInside" id="gj5-WN-QXo"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please fill in your user profile first" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FQq-KE-RZi">
+                                <rect key="frame" x="65" y="147" width="254" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Shake&amp;Match" image="171410-200 (1).png" id="x8W-Oa-Gkq"/>
                     <connections>
                         <outlet property="Disconnected" destination="QlZ-aj-qAe" id="XKp-B4-F0U"/>
+                        <outlet property="letsChat" destination="SXf-nQ-hyS" id="8MU-Zo-WbF"/>
                         <outlet property="matched" destination="fV2-x5-vMh" id="48b-8n-x6W"/>
+                        <outlet property="nextOne" destination="c8X-tb-ci2" id="ExC-OP-kv1"/>
                         <outlet property="placedInQueue" destination="E6l-Fo-fqc" id="QCe-gy-GlA"/>
+                        <outlet property="profileMissing" destination="FQq-KE-RZi" id="r8r-I2-RNo"/>
                         <outlet property="shakePhone" destination="zb7-XB-5RG" id="dcW-Lv-qc2"/>
                         <outlet property="targetBioDisplay" destination="iWd-RN-0MZ" id="Yek-uI-WNf"/>
                         <outlet property="targetBioLabel" destination="Lbk-1H-zcl" id="zeG-cg-27I"/>
@@ -785,6 +811,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="3c9-P9-SJ6"/>
-        <segue reference="QGm-Ze-gTz"/>
+        <segue reference="03Q-8J-RbC"/>
     </inferredMetricsTieBreakers>
 </document>
