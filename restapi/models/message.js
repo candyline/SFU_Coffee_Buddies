@@ -3,11 +3,15 @@ var mongoose  = require('mongoose');
 var Schema    = mongoose.Schema;
 //specifying that a message object has fields named text and user
 var messageSchema = new Schema({
-  text: String,
-  user: String,
-  password: String,
+  interest: String,
+  bio: String,
+  email: String,
+  username: String,
+  pw: String,
   gender: String,
-  meeting: String
+  bus: String,
+  meeting: String,
+  major: String
 });
 
 module.exports = mongoose.model('Message', messageSchema);
