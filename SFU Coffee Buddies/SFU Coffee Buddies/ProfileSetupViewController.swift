@@ -171,17 +171,20 @@ class ProfileSetupViewController: UIViewController,
         [
             "meeting"  : "false",
             "gender"   : globalgender ,
-            "password" : globalpw,
-            "text"     : globalbio,
-            "user"     : globalname
+            "pw"       : globalpw, // user's password
+            "email"    : globalemail,
+            "bio"      : globalbio,
+            "username" : globalname,
+            "interest" : globalinterest,
+            "bus"      : globalbusroute,
+            "major"    : globalmajor
+            
         ]
         print(parameters)
-        Alamofire.request("http://127.0.0.1:8080/messages/", method: .post, parameters: parameters, encoding: JSONEncoding.default)
+        Alamofire.request(serverhost, method: .post, parameters: parameters, encoding: JSONEncoding.default)
             .responseJSON { response in
                 print(response)
         }
-        //let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") as! TabBarController()
-        //self.present(vc, animated: true, completion: nil)
     }
     
     // Creator : Daniel Tan
