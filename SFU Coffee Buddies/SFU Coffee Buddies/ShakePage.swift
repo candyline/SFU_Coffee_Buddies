@@ -261,7 +261,7 @@ class ShakePage: UIViewController {
                                 // Store the information on the DB
                                 let parameters: [String: Any] =
                                     [
-                                        "meeting"  : "true",
+                                        "meeting"  : "false",
                                         "gender"   : targetProfile.gender,
                                         "pw"       : targetProfile.pw, // user's password
                                         "email"    : targetProfile.email,
