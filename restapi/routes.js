@@ -32,11 +32,15 @@ router.route('/messages')
   .post(function(req,res) {
     var message = new Message();
     // Set text and user values from the request
-  message.text = req.body.text;
-  message.user = req.body.user;
-  message.password = req.body.password;
+  message.interest = req.body.interest;
+  message.bio = req.body.bio;
+  message.bus = req.body.bus;
+  message.email = req.body.email;
+  message.username = req.body.username
+  message.pw = req.body.pw;
   message.gender = req.body.gender;
   message.meeting = req.body.meeting;
+  message.major = req.body.major;
 
     // save message and check for errors
     message.save(function(err) {
@@ -61,11 +65,15 @@ router.route('/messages/:message_id')
     Message.findById(req.params.message_id, function(err,message) {
       if(err)
         res.send(err);
-      message.text = req.body.text;
-      message.user = req.body.user;
-      message.password = req.body.password;
+      message.interest = req.body.interest;
+      message.bio = req.body.bio;
+      message.bus = req.body.bus;
+      message.email = req.body.email;
+      message.username = req.body.username
+      message.pw = req.body.pw;
       message.gender = req.body.gender;
       message.meeting = req.body.meeting;
+      message.major = req.body.major;
 
       message.save(function(err) {
         if (err)
