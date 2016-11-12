@@ -14,9 +14,12 @@
 //      - Email sending and code generation doesn't work - November 6
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 var globalemail : String = ""
 var globalpw : String = ""
+var globalid : String = ""
 //var globalcode : String = ""
 
 class NewAccountViewController: UIViewController, UITextFieldDelegate
@@ -79,6 +82,8 @@ class NewAccountViewController: UIViewController, UITextFieldDelegate
     // Creator : Daniel Tan
     // Purpose : Condition Activated Segue for the submit button
     //           go to the next view (code confirmation page) after checking for valid emails
+    // Last Modified Author: Eton Kan
+    // Last Modified Date: Nov 11
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool
     {
         if (identifier == "submitEmail")
@@ -90,6 +95,55 @@ class NewAccountViewController: UIViewController, UITextFieldDelegate
             if (email.hasSuffix("@sfu.ca"))
             {
                 //sendEmail()
+                
+                //Storing email and password to database (server)
+                let parameters: [String: Any] =
+                    [
+                        "meeting"  : "false",
+                        "pw"       : globalpw, // user's password
+                        "email"    : globalemail,
+                    ]
+                print(parameters)
+                Alamofire.request(serverhost, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+                    .responseJSON
+                    { response in
+                        print(response)
+                    }
+                Alamofire.request(serverhost).responseJSON
+                {
+                        response in
+                        //Testing if data available for grab
+                        switch response.result
+                        {
+                        case .success:
+                            print("Data Found")
+                        case .failure(let error):
+                            print(error)
+                            print("Cannot get data from server")
+                            return
+                        }
+                        
+                        //Parsing the data taken from server
+                        let dataBaseArray = JSON(response.result.value!)
+                        
+                        //Search the user inside the JSON
+                        for index in 0 ... dataBaseArray.count
+                        {
+                            if let email  = dataBaseArray[index]["email"].string
+                            {
+                                if email == ShakePage().userProfile.email
+                                {
+                                    if let id = dataBaseArray[index]["_id"].string
+                                    {
+                                        ShakePage().userProfile.id = id
+                                        globalid = id
+                                        //print(userProfile.id)
+                                        break
+                                    }
+                                }
+                            }
+                        }
+                }
                 return true
             }
             else
@@ -98,7 +152,8 @@ class NewAccountViewController: UIViewController, UITextFieldDelegate
                 return false
             }
         }
-        else {
+        else
+        {
             return true
         }
     }

@@ -162,28 +162,44 @@ class ProfileSetupViewController: UIViewController,
     //user tap on the save button
     //Author: Daniel Tan
     //Las Modify Author: Eton Kan
-    //Last Modify Date: Nov 6,2016
+    //Last Modify Date: Nov 11,2016
     //Known Bugs: Unable to POST data to database
     @IBAction func saveProfile(_ sender: UIButton)
     {
-        // Store the information on the DB
+        //let appendedUserUrl = serverhost + ShakePage().userProfile.id
+        let appendedUserUrl = serverhost + globalid
+        print(appendedUserUrl)
+        
+        // Updating the user's information on the DB
         let parameters: [String: Any] =
-        [
-            "meeting"  : "false",
-            "gender"   : globalgender ,
-            "pw"       : globalpw, // user's password
-            "email"    : globalemail,
-            "bio"      : globalbio,
-            "username" : globalname,
-            "interest" : globalinterest,
-            "bus"      : globalbusroute,
-            "major"    : globalmajor
-            
+            [
+                //Could either user global or this method
+                /*
+                "meeting"  : "false",
+                "gender"   : ShakePage().userProfile.gender,
+                "pw"       : ShakePage().userProfile.pw, // user's password
+                "email"    : ShakePage().userProfile.email,
+                "bio"      : ShakePage().userProfile.bio,
+                "username" : ShakePage().userProfile.username,
+                "interest" : ShakePage().userProfile.interest,
+                "bus"      : ShakePage().userProfile.bus,
+                "major"    : ShakePage().userProfile.major
+                */
+                "meeting"  : "false",
+                "gender"   : globalgender,
+                "pw"       : globalpw, // user's password
+                "email"    : globalemail,
+                "bio"      : globalbio,
+                "username" : globalname,
+                "interest" : globalinterest,
+                "bus"      : globalbusroute,
+                "major"    : globalmajor
         ]
         print(parameters)
-        Alamofire.request(serverhost, method: .post, parameters: parameters, encoding: JSONEncoding.default)
-            .responseJSON { response in
-                print(response)
+        Alamofire.request(appendedUserUrl, method: .put, parameters: parameters, encoding: JSONEncoding.default).responseString
+        {
+            response in
+            print(response)
         }
     }
     

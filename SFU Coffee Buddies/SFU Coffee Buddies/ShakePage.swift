@@ -35,11 +35,11 @@ struct Profile
     var id = "0"
     var meeting = "0"
     var gender = "0"
-    var pw = "0" //User's password
+    var pw = globalpw //User's password
     var username = "0"
     var bio = "0"
     var interest = "0"
-    var email = "0"
+    var email = globalemail
     var bus = "0"
     var major = "0"
     
@@ -54,6 +54,7 @@ class ShakePage: UIViewController
     //Struct used to save user and target informations
     var userProfile = Profile()
     var targetProfile = Profile()
+    let yesMeeting = "true"
     //Declare all variables used in the storyboard
     @IBOutlet weak var shakePhone: UILabel!
     @IBOutlet weak var placedInQueue: UILabel!
@@ -180,6 +181,7 @@ class ShakePage: UIViewController
     {
         print("User say no :(")
         self.shakePhone.isHidden = false
+        //Hiding all the target user profile information
         self.placedInQueue.isHidden = true
         self.matched.isHidden = true
         
@@ -240,17 +242,14 @@ class ShakePage: UIViewController
     //Last Modify: Nov 11,2016
     //Known Bugs: 1) it will crash the database if zero entries are in it (Fix - Eton Nov 11)
     //            2) types used for variables are not efficient(warnings) (Fix - Eton Nov 11)
-    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?)
+    {
         if event?.subtype == UIEventSubtype.motionShake
         {
             //Showing the user that shake is detected
             //Initialize Variabes
-            //var userProfile = Profile()
-            //var targetProfile = Profile()
-            let yesMeeting = "true"
-            //If user with the username is find in the data base
+
             var userFound = false
-            userProfile.username = globalname
             //Getting user information from database
             Alamofire.request(serverhost).responseJSON
                 {
@@ -273,9 +272,9 @@ class ShakePage: UIViewController
                     //Search the user inside the JSON
                     for index in 0 ... dataBaseArray.count
                     {
-                        if let username  = dataBaseArray[index]["username"].string
+                        if let email  = dataBaseArray[index]["email"].string
                         {
-                            if username == self.userProfile.username
+                            if email == self.userProfile.username
                             {
                                 self.getDatafromServer(userProfile: &self.userProfile, dataBaseArray:   dataBaseArray, index : index)
                                 userFound = true
@@ -301,11 +300,12 @@ class ShakePage: UIViewController
                     for index in 0 ... dataBaseArray.count
                     {
                         //Looking for user that is able to meet
-                        if let target_user  = dataBaseArray[index]["username"].string
+                        if let target_user  = dataBaseArray[index]["email"].string
                         {
                             if let target_meeting = dataBaseArray[index]["meeting"].string
                             {
-                                if target_user != self.userProfile.username && target_meeting == yesMeeting{
+                                if target_user != self.userProfile.email && target_meeting == self.yesMeeting
+                                {
                                     //Enter the target user's information into a profile struct
                                     self.getDatafromServer(userProfile: &self.targetProfile, dataBaseArray: dataBaseArray, index : index)
                                     //Display target user information on the ShakePage
@@ -349,7 +349,7 @@ class ShakePage: UIViewController
                     // Store the information on the DB
                     let parameters: [String: Any] =
                         [
-                            "meeting"  : "true",
+                            "meeting"  : self.yesMeeting,
                             "gender"   : self.userProfile.gender,
                             "pw"       : self.userProfile.pw, // user's password
                             "email"    : self.userProfile.email,
