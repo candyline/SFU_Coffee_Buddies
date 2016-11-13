@@ -120,17 +120,14 @@ router.route('/reportAbuse')
 //Last Modified Date: Nov 11, 2016
 router.route('/reportAbuse')
   .post(function(req,res) {
-    var reportAbuse = new ReportAbuse();
-    // Set text and user values from the request
-  reportAbuse.interest = req.body.interest;
-  reportAbuse.bio = req.body.bio;
-  //message.bus = req.body.bus;
-  reportAbuse.email = req.body.email;
-  reportAbuse.username = req.body.username
-  //message.pw = req.body.pw;
-  //message.gender = req.body.gender;
-  //message.meeting = req.body.meeting;
-  //message.major = req.body.major;
+  var reportAbuse = new ReportAbuse();
+  // Set text and user values from the request
+  reportAbuse.fromUser = req.body.fromUser;
+  reportAbuse.fromEmail = req.body.fromEmail;
+  reportAbuse.toUser = req.body.toUser;
+  reportAbuse.toEmail = req.body.toEmail;
+  reportAbuse.type = req.body.type;
+  reportAbuse.message = req.body.message;
 
     // save message and check for errors
     reportAbuse.save(function(err) {
@@ -163,15 +160,12 @@ router.route('/reportAbuse/:message_id')
     ReportAbuse.findById(req.params.message_id, function(err, reportAbuse) {
       if(err)
         res.send(err);
-      reportAbuse.interest = req.body.interest;
-      reportAbuse.bio = req.body.bio;
-      //message.bus = req.body.bus;
-      reportAbuse.email = req.body.email;
-      reportAbuse.username = req.body.username
-      //message.pw = req.body.pw;
-      //message.gender = req.body.gender;
-      //message.meeting = req.body.meeting;
-      //message.major = req.body.major;
+  	reportAbuse.fromUser = req.body.fromUser;
+  	reportAbuse.fromEmail = req.body.fromEmail;
+ 	reportAbuse.toUser = req.body.toUser;
+  	reportAbuse.toEmail = req.body.toEmail;
+  	reportAbuse.type = req.body.type;
+  	reportAbuse.message = req.body.message;
 
       reportAbuse.save(function(err) {
         if (err)
