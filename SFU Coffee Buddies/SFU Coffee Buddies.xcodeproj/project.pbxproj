@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		AC0973871DD054A500191224 /* coffee cup.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AC0973861DD054A500191224 /* coffee cup.jpg */; };
+		AC0973891DD950DF00191224 /* QRGeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0973881DD950DF00191224 /* QRGeneratorViewController.swift */; };
+		AC09738B1DD95C7900191224 /* QRScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC09738A1DD95C7900191224 /* QRScannerViewController.swift */; };
 		ACB9BBAB1DADD2C600F550FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9BBAA1DADD2C600F550FF /* AppDelegate.swift */; };
 		ACB9BBAD1DADD2C600F550FF /* MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9BBAC1DADD2C600F550FF /* MainPage.swift */; };
 		ACB9BBB01DADD2C600F550FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACB9BBAE1DADD2C600F550FF /* Main.storyboard */; };
@@ -64,6 +66,8 @@
 
 /* Begin PBXFileReference section */
 		AC0973861DD054A500191224 /* coffee cup.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "coffee cup.jpg"; sourceTree = "<group>"; };
+		AC0973881DD950DF00191224 /* QRGeneratorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRGeneratorViewController.swift; sourceTree = "<group>"; };
+		AC09738A1DD95C7900191224 /* QRScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRScannerViewController.swift; sourceTree = "<group>"; };
 		ACB9BBA71DADD2C600F550FF /* SFU Coffee Buddies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SFU Coffee Buddies.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACB9BBAA1DADD2C600F550FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACB9BBAC1DADD2C600F550FF /* MainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPage.swift; sourceTree = "<group>"; };
@@ -150,6 +154,8 @@
 				ACB9BBAA1DADD2C600F550FF /* AppDelegate.swift */,
 				ACB9BBAC1DADD2C600F550FF /* MainPage.swift */,
 				ACB9BBAE1DADD2C600F550FF /* Main.storyboard */,
+				AC09738A1DD95C7900191224 /* QRScannerViewController.swift */,
+				AC0973881DD950DF00191224 /* QRGeneratorViewController.swift */,
 				ACB9BBEA1DC52CA200F550FF /* ProfileSetupViewController.swift */,
 				ACB9BBE81DC5282E00F550FF /* CodeViewController.swift */,
 				ACB9BBE61DC5267300F550FF /* NewAccountViewController.swift */,
@@ -338,7 +344,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC09738B1DD95C7900191224 /* QRScannerViewController.swift in Sources */,
 				ACB9BBE51DC5228200F550FF /* LoginViewController.swift in Sources */,
+				AC0973891DD950DF00191224 /* QRGeneratorViewController.swift in Sources */,
 				ACB9BBAD1DADD2C600F550FF /* MainPage.swift in Sources */,
 				ACB9BBAB1DADD2C600F550FF /* AppDelegate.swift in Sources */,
 				ACB9BBE91DC5282E00F550FF /* CodeViewController.swift in Sources */,
