@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7B2009391DDD56110040D203 /* SGH-I747M_20150915162834 in Resources */ = {isa = PBXBuildFile; fileRef = 7B2009381DDD56110040D203 /* SGH-I747M_20150915162834 */; };
-		7B20093B1DDD58D50040D203 /* SFU Trans Loop.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7B20093A1DDD58D50040D203 /* SFU Trans Loop.jpg */; };
 		AC0973871DD054A500191224 /* coffee cup.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AC0973861DD054A500191224 /* coffee cup.jpg */; };
 		AC0973891DD950DF00191224 /* QRGeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0973881DD950DF00191224 /* QRGeneratorViewController.swift */; };
 		AC09738B1DD95C7900191224 /* QRScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC09738A1DD95C7900191224 /* QRScannerViewController.swift */; };
@@ -67,8 +65,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		7B2009381DDD56110040D203 /* SGH-I747M_20150915162834 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "SGH-I747M_20150915162834"; path = "../../../../../../Volumes/KINGSTON/SGH-I747M_20150915162834"; sourceTree = "<group>"; };
-		7B20093A1DDD58D50040D203 /* SFU Trans Loop.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "SFU Trans Loop.jpg"; path = "../../../../Downloads/SFU Trans Loop.jpg"; sourceTree = "<group>"; };
 		AC0973861DD054A500191224 /* coffee cup.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "coffee cup.jpg"; sourceTree = "<group>"; };
 		AC0973881DD950DF00191224 /* QRGeneratorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRGeneratorViewController.swift; sourceTree = "<group>"; };
 		AC09738A1DD95C7900191224 /* QRScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRScannerViewController.swift; sourceTree = "<group>"; };
@@ -158,8 +154,6 @@
 				ACB9BBAA1DADD2C600F550FF /* AppDelegate.swift */,
 				ACB9BBAC1DADD2C600F550FF /* MainPage.swift */,
 				ACB9BBAE1DADD2C600F550FF /* Main.storyboard */,
-				7B20093A1DDD58D50040D203 /* SFU Trans Loop.jpg */,
-				7B2009381DDD56110040D203 /* SGH-I747M_20150915162834 */,
 				AC09738A1DD95C7900191224 /* QRScannerViewController.swift */,
 				AC0973881DD950DF00191224 /* QRGeneratorViewController.swift */,
 				ACB9BBEA1DC52CA200F550FF /* ProfileSetupViewController.swift */,
@@ -322,10 +316,8 @@
 				ACB9BBF01DCD469A00F550FF /* 171410-200 (1).png in Resources */,
 				AC0973871DD054A500191224 /* coffee cup.jpg in Resources */,
 				ACB9BBB51DADD2C600F550FF /* LaunchScreen.storyboard in Resources */,
-				7B20093B1DDD58D50040D203 /* SFU Trans Loop.jpg in Resources */,
 				ACB9BBB21DADD2C600F550FF /* Assets.xcassets in Resources */,
 				ACB9BBB01DADD2C600F550FF /* Main.storyboard in Resources */,
-				7B2009391DDD56110040D203 /* SGH-I747M_20150915162834 in Resources */,
 				ACB9BBF41DCD4A0900F550FF /* user_male_circle_filled1600 (1).png in Resources */,
 				ACB9BBF21DCD49FF00F550FF /* home-512 (1).png in Resources */,
 			);
