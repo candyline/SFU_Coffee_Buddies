@@ -66,52 +66,6 @@ class ProfileSetupViewController: UIViewController,
         
         self.present(iPickerController, animated: true, completion: nil)
     }
-    
-    //This function saves user id on the data base so we can use it to append it later on
-    //Author: Daniel Tan
-    //Las Modify Author: Eton Kan
-    //Last Modify Date: Nov 12,2016
-    //Known Bugs: none
-    func getuserid(completionHandler: (JSON) -> ()) -> ()
-    {
-        Alamofire.request(serverprofile).responseJSON
-            {
-                response in
-                //Testing if data available for grab
-                switch response.result
-                {
-                case .success:
-                    print("Data Found")
-                    
-                case .failure(let error):
-                    print(error)
-                    print("Cannot get data from server")
-                    return
-                }
-                /*
-                //Parsing the data taken from server
-                let dataBaseArray = JSON(response.result.value!)
-                
-                //Search the user inside the JSON
-                for index in 0 ... dataBaseArray.count
-                {
-                    if let email  = dataBaseArray[index]["email"].string
-                    {
-                        if email == globalemail
-                        {
-                            if let id = dataBaseArray[index]["_id"].string
-                            {
-                                globalid = id
-                                print(globalid)
-                                break
-                            }
-                        }
-                    }
-                }
-                return
- */
-        }
-    }
 
     // viewDidLoad function, anyhting that needs to be declared or initialized before the view loads is done here
     override func viewDidLoad()
@@ -205,50 +159,14 @@ class ProfileSetupViewController: UIViewController,
         busRouteTextField.resignFirstResponder()
     }
     
-    //This function saves the data it got from user to database when
-    //user tap on the save button
+    //This function saves the data it got from user to database when user tap on the save button
     //Author: Daniel Tan
     //Las Modify Author: Eton Kan
     //Last Modify Date: Nov 11,2016
     //Known Bugs: Unable to POST data to database (Fixed Nov 12, 2016)
     //            First time cannot put information in to database (due to unable to get user id)
-    
-    // Pray to god, hope it works (never tested)
     @IBAction func saveProfile(_ sender: UIButton)
     {
-       /* getuserid
-            {(globalid, error) in
-            if globalid != nil
-            {
-                //Parsing the data taken from server
-                let dataBaseArray = JSON(response.result.value!)
-                
-                //Search the user inside the JSON
-                for index in 0 ... dataBaseArray.count
-                {
-                    if let email  = dataBaseArray[index]["email"].string
-                    {
-                        if email == globalemail
-                        {
-                            if let id = dataBaseArray[index]["_id"].string
-                            {
-                                globalid = id
-                                print(globalid)
-                                break
-                            }
-                        }
-                    }
-                }
-
-            }
-            else
-            {
-                print("can't get globalid")
-                return
-            }
-        }
- */
-        
         Alamofire.request(serverprofile).responseJSON
             {
                 response in
@@ -265,21 +183,20 @@ class ProfileSetupViewController: UIViewController,
                     {
                         if let email  = dataBaseArray[index]["email"].string
                         {
-                            if email == globalemail
+                            if email == userProfile.email
                             {
                                 if let id = dataBaseArray[index]["_id"].string
                                 {
-                                    globalid = id
-                                    print(globalid)
+                                    userProfile.id = id
+                                    print(userProfile.id)
                                     break
                                 }
                             }
                         }
                     }
                     
-                    
                     print(globalid)
-                    let appendedUserUrl = serverprofile + globalid
+                    let appendedUserUrl = serverprofile + userProfile.id
                     print(appendedUserUrl)
                     
                     // Updating the user's information on the DB
@@ -299,9 +216,18 @@ class ProfileSetupViewController: UIViewController,
                     Alamofire.request(appendedUserUrl, method: .put, parameters: parameters, encoding: JSONEncoding.default).responseString
                         {
                             response in
-                            print(response)
+                            switch response.result
+                            {
+                            case .success(let isSuccess):
+                                let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabBar") as! UITabBarController
+                                self.present(vc, animated:true, completion: nil)
+                                
+                            case .failure(let error):
+                                print(error)
+                                print("Cannot get data from server")
+                            }
+                            
                     }
-                    
                     
                 case .failure(let error):
                     print(error)

@@ -15,6 +15,8 @@
 //      - N/A
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class ProfilePageViewController: UIViewController {
 
@@ -27,26 +29,71 @@ class ProfilePageViewController: UIViewController {
     @IBOutlet weak var interestTextView: UITextView!
     @IBOutlet weak var bioTextView: UITextView!
     
-    // viewDidLoad function, anyhting that needs to be declared or initialized before the view loads is done here
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Assign the labels on the view as the values saved from the ProfileSetupViewController
-        nameLabel.text = globalname
-        busRouteLabel.text = globalbusroute
-        genderLabel.text = globalgender
-        majorLabel.text = globalmajor
-        
-        interestTextView.isEditable = false
-        bioTextView.isEditable = false
-        
-        interestTextView.text = globalinterest
-        bioTextView.text = globalbio
-        
-        profileImage.image = globalpicture
+    func getUserProfile(urlPath: String, userEmail: String, completionHandler: ((UIBackgroundFetchResult) -> Void)!)
+    {
+        var userFound = false
+        Alamofire.request(urlPath).responseJSON
+        {
+            response in
+            //Testing if data available for grab
+            switch response.result
+            {
+            case .success:
+                print("Able to connect to server and data found (getUserProfile)")
+                //Parsing the data taken from server
+                let dataBaseArray = JSON(response.result.value!)
+                    
+                //Searching for the user provided Email inside the JSON file from database
+                for index in 0 ... dataBaseArray.count
+                {
+                    if let email  = dataBaseArray[index]["email"].string
+                    {
+                        if email == userProfile.email
+                        {
+                            print("Loading user information in to location memory")
+                            ShakePage().getDatafromServer(userProfile: &userProfile, dataBaseArray: dataBaseArray, index : index)
+                                    completionHandler(UIBackgroundFetchResult.newData)
+                            userFound = true
+                        }
+                    }
+                }
+                if !(userFound)
+                {
+                    print("Unable to find user provided email in database (loadDetail)")
+                    print("Please create a new profile (loadDetail)")
+                }
 
-        // Do any additional setup after loading the view.
+            case .failure(let error):
+                print("Request failed with error: \(error)")
+            }
+        }
     }
+    // viewDidLoad function, anyhting that needs to be declared or initialized before the view loads is done here
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        //Getting user information from database
+        self.getUserProfile(urlPath: serverprofile, userEmail: userProfile.email, completionHandler:
+            {
+                (UIBackgroundFetchResult) -> Void in
+                // Assign the labels on the view as the values saved from database
+                self.nameLabel.text = userProfile.username
+                self.busRouteLabel.text = userProfile.bus
+                self.genderLabel.text = userProfile.gender
+                self.majorLabel.text = userProfile.major
+                
+                self.interestTextView.isEditable = false
+                self.bioTextView.isEditable = false
+            
+                self.interestTextView.text = userProfile.interest
+                self.bioTextView.text = userProfile.bio
+            
+                self.profileImage.image = globalpicture
+                print("User profile ready for display")
+                // Do any additional setup after loading the view.
+        })
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

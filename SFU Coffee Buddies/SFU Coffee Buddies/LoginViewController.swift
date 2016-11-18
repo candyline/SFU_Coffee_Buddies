@@ -64,8 +64,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate
     //Known Bugs: none
     func loadDetail(urlPath: String, completionHandler: ((UIBackgroundFetchResult)     -> Void)!)
     {
+        var userFound = false
         //Look for user in the database with user provided email
-        print("Looking for user in the database")
+        print("Looking for user in the database (loadDetail)")
         Alamofire.request(urlPath).responseJSON
             {
                 response in
@@ -73,7 +74,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate
                 switch response.result
                 {
                 case .success (let userPassword):
-                    print("Able to connect to server and data found")
+                    print("Able to connect to server and data found (loadDetail)")
                     //Parsing the data taken from server
                     let dataBaseArray = JSON(response.result.value!)
                     
@@ -87,25 +88,25 @@ class LoginViewController: UIViewController, UITextFieldDelegate
                                 print("User Found")
                                 if let userPassword = dataBaseArray[index]["pw"].string
                                 {
-                                    
+                                    userFound = true
                                     self.expectedPassword = userPassword
                                     completionHandler(UIBackgroundFetchResult.newData)
                                 }
                             }
-                            else
-                            {
-                                print("Unable to find user provided email in database")
-                                print("Please create a new profile")
-                                self.incorrectMessageLabel.isHidden = false
-                            }
                         }
+                    }
+                    if !(userFound)
+                    {
+                        print("Unable to find user provided email in database (loadDetail)")
+                        print("Please create a new profile (loadDetail)")
+                        self.incorrectMessageLabel.isHidden = false
                     }
                     
                 case .failure(let error):
                     print("Request failed with error: \(error)")
                 }
         }
-        print("Background Fetch Complete")
+        print("Background Fetch Complete (loadDetail)")
     }
     
     //Verifing user password with the database. If it is correct, user will login. If it is wrong, it will display a message to ask user to re-enter their email and password
@@ -119,15 +120,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate
            
             if self.password == self.expectedPassword
             {
-                print("Correct Password and Email combo")
-                print("Login and go to Profile")
+                print("Correct Password and Email combo (loginPressed)")
+                print("Login and go to Profile (loginPressed)")
+                userProfile.email = self.username
+                //Switching storyboard to main menu
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabBar") as! UITabBarController
                 self.present(vc, animated:true, completion: nil)
             }
             else
             {
-                print("Wrong Password and Email combo")
-                print("Prompt user to re-enter password and email")
+                print("Wrong Password and Email combo (loginPressed)")
+                print("Prompt user to re-enter password and email (loginPressed)")
                 self.incorrectMessageLabel.isHidden = false
             }
         })

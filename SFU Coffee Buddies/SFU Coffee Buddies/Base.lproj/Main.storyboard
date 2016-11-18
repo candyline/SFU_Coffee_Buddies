@@ -286,7 +286,6 @@
                                                 <connections>
                                                     <action selector="loginPressed:" destination="syC-e2-IRy" eventType="touchUpInside" id="ezh-fu-6bh"/>
                                                     <action selector="saveProfile:" destination="T6X-4f-Nbd" eventType="touchUpInside" id="hbh-s1-G2f"/>
-                                                    <segue destination="lj3-SR-thM" kind="presentation" identifier="Saved" id="3c9-P9-SJ6"/>
                                                 </connections>
                                             </button>
                                         </barButtonItem>
@@ -649,12 +648,9 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Report Abuse"/>
                                                 <connections>
-                                                    <action selector="nextOne:" destination="EPm-qU-i5S" eventType="touchUpInside" id="RMo-FI-CwF"/>
+                                                    <segue destination="Hpd-U2-Eva" kind="presentation" id="BPJ-P1-Zal"/>
                                                 </connections>
                                             </button>
-                                            <connections>
-                                                <segue destination="Hpd-U2-Eva" kind="presentation" id="hoJ-OX-TBk"/>
-                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -795,6 +791,7 @@
                         <outlet property="nextOne" destination="c8X-tb-ci2" id="ExC-OP-kv1"/>
                         <outlet property="placedInQueue" destination="E6l-Fo-fqc" id="QCe-gy-GlA"/>
                         <outlet property="profileMissing" destination="FQq-KE-RZi" id="r8r-I2-RNo"/>
+                        <outlet property="reportAbuse" destination="kWH-1D-8aD" id="kuX-pE-0SS"/>
                         <outlet property="shakePhone" destination="zb7-XB-5RG" id="dcW-Lv-qc2"/>
                         <outlet property="targetBioDisplay" destination="iWd-RN-0MZ" id="Yek-uI-WNf"/>
                         <outlet property="targetBioLabel" destination="Lbk-1H-zcl" id="zeG-cg-27I"/>
@@ -818,7 +815,7 @@
         <!--Report User-->
         <scene sceneID="hwd-HQ-6dH">
             <objects>
-                <viewController id="Hpd-U2-Eva" customClass="ReportUser" customModule="SFU_Coffee_Buddies" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ReportUser" id="Hpd-U2-Eva" customClass="ReportUser" customModule="SFU_Coffee_Buddies" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jPm-H7-CDf"/>
                         <viewControllerLayoutGuide type="bottom" id="pwF-vE-XDl"/>
@@ -832,15 +829,18 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Reporting User" id="CW4-Ys-IGv">
-                                        <barButtonItem key="leftBarButtonItem" style="plain" id="Mjn-Lf-97w">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="zRP-qU-cs0">
-                                                <rect key="frame" x="16" y="4" width="72" height="35"/>
+                                        <barButtonItem key="leftBarButtonItem" style="plain" id="dWp-yw-h6w">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Az4-kG-xuz">
+                                                <rect key="frame" x="16" y="7" width="47" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Back"/>
                                                 <connections>
-                                                    <action selector="nextOne:" destination="EPm-qU-i5S" eventType="touchUpInside" id="17S-QM-VgA"/>
+                                                    <action selector="toMainPage:" destination="Hpd-U2-Eva" eventType="touchUpInside" id="Gvz-lM-H6R"/>
                                                 </connections>
                                             </button>
+                                            <connections>
+                                                <segue destination="lj3-SR-thM" kind="presentation" id="dG8-Ho-CZD"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -864,7 +864,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Submit"/>
                                 <connections>
-                                    <action selector="submitAbuse:" destination="Hpd-U2-Eva" eventType="touchUpInside" id="shh-oN-KB9"/>
+                                    <action selector="submitAbuse:" destination="Hpd-U2-Eva" eventType="touchUpInside" id="pa9-di-JWi"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VdL-NR-a92">
@@ -881,31 +881,21 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mgT-S1-bt5">
-                                <rect key="frame" x="76" y="218" width="212" height="46"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Shake Again?"/>
-                                <connections>
-                                    <action selector="nextOne:" destination="EPm-qU-i5S" eventType="touchUpInside" id="dl5-GP-Rou"/>
-                                    <segue destination="EPm-qU-i5S" kind="showDetail" id="HXi-Tn-Vq2"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="backButton" destination="zRP-qU-cs0" id="Ejl-cT-ugM"/>
-                        <outlet property="reasonLabel" destination="pbS-td-fa4" id="ig7-EF-rk9"/>
-                        <outlet property="reasonTextBox" destination="VdL-NR-a92" id="wzF-vY-ZNS"/>
-                        <outlet property="shakeAgain" destination="mgT-S1-bt5" id="A1C-EP-mfH"/>
-                        <outlet property="submitButton" destination="kji-NR-RQx" id="q50-MD-ahH"/>
-                        <outlet property="thankYouMsg" destination="qKY-Ts-utY" id="LF8-a4-dzq"/>
-                        <outlet property="whatsWrongMsg" destination="oEw-2U-krg" id="SOk-5W-t0U"/>
+                        <outlet property="backButton" destination="dWp-yw-h6w" id="bGC-Li-SrV"/>
+                        <outlet property="reasonLabel" destination="pbS-td-fa4" id="ykM-rw-IHM"/>
+                        <outlet property="reasonTextField" destination="VdL-NR-a92" id="a4G-yt-fsx"/>
+                        <outlet property="submitButton" destination="kji-NR-RQx" id="kow-oE-fdQ"/>
+                        <outlet property="thankYouLabel" destination="qKY-Ts-utY" id="yaJ-js-jWq"/>
+                        <outlet property="whatsWrongLabel" destination="oEw-2U-krg" id="JFj-py-OS4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NwD-Qd-qjd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1712.8" y="833.43328335832086"/>
+            <point key="canvasLocation" x="2333.5999999999999" y="796.55172413793105"/>
         </scene>
     </scenes>
     <resources>
@@ -915,7 +905,6 @@
         <image name="user_male_circle_filled1600 (1).png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="QGm-Ze-gTz"/>
-        <segue reference="6Ve-ff-DTh"/>
+        <segue reference="03Q-8J-RbC"/>
     </inferredMetricsTieBreakers>
 </document>

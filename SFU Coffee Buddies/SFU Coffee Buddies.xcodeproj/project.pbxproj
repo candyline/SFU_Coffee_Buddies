@@ -145,7 +145,6 @@
 		ACB9BBA91DADD2C600F550FF /* SFU Coffee Buddies */ = {
 			isa = PBXGroup;
 			children = (
-				ACFB4E571DCECBCC00E159D4 /* ProfilePageViewController.swift */,
 				ACB9BBEC1DCD44ED00F550FF /* Icons */,
 				ACB9BBE41DC5228200F550FF /* LoginViewController.swift */,
 				D0B438831DC41387009C5FFC /* ShakePage.swift */,
@@ -153,6 +152,7 @@
 				ACB9BBAC1DADD2C600F550FF /* MainPage.swift */,
 				ACB9BBAE1DADD2C600F550FF /* Main.storyboard */,
 				D05D33A11DDC218E00AD2EDA /* ReportUser.swift */,
+				ACFB4E571DCECBCC00E159D4 /* ProfilePageViewController.swift */,
 				ACB9BBEA1DC52CA200F550FF /* ProfileSetupViewController.swift */,
 				ACB9BBE81DC5282E00F550FF /* CodeViewController.swift */,
 				ACB9BBE61DC5267300F550FF /* NewAccountViewController.swift */,

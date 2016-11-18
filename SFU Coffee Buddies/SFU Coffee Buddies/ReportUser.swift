@@ -25,20 +25,20 @@ import SwiftyJSON
 //Creation Date: Nov 11,2016
 //Last Modified Author: Eton Kan
 //Last Modified Date: Nov 16,2016
-class ReportUser: UIViewController
+class ReportUser: UIViewController, UITextViewDelegate, UINavigationControllerDelegate
 {   
     
     @IBOutlet weak var whatsWrongLabel: UILabel!
     @IBOutlet weak var thankYouLabel: UILabel!
     @IBOutlet weak var reasonLabel: UILabel!
     
-    @IBOutlet weak var shakeAgainButton: UIButton!
+    //@IBOutlet weak var returnToMainPage: UIButton!
     @IBOutlet weak var submitButton: UIButton!
-    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var backButton: UIBarButtonItem!
     
     @IBOutlet weak var reasonTextField: UITextView!
     
-    var abuseMsg = ""
+    var abuseMsg: String = ""
     
     override func viewDidLoad()
     {
@@ -47,11 +47,25 @@ class ReportUser: UIViewController
         thankYouLabel.isHidden = true
         reasonLabel.isHidden = false
         
-        shakeAgainButton.isHidden = false
+        //returnToMainPage.isHidden = true
         submitButton.isHidden = false
-        backButton.isHidden = true
+        //backButton.isHidden = false
         
         reasonTextField.isHidden = false
+        
+        reasonTextField.layer.cornerRadius = 8.0
+        reasonTextField.layer.borderColor = UIColor.black.cgColor
+        reasonTextField.layer.borderWidth = 0.8
+        
+        reasonTextField.delegate = self
+        
+        // Tap Gesture will close the keyboard, when tapping the view, will call the tappedAwayFunction
+        let myGesture = UITapGestureRecognizer(target: self, action: #selector(ReportUser.tappedAwayFunction(sender:)))
+        self.view.addGestureRecognizer(myGesture)
+        
+        // Adds Observer for the view
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
     func tappedAwayFunction(sender: UITapGestureRecognizer)
@@ -59,9 +73,23 @@ class ReportUser: UIViewController
         reasonTextField.resignFirstResponder()
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField)
+    func textViewDidEndEditing(_ textField: UITextView)
     {
-        abuseMsg = reasonTextField.text!
+        self.abuseMsg = reasonTextField.text
+    }
+    
+    /*
+    @IBAction func toShakePage(_ sender: UIButton)
+    {
+        self.tabBarController?.selectedIndex = 3
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabBar") as! UITabBarController
+        self.present(vc, animated:true, completion: nil)
+    }
+    */
+    @IBAction func toMainPage(_ sender: UIButton)
+    {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabBar") as! UITabBarController
+        self.present(vc, animated:true, completion: nil)
     }
     
     @IBAction func submitAbuse(_ sender: UIButton)
@@ -76,7 +104,7 @@ class ReportUser: UIViewController
                 "fromEmail" : userProfile.email,
                 "toUser"    : targetProfile.username,
                 "toEmail"   : targetProfile.email,
-                "type"      : "", //new feature for lots of complains
+                "type"      : "", //not used for now
                 "message"   : self.abuseMsg
                 ]
         print(parameters)
@@ -88,13 +116,34 @@ class ReportUser: UIViewController
                 print(response)
         }
         submitButton.isHidden = true
-        backButton.isHidden = true
+        //backButton.isHidden = true
         reasonLabel.isHidden = true
         reasonTextField.isHidden = true
         whatsWrongLabel.isHidden = true
         thankYouLabel.isHidden = false
-        shakeAgainButton.isHidden = false
+        //returnToMainPage.isHidden = false
     }
     
+    // Creator : Daniel Tan
+    // Purpose : When the keyboard pops up, the view will move up so the user can see the text view it is blocking
+    func keyboardWillShow(notification: NSNotification)
+    {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0{
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+        
+    }
     
+    // Creator : Daniel Tan
+    // Purpose : When the keyboard is retracted, will move the view back to the original position
+    func keyboardWillHide(notification: NSNotification)
+    {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += keyboardSize.height
+            }
+        }
+    }
 }
