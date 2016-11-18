@@ -4,18 +4,19 @@
 //  Team Name: Group3Genius (G3G)
 //  Author: Eton Kan
 //  Creation Date: Oct 28, 2016
-//  List of Changes:
-//  V1.0: Created by Eton Kan
-//  V1.1: motionEnded() detect user shaking motion
-//  V1.2: labels are added
-//  V1.3: Read and PUT to database are implemented
+//  
+//  Changelog:
+//  -File Created and Fundamental Functions Implemented
+//  -motionEnded() detect user shaking motion
+//  -labels are added
+//  -Read and PUT to database are implemented
 //
 //  Last Modified Author: Eton Kan
 //  Last Modified Date: Nov 11, 2016
 //
 //  List of Bugs:
-//  motionEnded(): 1) it will crash the database if zero entries are in it (Fix - Eton Nov 11)
-//                 2) types used for variables are not efficient (Fix - Eton Nov 11)
+//  motionEnded(): 1) it will crash the database if zero entries are in it (Fixed - Eton Nov 11)
+//                 2) types used for variables are not efficient (Fixed - Eton Nov 11)
 //  Copyright © 2016 Eton Kan. All rights reserved.
 //
 
@@ -24,6 +25,9 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
+//Struct used to save user and target informations
+var userProfile = Profile()
+var targetProfile = Profile()
 
 //public struct that is used to save information from database
 //Author: Eton Kan
@@ -32,7 +36,7 @@ import SwiftyJSON
 struct Profile
 {
     public
-    var id = "0"
+    var id = globalid
     var meeting = "0"
     var gender = "0"
     var pw = globalpw //User's password
@@ -45,15 +49,12 @@ struct Profile
     
 }
 
-//This classs is used to detect shake motion and communicate with user on the status
-//placed on the queue
+//This classs is used to detect shake motion and communicate with user on the status placed on the queue
 //Author: Eton Kan
 //Last Modifty: Nov 11,2016
 class ShakePage: UIViewController
 {
-    //Struct used to save user and target informations
-    var userProfile = Profile()
-    var targetProfile = Profile()
+
     let yesMeeting = "true"
     //Declare all variables used in the storyboard
     @IBOutlet weak var shakePhone: UILabel!
@@ -214,19 +215,19 @@ class ShakePage: UIViewController
         //Updateing Target meeting information
         //.put change targetProfile.meeting to false
         //Change user's meeting to true on DataBase and let the other users look for you
-        let appendedUserUrl = serverhost + self.targetProfile.id
+        let appendedUserUrl = serverprofile + targetProfile.id
         // Store the information on the DB
         let parameters: [String: Any] =
             [
                 "meeting"  : "false",
-                "gender"   : self.targetProfile.gender,
-                "pw"       : self.targetProfile.pw, // user's password
-                "email"    : self.targetProfile.email,
-                "bio"      : self.targetProfile.bio,
-                "username" : self.targetProfile.username,
-                "interest" : self.targetProfile.interest,
-                "bus"      : self.targetProfile.bus,
-                "major"    : self.targetProfile.major
+                "gender"   : targetProfile.gender,
+                "pw"       : targetProfile.pw, // user's password
+                "email"    : targetProfile.email,
+                "bio"      : targetProfile.bio,
+                "username" : targetProfile.username,
+                "interest" : targetProfile.interest,
+                "bus"      : targetProfile.bus,
+                "major"    : targetProfile.major
                 
         ]
         print(parameters)
@@ -251,7 +252,7 @@ class ShakePage: UIViewController
 
             var userFound = false
             //Getting user information from database
-            Alamofire.request(serverhost).responseJSON
+            Alamofire.request(serverprofile).responseJSON
                 {
                 response in
                 //Testing if data available for grab
@@ -274,9 +275,9 @@ class ShakePage: UIViewController
                     {
                         if let email  = dataBaseArray[index]["email"].string
                         {
-                            if email == self.userProfile.username
+                            if email == userProfile.email
                             {
-                                self.getDatafromServer(userProfile: &self.userProfile, dataBaseArray:   dataBaseArray, index : index)
+                                self.getDatafromServer(userProfile: &userProfile, dataBaseArray:   dataBaseArray, index : index)
                                 userFound = true
                                 self.profileMissing.isHidden = true
                                 break
@@ -300,14 +301,14 @@ class ShakePage: UIViewController
                     for index in 0 ... dataBaseArray.count
                     {
                         //Looking for user that is able to meet
-                        if let target_user  = dataBaseArray[index]["email"].string
+                        if let target_email  = dataBaseArray[index]["email"].string
                         {
                             if let target_meeting = dataBaseArray[index]["meeting"].string
                             {
-                                if target_user != self.userProfile.email && target_meeting == self.yesMeeting
+                                if target_email != userProfile.email && target_meeting == self.yesMeeting
                                 {
                                     //Enter the target user's information into a profile struct
-                                    self.getDatafromServer(userProfile: &self.targetProfile, dataBaseArray: dataBaseArray, index : index)
+                                    self.getDatafromServer(userProfile: &targetProfile, dataBaseArray: dataBaseArray, index : index)
                                     //Display target user information on the ShakePage
                                     self.placedInQueue.isHidden = true
                                     self.matched.isHidden = false
@@ -327,12 +328,12 @@ class ShakePage: UIViewController
                                     self.targetInterestLabel.isHidden = false
                                     self.targetBioLabel.isHidden = false
                                 
-                                    self.targetNameLabel.text = self.targetProfile.username
-                                    self.targetGenderLabel.text = self.targetProfile.gender
-                                    self.targetBusLabel.text = self.targetProfile.bus
-                                    self.targetMajorLabel.text = self.targetProfile.major
-                                    self.targetInterestLabel.text = self.targetProfile.interest
-                                    self.targetBioLabel.text = self.targetProfile.bio
+                                    self.targetNameLabel.text = targetProfile.username
+                                    self.targetGenderLabel.text = targetProfile.gender
+                                    self.targetBusLabel.text = targetProfile.bus
+                                    self.targetMajorLabel.text = targetProfile.major
+                                    self.targetInterestLabel.text = targetProfile.interest
+                                    self.targetBioLabel.text = targetProfile.bio
                                 
                                     self.letsChat.isHidden = false
                                     self.nextOne.isHidden = false
@@ -345,19 +346,19 @@ class ShakePage: UIViewController
                     print("NO Match Found")
                     print("Putting User ON Queue")
                     //Change user's meeting to true on DataBase and let the other users look for you
-                    let appendedUserUrl = serverhost + self.userProfile.id
+                    let appendedUserUrl = serverprofile + userProfile.id
                     // Store the information on the DB
                     let parameters: [String: Any] =
                         [
                             "meeting"  : self.yesMeeting,
-                            "gender"   : self.userProfile.gender,
-                            "pw"       : self.userProfile.pw, // user's password
-                            "email"    : self.userProfile.email,
-                            "bio"      : self.userProfile.bio,
-                            "username" : self.userProfile.username,
-                            "interest" : self.userProfile.interest,
-                            "bus"      : self.userProfile.bus,
-                            "major"    : self.userProfile.major
+                            "gender"   : userProfile.gender,
+                            "pw"       : userProfile.pw, // user's password
+                            "email"    : userProfile.email,
+                            "bio"      : userProfile.bio,
+                            "username" : userProfile.username,
+                            "interest" : userProfile.interest,
+                            "bus"      : userProfile.bus,
+                            "major"    : userProfile.major
                         
                         ]
                     print(parameters)

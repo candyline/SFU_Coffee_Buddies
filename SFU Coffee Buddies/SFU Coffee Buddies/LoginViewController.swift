@@ -1,21 +1,30 @@
+//  Copyright © 2016 Daniel Tan. All rights reserved.
 //
-//  LoginViewController.swift
-//  SFU Coffee Buddies
-//
-//  Created by Daniel Tan on 2016-10-29.
-//  Copyright © 2016 CMPT275-3. All rights reserved.
-//
-//  Team : Group3Genius
+//  File Name: LoginViewController.swift
+//  Project Name: SFU Coffee Buddies
+//  Team Name: Group3Genius (G3G)
+//  Author: Daniel Tan
+//  Creation Date: Oct 29, 2016
 //
 //  Changelog:
-//      -File Created and Fundamental Functions Implemented
+//      - File Created and Fundamental Functions Implemented
+//      - Grabbing data from database implemented
+//      - Matching user login from database implemented
 //
-//  Known Bugs:
-//      - username and password fields don't read from database because database isn't done yet - November 6
+//  Last Modified Author: Eton Kan
+//  Last Modified Date: Nov 18, 2016
+//
+//  List of Bugs:
+//      - username and password fields don't read from database because database isn't done yet - November 6 (Fixed - Eton Nov 18)
 //      - can't press button to login unless tapped away (first responder resigned) - November 6
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
+//This classs is used to login and verify user provided email and password matched with database
+//Author: Daniel Tan
+//Last Modifty: Nov 18,2016
 class LoginViewController: UIViewController, UITextFieldDelegate
 {
     // Outlets and variables
@@ -23,6 +32,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate
     @IBOutlet weak var passwordTextField: UITextField!
     var username = ""
     var password = ""
+    var expectedPassword = ""
     @IBOutlet weak var incorrectMessageLabel: UITextView!
     
     // viewDidLoad function, anyhting that needs to be declared or initialized before the view loads is done here
@@ -48,27 +58,79 @@ class LoginViewController: UIViewController, UITextFieldDelegate
         // Dispose of any resources that can be recreated.
     }
     
-    // Creator : Daniel Tan
-    // Purpose : When the user presses the login button, will post to the databse
-    //           Might not need this as we might do it on the  segue change instead of button press
+    //Grabing data from the server and search user using user provided email
+    //Author: Eton Kan
+    //Last Modify: Nov 18,2016
+    //Known Bugs: none
+    func loadDetail(urlPath: String, completionHandler: ((UIBackgroundFetchResult)     -> Void)!)
+    {
+        //Look for user in the database with user provided email
+        print("Looking for user in the database")
+        Alamofire.request(urlPath).responseJSON
+            {
+                response in
+                //Testing if data available for grab
+                switch response.result
+                {
+                case .success (let userPassword):
+                    print("Able to connect to server and data found")
+                    //Parsing the data taken from server
+                    let dataBaseArray = JSON(response.result.value!)
+                    
+                    //Searching for the user provided Email inside the JSON file from database
+                    for index in 0 ... dataBaseArray.count
+                    {
+                        if let email  = dataBaseArray[index]["email"].string
+                        {
+                            if email == self.username
+                            {
+                                print("User Found")
+                                if let userPassword = dataBaseArray[index]["pw"].string
+                                {
+                                    
+                                    self.expectedPassword = userPassword
+                                    completionHandler(UIBackgroundFetchResult.newData)
+                                }
+                            }
+                            else
+                            {
+                                print("Unable to find user provided email in database")
+                                print("Please create a new profile")
+                                self.incorrectMessageLabel.isHidden = false
+                            }
+                        }
+                    }
+                    
+                case .failure(let error):
+                    print("Request failed with error: \(error)")
+                }
+        }
+        print("Background Fetch Complete")
+    }
+    
+    //Verifing user password with the database. If it is correct, user will login. If it is wrong, it will display a message to ask user to re-enter their email and password
+    //Author: Eton Kan
+    //Last Modify: Nov 18,2016
+    //Known Bugs: none
     @IBAction func loginPressed(_ sender: UIButton)
     {
-        // check database for the variable and match the username password
-        // Yet to implement
-        // if valid username/password combo proceed to next screen
-        // if (databaseUsernamePWcomboExist = true)
-        // go to next page
-        
-        /*if (username == "danieltzj")
-        {
-            // move onto next viewController when login is successful
-            performSegue(withIdentifier: "LoginSuccessful", sender: self)
-        }
-        else
-        {
-            // Display an incorrect user/password combo message and prompt to retry
-            incorrectMessageLabel.isHidden = false
-        }*/
+        //Verifing user provided email and password with the database
+        self.loadDetail(urlPath: serverprofile, completionHandler:{(UIBackgroundFetchResult) -> Void in
+           
+            if self.password == self.expectedPassword
+            {
+                print("Correct Password and Email combo")
+                print("Login and go to Profile")
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabBar") as! UITabBarController
+                self.present(vc, animated:true, completion: nil)
+            }
+            else
+            {
+                print("Wrong Password and Email combo")
+                print("Prompt user to re-enter password and email")
+                self.incorrectMessageLabel.isHidden = false
+            }
+        })
     }
     
     // Creator : Daniel Tan
@@ -94,29 +156,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate
             password = passwordTextField.text!
         }
     }
-    
-    // Creator : Daniel Tan
-    // Purpose : Condition Activated Segue for the login
-    //           If wrong user/pass = display message, else perform the segue to the main menu
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool
-    {
-        if (identifier == "LoginSuccessful")
-        {
-            // change this later based on validating off the database stored user and pws
-            if (username == "dzt2" && password == "hunter2"){
-                return true
-            }
-        
-            else{
-                incorrectMessageLabel.isHidden = false
-                return false
-            }
-        }
-        else {
-            return true
-        }
-    }
-    
+
     // Creator : Daniel Tan
     // Purpose : function that determines what happens when the user taps away from the textfield
     func tappedAwayFunction(sender: UITapGestureRecognizer)

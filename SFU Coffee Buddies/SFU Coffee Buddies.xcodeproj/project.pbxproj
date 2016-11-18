@@ -27,6 +27,7 @@
 		D04EEBB21DCFC0E000142635 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D04EEBAF1DCFB85E00142635 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D04EEBB51DCFCDB200142635 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D04EEBB41DCFCDB200142635 /* SwiftyJSON.framework */; };
 		D04EEBB61DCFCDB200142635 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D04EEBB41DCFCDB200142635 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D05D33A21DDC218E00AD2EDA /* ReportUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05D33A11DDC218E00AD2EDA /* ReportUser.swift */; };
 		D0B438841DC41387009C5FFC /* ShakePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B438831DC41387009C5FFC /* ShakePage.swift */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +89,7 @@
 		ACFB4E571DCECBCC00E159D4 /* ProfilePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePageViewController.swift; sourceTree = "<group>"; };
 		D04EEBAF1DCFB85E00142635 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		D04EEBB41DCFCDB200142635 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		D05D33A11DDC218E00AD2EDA /* ReportUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportUser.swift; sourceTree = "<group>"; };
 		D0B438831DC41387009C5FFC /* ShakePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShakePage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -150,6 +152,7 @@
 				ACB9BBAA1DADD2C600F550FF /* AppDelegate.swift */,
 				ACB9BBAC1DADD2C600F550FF /* MainPage.swift */,
 				ACB9BBAE1DADD2C600F550FF /* Main.storyboard */,
+				D05D33A11DDC218E00AD2EDA /* ReportUser.swift */,
 				ACB9BBEA1DC52CA200F550FF /* ProfileSetupViewController.swift */,
 				ACB9BBE81DC5282E00F550FF /* CodeViewController.swift */,
 				ACB9BBE61DC5267300F550FF /* NewAccountViewController.swift */,
@@ -346,6 +349,7 @@
 				ACB9BBEB1DC52CA200F550FF /* ProfileSetupViewController.swift in Sources */,
 				D0B438841DC41387009C5FFC /* ShakePage.swift in Sources */,
 				ACFB4E581DCECBCC00E159D4 /* ProfilePageViewController.swift in Sources */,
+				D05D33A21DDC218E00AD2EDA /* ReportUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

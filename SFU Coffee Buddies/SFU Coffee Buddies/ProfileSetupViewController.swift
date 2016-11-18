@@ -18,6 +18,7 @@
 
 import UIKit
 import Alamofire
+import SwiftyJSON
 //import DLRadioButton
 
 var globalname : String = ""
@@ -66,6 +67,52 @@ class ProfileSetupViewController: UIViewController,
         self.present(iPickerController, animated: true, completion: nil)
     }
     
+    //This function saves user id on the data base so we can use it to append it later on
+    //Author: Daniel Tan
+    //Las Modify Author: Eton Kan
+    //Last Modify Date: Nov 12,2016
+    //Known Bugs: none
+    func getuserid(completionHandler: (JSON) -> ()) -> ()
+    {
+        Alamofire.request(serverprofile).responseJSON
+            {
+                response in
+                //Testing if data available for grab
+                switch response.result
+                {
+                case .success:
+                    print("Data Found")
+                    
+                case .failure(let error):
+                    print(error)
+                    print("Cannot get data from server")
+                    return
+                }
+                /*
+                //Parsing the data taken from server
+                let dataBaseArray = JSON(response.result.value!)
+                
+                //Search the user inside the JSON
+                for index in 0 ... dataBaseArray.count
+                {
+                    if let email  = dataBaseArray[index]["email"].string
+                    {
+                        if email == globalemail
+                        {
+                            if let id = dataBaseArray[index]["_id"].string
+                            {
+                                globalid = id
+                                print(globalid)
+                                break
+                            }
+                        }
+                    }
+                }
+                return
+ */
+        }
+    }
+
     // viewDidLoad function, anyhting that needs to be declared or initialized before the view loads is done here
     override func viewDidLoad()
     {
@@ -163,44 +210,107 @@ class ProfileSetupViewController: UIViewController,
     //Author: Daniel Tan
     //Las Modify Author: Eton Kan
     //Last Modify Date: Nov 11,2016
-    //Known Bugs: Unable to POST data to database
+    //Known Bugs: Unable to POST data to database (Fixed Nov 12, 2016)
+    //            First time cannot put information in to database (due to unable to get user id)
+    
+    // Pray to god, hope it works (never tested)
     @IBAction func saveProfile(_ sender: UIButton)
     {
-        //let appendedUserUrl = serverhost + ShakePage().userProfile.id
-        let appendedUserUrl = serverhost + globalid
-        print(appendedUserUrl)
-        
-        // Updating the user's information on the DB
-        let parameters: [String: Any] =
-            [
-                //Could either user global or this method
-                /*
-                "meeting"  : "false",
-                "gender"   : ShakePage().userProfile.gender,
-                "pw"       : ShakePage().userProfile.pw, // user's password
-                "email"    : ShakePage().userProfile.email,
-                "bio"      : ShakePage().userProfile.bio,
-                "username" : ShakePage().userProfile.username,
-                "interest" : ShakePage().userProfile.interest,
-                "bus"      : ShakePage().userProfile.bus,
-                "major"    : ShakePage().userProfile.major
-                */
-                "meeting"  : "false",
-                "gender"   : globalgender,
-                "pw"       : globalpw, // user's password
-                "email"    : globalemail,
-                "bio"      : globalbio,
-                "username" : globalname,
-                "interest" : globalinterest,
-                "bus"      : globalbusroute,
-                "major"    : globalmajor
-        ]
-        print(parameters)
-        Alamofire.request(appendedUserUrl, method: .put, parameters: parameters, encoding: JSONEncoding.default).responseString
-        {
-            response in
-            print(response)
+       /* getuserid
+            {(globalid, error) in
+            if globalid != nil
+            {
+                //Parsing the data taken from server
+                let dataBaseArray = JSON(response.result.value!)
+                
+                //Search the user inside the JSON
+                for index in 0 ... dataBaseArray.count
+                {
+                    if let email  = dataBaseArray[index]["email"].string
+                    {
+                        if email == globalemail
+                        {
+                            if let id = dataBaseArray[index]["_id"].string
+                            {
+                                globalid = id
+                                print(globalid)
+                                break
+                            }
+                        }
+                    }
+                }
+
+            }
+            else
+            {
+                print("can't get globalid")
+                return
+            }
         }
+ */
+        
+        Alamofire.request(serverprofile).responseJSON
+            {
+                response in
+                //Testing if data available for grab
+                switch response.result
+                {
+                case .success:
+                    print("Data Found")
+                    //Parsing the data taken from server
+                    let dataBaseArray = JSON(response.result.value!)
+                    
+                    //Search the user inside the JSON
+                    for index in 0 ... dataBaseArray.count
+                    {
+                        if let email  = dataBaseArray[index]["email"].string
+                        {
+                            if email == globalemail
+                            {
+                                if let id = dataBaseArray[index]["_id"].string
+                                {
+                                    globalid = id
+                                    print(globalid)
+                                    break
+                                }
+                            }
+                        }
+                    }
+                    
+                    
+                    print(globalid)
+                    let appendedUserUrl = serverprofile + globalid
+                    print(appendedUserUrl)
+                    
+                    // Updating the user's information on the DB
+                    let parameters: [String: Any] =
+                        [
+                            "meeting"  : "false",
+                            "gender"   : globalgender,
+                            "pw"       : globalpw, // user's password
+                            "email"    : globalemail,
+                            "bio"      : globalbio,
+                            "username" : globalname,
+                            "interest" : globalinterest,
+                            "bus"      : globalbusroute,
+                            "major"    : globalmajor
+                    ]
+                    print(parameters)
+                    Alamofire.request(appendedUserUrl, method: .put, parameters: parameters, encoding: JSONEncoding.default).responseString
+                        {
+                            response in
+                            print(response)
+                    }
+                    
+                    
+                case .failure(let error):
+                    print(error)
+                    print("Cannot get data from server")
+                    
+                }
+        }
+        
+
     }
     
     // Creator : Daniel Tan

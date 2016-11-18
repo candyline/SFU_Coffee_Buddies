@@ -18,13 +18,14 @@
 import UIKit
 
 //Default Server Address (localhost)
-let serverhost = "http://127.0.0.1:8080/messages/"
+let serverprofile = "http://127.0.0.1:8080/messages/"
+let serverabuse = "http://127.0.0.1:8080/reportAbuse/"
 
 //This classs is the main manual of the app
 //Author: Eton Kan
 //Last Modifty: Nov 6,2016
-class MainPage: UIViewController {
-
+class MainPage: UIViewController
+{
     //let Serverhost = URL(string: "http://127.0.0.1:8080/messages/")
     
     override func viewDidLoad() {
