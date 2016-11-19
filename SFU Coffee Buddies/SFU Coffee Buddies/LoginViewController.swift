@@ -73,7 +73,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate
                 //Testing if data available for grab
                 switch response.result
                 {
-                case .success (let userPassword):
+                case .success:
                     print("Able to connect to server and data found (loadDetail)")
                     //Parsing the data taken from server
                     let dataBaseArray = JSON(response.result.value!)

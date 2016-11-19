@@ -23,6 +23,7 @@
 		ACB9BBF21DCD49FF00F550FF /* home-512 (1).png in Resources */ = {isa = PBXBuildFile; fileRef = ACB9BBF11DCD49FF00F550FF /* home-512 (1).png */; };
 		ACB9BBF41DCD4A0900F550FF /* user_male_circle_filled1600 (1).png in Resources */ = {isa = PBXBuildFile; fileRef = ACB9BBF31DCD4A0900F550FF /* user_male_circle_filled1600 (1).png */; };
 		ACFB4E581DCECBCC00E159D4 /* ProfilePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFB4E571DCECBCC00E159D4 /* ProfilePageViewController.swift */; };
+		D002A7171DDFCB5B00692B52 /* BusTogether.swift in Sources */ = {isa = PBXBuildFile; fileRef = D002A7161DDFCB5B00692B52 /* BusTogether.swift */; };
 		D04EEBB11DCFC0E000142635 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D04EEBAF1DCFB85E00142635 /* Alamofire.framework */; };
 		D04EEBB21DCFC0E000142635 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D04EEBAF1DCFB85E00142635 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D04EEBB51DCFCDB200142635 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D04EEBB41DCFCDB200142635 /* SwiftyJSON.framework */; };
@@ -87,6 +88,7 @@
 		ACB9BBF31DCD4A0900F550FF /* user_male_circle_filled1600 (1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user_male_circle_filled1600 (1).png"; sourceTree = "<group>"; };
 		ACB9BBFC1DCD99BF00F550FF /* SFU Coffee Buddies-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SFU Coffee Buddies-Bridging-Header.h"; sourceTree = "<group>"; };
 		ACFB4E571DCECBCC00E159D4 /* ProfilePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePageViewController.swift; sourceTree = "<group>"; };
+		D002A7161DDFCB5B00692B52 /* BusTogether.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusTogether.swift; sourceTree = "<group>"; };
 		D04EEBAF1DCFB85E00142635 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		D04EEBB41DCFCDB200142635 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		D05D33A11DDC218E00AD2EDA /* ReportUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportUser.swift; sourceTree = "<group>"; };
@@ -146,16 +148,15 @@
 			isa = PBXGroup;
 			children = (
 				ACB9BBEC1DCD44ED00F550FF /* Icons */,
-				ACB9BBE41DC5228200F550FF /* LoginViewController.swift */,
-				D0B438831DC41387009C5FFC /* ShakePage.swift */,
-				ACB9BBAA1DADD2C600F550FF /* AppDelegate.swift */,
-				ACB9BBAC1DADD2C600F550FF /* MainPage.swift */,
 				ACB9BBAE1DADD2C600F550FF /* Main.storyboard */,
+				D0B438831DC41387009C5FFC /* ShakePage.swift */,
 				D05D33A11DDC218E00AD2EDA /* ReportUser.swift */,
+				D002A7161DDFCB5B00692B52 /* BusTogether.swift */,
+				ACB9BBE41DC5228200F550FF /* LoginViewController.swift */,
 				ACFB4E571DCECBCC00E159D4 /* ProfilePageViewController.swift */,
 				ACB9BBEA1DC52CA200F550FF /* ProfileSetupViewController.swift */,
-				ACB9BBE81DC5282E00F550FF /* CodeViewController.swift */,
 				ACB9BBE61DC5267300F550FF /* NewAccountViewController.swift */,
+				ACB9BBE81DC5282E00F550FF /* CodeViewController.swift */,
 				ACB9BBB11DADD2C600F550FF /* Assets.xcassets */,
 				ACB9BBB31DADD2C600F550FF /* LaunchScreen.storyboard */,
 				ACB9BBB61DADD2C600F550FF /* Info.plist */,
@@ -185,6 +186,8 @@
 		ACB9BBEC1DCD44ED00F550FF /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				ACB9BBAC1DADD2C600F550FF /* MainPage.swift */,
+				ACB9BBAA1DADD2C600F550FF /* AppDelegate.swift */,
 				ACB9BBEF1DCD469A00F550FF /* 171410-200 (1).png */,
 				ACB9BBF11DCD49FF00F550FF /* home-512 (1).png */,
 				ACB9BBF31DCD4A0900F550FF /* user_male_circle_filled1600 (1).png */,
@@ -345,6 +348,7 @@
 				ACB9BBAD1DADD2C600F550FF /* MainPage.swift in Sources */,
 				ACB9BBAB1DADD2C600F550FF /* AppDelegate.swift in Sources */,
 				ACB9BBE91DC5282E00F550FF /* CodeViewController.swift in Sources */,
+				D002A7171DDFCB5B00692B52 /* BusTogether.swift in Sources */,
 				ACB9BBE71DC5267300F550FF /* NewAccountViewController.swift in Sources */,
 				ACB9BBEB1DC52CA200F550FF /* ProfileSetupViewController.swift in Sources */,
 				D0B438841DC41387009C5FFC /* ShakePage.swift in Sources */,
