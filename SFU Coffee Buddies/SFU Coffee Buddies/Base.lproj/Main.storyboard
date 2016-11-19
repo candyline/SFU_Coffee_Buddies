@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="stock-vector-vector-cute-coffee-cups-seamless-pattern-on-polka-dot-background-166545419.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="wpf-iV-VQ2">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cute-coffee-cups-.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="wpf-iV-VQ2">
                                 <rect key="frame" x="-2" y="20" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -126,7 +126,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="stock-vector-vector-cute-coffee-cups-seamless-pattern-on-polka-dot-background-166545419.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="wTZ-JO-APU">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cute-coffee-cups-.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="wTZ-JO-APU">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -280,7 +280,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="stock-vector-vector-cute-coffee-cups-seamless-pattern-on-polka-dot-background-166545419.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="zMN-Ud-HYE">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cute-coffee-cups-.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="zMN-Ud-HYE">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -597,7 +597,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Ren Coffee.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="kCC-uL-r0h">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Ren Coffee.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="I7n-Df-TDN">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -895,14 +895,14 @@
         <image name="Ren Coffee.jpeg" width="512" height="512"/>
         <image name="Transit.jpg" width="750" height="750"/>
         <image name="coffee cup.jpg" width="148" height="194"/>
+        <image name="cute-coffee-cups-.jpg" width="450" height="470"/>
         <image name="home-512 (1).png" width="30" height="30"/>
         <image name="shake iphone.png" width="645" height="488"/>
-        <image name="stock-vector-vector-cute-coffee-cups-seamless-pattern-on-polka-dot-background-166545419.jpg" width="450" height="470"/>
         <image name="user_male_circle_filled1600 (1).png" width="30" height="30"/>
         <image name="vector-seamless-pattern-tea-coffee-cups-background-vintage-style-31666208.jpg" width="1300" height="1390"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3c9-P9-SJ6"/>
         <segue reference="03Q-8J-RbC"/>
+        <segue reference="y2g-wL-n26"/>
     </inferredMetricsTieBreakers>
 </document>
