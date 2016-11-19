@@ -149,6 +149,8 @@
 			children = (
 				ACB9BBEC1DCD44ED00F550FF /* Icons */,
 				ACB9BBAE1DADD2C600F550FF /* Main.storyboard */,
+				ACB9BBAC1DADD2C600F550FF /* MainPage.swift */,
+				ACB9BBAA1DADD2C600F550FF /* AppDelegate.swift */,
 				D0B438831DC41387009C5FFC /* ShakePage.swift */,
 				D05D33A11DDC218E00AD2EDA /* ReportUser.swift */,
 				D002A7161DDFCB5B00692B52 /* BusTogether.swift */,
@@ -186,8 +188,6 @@
 		ACB9BBEC1DCD44ED00F550FF /* Icons */ = {
 			isa = PBXGroup;
 			children = (
-				ACB9BBAC1DADD2C600F550FF /* MainPage.swift */,
-				ACB9BBAA1DADD2C600F550FF /* AppDelegate.swift */,
 				ACB9BBEF1DCD469A00F550FF /* 171410-200 (1).png */,
 				ACB9BBF11DCD49FF00F550FF /* home-512 (1).png */,
 				ACB9BBF31DCD4A0900F550FF /* user_male_circle_filled1600 (1).png */,
