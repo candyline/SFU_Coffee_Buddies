@@ -210,13 +210,14 @@ class ProfileSetupViewController: UIViewController,
                         [
                             "meeting"  : "false",
                             "gender"   : globalgender,
-                            "pw"       : globalpw,
-                            "email"    : globalemail,
+                            "pw"       : userProfile.pw,
+                            "email"    : userProfile.email,
                             "bio"      : globalbio,
                             "username" : globalname,
                             "interest" : globalinterest,
                             "bus"      : globalbusroute,
-                            "major"    : globalmajor
+                            "major"    : globalmajor,
+                            "blockUser": userProfile.blockedUser
                     ]
                     print(parameters)
                     Alamofire.request(appendedUserUrl, method: .put, parameters: parameters, encoding: JSONEncoding.default).responseString
