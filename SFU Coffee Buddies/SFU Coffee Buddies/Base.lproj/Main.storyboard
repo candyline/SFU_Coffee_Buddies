@@ -701,7 +701,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="Uo5-VP-X1y">
             <objects>
-                <tabBarController title="Tab Bar Controller" id="lj3-SR-thM" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBar" title="Tab Bar Controller" id="lj3-SR-thM" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="lVl-WP-QpI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
