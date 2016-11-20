@@ -57,7 +57,6 @@
                                 </state>
                                 <connections>
                                     <action selector="loginPressed:" destination="syC-e2-IRy" eventType="touchUpInside" id="yYx-mh-h2Y"/>
-                                    <segue destination="lj3-SR-thM" kind="presentation" identifier="LoginSuccessful" id="y2g-wL-n26"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NeQ-br-NKc">
@@ -739,10 +738,10 @@
                                                 <rect key="frame" x="16" y="7" width="83" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Back"/>
-                                                <connections>
-                                                    <segue destination="lj3-SR-thM" kind="presentation" id="xZd-hH-83X"/>
-                                                </connections>
                                             </button>
+                                            <connections>
+                                                <segue destination="lj3-SR-thM" kind="presentation" id="MC3-si-jo4"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -1125,7 +1124,7 @@
         <image name="user_male_circle_filled1600 (1).png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="VET-rA-4H6"/>
         <segue reference="QGm-Ze-gTz"/>
+        <segue reference="MC3-si-jo4"/>
     </inferredMetricsTieBreakers>
 </document>

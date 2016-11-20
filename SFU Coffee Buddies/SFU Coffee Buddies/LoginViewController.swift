@@ -117,7 +117,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate
     {
         //Verifing user provided email and password with the database
         self.loadDetail(urlPath: serverprofile, completionHandler:{(UIBackgroundFetchResult) -> Void in
-           
+            
             if self.password == self.expectedPassword
             {
                 print("Correct Password and Email combo (loginPressed)")
