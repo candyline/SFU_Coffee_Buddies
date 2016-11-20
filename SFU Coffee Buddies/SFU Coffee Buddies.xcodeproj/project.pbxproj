@@ -12,6 +12,8 @@
 		7BFE1D651DE1440C00C3620E /* SFU Loop.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7BFE1D641DE1440C00C3620E /* SFU Loop.jpg */; };
 		7BFE1D671DE15C0200C3620E /* Coffee Friend.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7BFE1D661DE15C0200C3620E /* Coffee Friend.jpg */; };
 		7BFE1D691DE15D0800C3620E /* Coffee Together.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7BFE1D681DE15D0800C3620E /* Coffee Together.jpg */; };
+		7BFE1D6B1DE1961F00C3620E /* stop .jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7BFE1D6A1DE1961F00C3620E /* stop .jpg */; };
+		7BFE1D6D1DE196C800C3620E /* blank-stop-sign.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7BFE1D6C1DE196C800C3620E /* blank-stop-sign.jpg */; };
 		AC0973871DD054A500191224 /* coffee cup.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AC0973861DD054A500191224 /* coffee cup.jpg */; };
 		AC0973891DD950DF00191224 /* QRGeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0973881DD950DF00191224 /* QRGeneratorViewController.swift */; };
 		AC09738B1DD95C7900191224 /* QRScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC09738A1DD95C7900191224 /* QRScannerViewController.swift */; };
@@ -81,6 +83,8 @@
 		7BFE1D641DE1440C00C3620E /* SFU Loop.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "SFU Loop.jpg"; sourceTree = "<group>"; };
 		7BFE1D661DE15C0200C3620E /* Coffee Friend.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Coffee Friend.jpg"; sourceTree = "<group>"; };
 		7BFE1D681DE15D0800C3620E /* Coffee Together.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Coffee Together.jpg"; sourceTree = "<group>"; };
+		7BFE1D6A1DE1961F00C3620E /* stop .jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "stop .jpg"; sourceTree = "<group>"; };
+		7BFE1D6C1DE196C800C3620E /* blank-stop-sign.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "blank-stop-sign.jpg"; sourceTree = "<group>"; };
 		AC0973861DD054A500191224 /* coffee cup.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "coffee cup.jpg"; sourceTree = "<group>"; };
 		AC0973881DD950DF00191224 /* QRGeneratorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRGeneratorViewController.swift; sourceTree = "<group>"; };
 		AC09738A1DD95C7900191224 /* QRScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRScannerViewController.swift; sourceTree = "<group>"; };
@@ -212,6 +216,8 @@
 		ACB9BBEC1DCD44ED00F550FF /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				7BFE1D6C1DE196C800C3620E /* blank-stop-sign.jpg */,
+				7BFE1D6A1DE1961F00C3620E /* stop .jpg */,
 				7BFE1D681DE15D0800C3620E /* Coffee Together.jpg */,
 				7BFE1D661DE15C0200C3620E /* Coffee Friend.jpg */,
 				7BFE1D641DE1440C00C3620E /* SFU Loop.jpg */,
@@ -346,6 +352,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BFE1D6B1DE1961F00C3620E /* stop .jpg in Resources */,
 				ACB9BBF01DCD469A00F550FF /* 171410-200 (1).png in Resources */,
 				AC0973871DD054A500191224 /* coffee cup.jpg in Resources */,
 				ACB9BBB51DADD2C600F550FF /* LaunchScreen.storyboard in Resources */,
@@ -360,6 +367,7 @@
 				ACB9BBF41DCD4A0900F550FF /* user_male_circle_filled1600 (1).png in Resources */,
 				7BFE1D691DE15D0800C3620E /* Coffee Together.jpg in Resources */,
 				ACB9BBF21DCD49FF00F550FF /* home-512 (1).png in Resources */,
+				7BFE1D6D1DE196C800C3620E /* blank-stop-sign.jpg in Resources */,
 				7BFE1D5D1DE122C400C3620E /* LoginBackground.jpg in Resources */,
 				7BFE1D651DE1440C00C3620E /* SFU Loop.jpg in Resources */,
 			);
