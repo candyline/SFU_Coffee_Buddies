@@ -127,6 +127,8 @@ class ShakePage: UIViewController
     //Known Bugs: none
     func getDatafromServer(userProfile: inout Profile, dataBaseArray: JSON , index: Int)
     {
+        print(dataBaseArray)
+        print(index)
         //Enter the user's information into the Profile struct
         if let username  = dataBaseArray[index]["username"].string
         {

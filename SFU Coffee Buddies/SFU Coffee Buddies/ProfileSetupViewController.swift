@@ -167,6 +167,7 @@ class ProfileSetupViewController: UIViewController,
     //            First time cannot put information in to database (due to unable to get user id)
     @IBAction func saveProfile(_ sender: UIButton)
     {
+        var userFound = false
         Alamofire.request(serverprofile).responseJSON
             {
                 response in
@@ -189,12 +190,17 @@ class ProfileSetupViewController: UIViewController,
                                 {
                                     userProfile.id = id
                                     print(userProfile.id)
+                                    userFound = true
                                     break
                                 }
                             }
                         }
                     }
-                    
+                    if !(userFound)
+                    {
+                        print("Unable to find user in database")
+                        return
+                    }
                     print(globalid)
                     let appendedUserUrl = serverprofile + userProfile.id
                     print(appendedUserUrl)
@@ -204,7 +210,7 @@ class ProfileSetupViewController: UIViewController,
                         [
                             "meeting"  : "false",
                             "gender"   : globalgender,
-                            "pw"       : globalpw, // user's password
+                            "pw"       : globalpw,
                             "email"    : globalemail,
                             "bio"      : globalbio,
                             "username" : globalname,
@@ -219,12 +225,13 @@ class ProfileSetupViewController: UIViewController,
                             switch response.result
                             {
                             case .success:
+                                print("I put up")
                                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabBar") as! UITabBarController
                                 self.present(vc, animated:true, completion: nil)
                                 
                             case .failure(let error):
                                 print(error)
-                                print("Cannot get data from server")
+                                print("Cannot put data to server")
                             }
                             
                     }
@@ -235,8 +242,6 @@ class ProfileSetupViewController: UIViewController,
                     
                 }
         }
-        
-
     }
     
     // Creator : Daniel Tan

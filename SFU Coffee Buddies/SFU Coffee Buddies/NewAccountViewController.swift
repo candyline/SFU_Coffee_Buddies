@@ -31,6 +31,7 @@ class NewAccountViewController: UIViewController, UITextFieldDelegate
     @IBOutlet weak var incorrectEmailLabel: UITextView!
     @IBOutlet weak var pwTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var signUpButton: UIButton!
     
     // viewDidLoad function, anyhting that needs to be declared or initialized before the view loads is done here
     override func viewDidLoad()
@@ -78,53 +79,45 @@ class NewAccountViewController: UIViewController, UITextFieldDelegate
             globalpw = pw
         }
     }
-
-    // Creator : Daniel Tan
-    // Purpose : Condition Activated Segue for the submit button
-    //           go to the next view (code confirmation page) after checking for valid emails
+    
+    // Creator : Eton Kan
+    // Purpose : Go to the next view controller after checking for valid emails
     // Last Modified Author: Eton Kan
-    // Last Modified Date: Nov 12, 2016
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool
+    // Last Modified Date: Nov 20, 2016
+    @IBAction func signUp(_ sender: UIButton)
     {
-        if (identifier == "submitEmail")
+        if (email.hasSuffix("@sfu.ca"))
         {
-            // if (emailIsValid)
-            //    return true
-            // else
-            //    return false
-            if (email.hasSuffix("@sfu.ca"))
-            {
-                //sendEmail()
-
-                //Storing email and password to database (server)
-                let parameters: [String: Any] =
-                    [
-                        "meeting"  : "false",
-                        "pw"       : globalpw, // user's password
-                        "email"    : globalemail
-                    ]
-                print(parameters)
-               
-                Alamofire.request(serverprofile, method: .post, parameters: parameters, encoding: JSONEncoding.default)
-                    .responseJSON
+            //sendEmail()
+            
+            //Storing email and password to database (server)
+            let parameters: [String: Any] =
+                [
+                    "meeting"  : "false",
+                    "pw"       : globalpw, // user's password
+                    "email"    : globalemail
+            ]
+            print(parameters)
+            //Creating a new profile in the database
+            Alamofire.request(serverprofile, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+                .responseJSON
+                {
+                    response in
+                    switch response.result
                     {
-                        response in
-                        print(response)
-                        print("i am done (post_)")
+                    case .success:
+                        print("Successfully created a new profile")
+                        print("Changing to Profile Setup View Controller")
+                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProfileSetup")
+                        self.present(vc!, animated:true, completion: nil)
+                    case .failure (let error):
+                        print(error)
+                        print("Cannot Post to database")
                     }
-                return true
             }
-            else
-            {
-                incorrectEmailLabel.isHidden = false
-                return false
-            }
-        }
-        else
-        {
-            return true
         }
     }
+
     
     // Creator : Daniel Tan
     // Purpose : function that determines what happens when the user taps away from the textfield

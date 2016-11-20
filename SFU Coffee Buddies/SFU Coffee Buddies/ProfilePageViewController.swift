@@ -90,7 +90,6 @@ class ProfilePageViewController: UIViewController {
             
                 self.profileImage.image = globalpicture
                 print("User profile ready for display")
-                // Do any additional setup after loading the view.
         })
     }
     
