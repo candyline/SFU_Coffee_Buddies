@@ -46,7 +46,7 @@ struct Profile
     var email = globalemail
     var bus = "0"
     var major = "0"
-    
+    var blockedUser = [String]()
 }
 
 //This classs is used to detect shake motion and communicate with user on the status placed on the queue
@@ -125,60 +125,67 @@ class ShakePage: UIViewController
     //Author: Eton Kan
     //Last Modify: Nov 11,2016
     //Known Bugs: none
-    func getDatafromServer(userProfile: inout Profile, dataBaseArray: JSON , index: Int)
+    func getDatafromServer(localProfile: inout Profile, dataBaseArray: JSON , index: Int)
     {
         print(dataBaseArray)
         print(index)
         //Enter the user's information into the Profile struct
         if let username  = dataBaseArray[index]["username"].string
         {
-            userProfile.username = username
+            localProfile.username = username
             //print(userProfile.username)
         }
         if let id = dataBaseArray[index]["_id"].string
         {
-            userProfile.id = id
+            localProfile.id = id
             //print(userProfile.id)
         }
         if let gender = dataBaseArray[index]["gender"].string
         {
-            userProfile.gender = gender
+            localProfile.gender = gender
             //print(userProfile.gender)
         }
         if let password = dataBaseArray[index]["pw"].string
         {
-            userProfile.pw = password
+            localProfile.pw = password
             //print(userProfile.password)
         }
         if let bio = dataBaseArray[index]["bio"].string
         {
-            userProfile.bio = bio
+            localProfile.bio = bio
             //print(userProfile.text)
         }
         if let meeting = dataBaseArray[index]["meeting"].string
         {
-            userProfile.meeting = meeting
+            localProfile.meeting = meeting
             //print(userProfile.meeting)
         }
         if let interest = dataBaseArray[index]["interest"].string
         {
-            userProfile.interest = interest
+            localProfile.interest = interest
             //print(userProfile.meeting)
         }
         if let bus = dataBaseArray[index]["bus"].string
         {
-            userProfile.bus = bus
+            localProfile.bus = bus
             //print(userProfile.meeting)
         }
         if let major = dataBaseArray[index]["major"].string
         {
-            userProfile.major = major
+            localProfile.major = major
             //print(userProfile.meeting)
         }
         if let email = dataBaseArray[index]["email"].string
         {
-            userProfile.email = email
+            localProfile.email = email
             //print(userProfile.meeting)
+        }
+        for users in 0 ... dataBaseArray[index]["blockUser"].count
+        {
+            if let blockUser = dataBaseArray[index]["blockUser"][users].string
+            {
+                localProfile.blockedUser.append(blockUser)
+            }
         }
     }
     //User didn't accpet the match, prompt user to shake again
@@ -188,6 +195,7 @@ class ShakePage: UIViewController
     @IBAction func nextOne(_ sender: UIButton)
     {
         print("User say no :(")
+        /*
         self.shakePhone.isHidden = false
         //Hiding all the target user profile information
         self.placedInQueue.isHidden = true
@@ -212,6 +220,33 @@ class ShakePage: UIViewController
         self.nextOne.isHidden = true
         self.reportAbuse.isHidden = true
         self.busTogether.isHidden = true
+        */
+        print("Blocking target user now")
+        userProfile.blockedUser.append(targetProfile.email)
+        let appendedUserUrl = serverprofile + userProfile.id
+        // Store the information on the DB
+        let parameters: [String: Any] =
+        [
+            "meeting"  : userProfile.meeting,
+            "gender"   : userProfile.gender,
+            "pw"       : userProfile.pw, // user's password
+            "email"    : userProfile.email,
+            "bio"      : userProfile.bio,
+            "username" : userProfile.username,
+            "interest" : userProfile.interest,
+            "bus"      : userProfile.bus,
+            "major"    : userProfile.major,
+            "blockUser": userProfile.blockedUser
+        ]
+        print("Nextone")
+        print(parameters)
+        Alamofire.request(appendedUserUrl, method: .put, parameters: parameters, encoding: JSONEncoding.default)
+            .responseString
+            { response in
+                print(response)
+                self.viewDidLoad()
+            }
+        
     }
     
     //User accepted the match, remove target from queue and start chating
@@ -235,16 +270,19 @@ class ShakePage: UIViewController
                 "username" : targetProfile.username,
                 "interest" : targetProfile.interest,
                 "bus"      : targetProfile.bus,
-                "major"    : targetProfile.major
+                "major"    : targetProfile.major,
+                "blockUser": targetProfile.blockedUser
                 
         ]
+        print("letChat")
         print(parameters)
         Alamofire.request(appendedUserUrl, method: .put, parameters: parameters, encoding: JSONEncoding.default)
             .responseString
             { response in
                 print(response)
+                //Go to chat page
             }
-        //Go to chat page
+        
     }
     //A function that detects shake motion either match or put the current user on the queue
     //Author: Eton Kan
@@ -285,7 +323,7 @@ class ShakePage: UIViewController
                         {
                             if email == userProfile.email
                             {
-                                self.getDatafromServer(userProfile: &userProfile, dataBaseArray:   dataBaseArray, index : index)
+                                self.getDatafromServer(localProfile: &userProfile, dataBaseArray:   dataBaseArray, index : index)
                                 userFound = true
                                 self.profileMissing.isHidden = true
                                 break
@@ -316,7 +354,7 @@ class ShakePage: UIViewController
                                 if target_email != userProfile.email && target_meeting == self.yesMeeting
                                 {
                                     //Enter the target user's information into a profile struct
-                                    self.getDatafromServer(userProfile: &targetProfile, dataBaseArray: dataBaseArray, index : index)
+                                    self.getDatafromServer(localProfile: &targetProfile, dataBaseArray: dataBaseArray, index : index)
                                     //Display target user information on the ShakePage
                                     self.placedInQueue.isHidden = true
                                     self.matched.isHidden = false
@@ -367,14 +405,16 @@ class ShakePage: UIViewController
                             "username" : userProfile.username,
                             "interest" : userProfile.interest,
                             "bus"      : userProfile.bus,
-                            "major"    : userProfile.major
-                        
+                            "major"    : userProfile.major,
+                            "blockUser": userProfile.blockedUser
                         ]
+                    print("putting on queue")
                     print(parameters)
                     Alamofire.request(appendedUserUrl, method: .put, parameters: parameters, encoding: JSONEncoding.default)
                         .responseString
                         { response in
                             print(response)
+                            return
                         }
             }
         }

@@ -1031,7 +1031,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Next One"/>
                                 <connections>
-                                    <action selector="letChat:" destination="EPm-qU-i5S" eventType="touchUpInside" id="rSJ-Mg-DCl"/>
                                     <action selector="nextOne:" destination="EPm-qU-i5S" eventType="touchUpInside" id="Fer-eL-MLP"/>
                                 </connections>
                             </button>

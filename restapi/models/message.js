@@ -11,7 +11,8 @@ var messageSchema = new Schema({
   gender: String,
   bus: String,
   meeting: String,
-  major: String
+  major: String,
+  blockUser: new Array()
 });
 
 module.exports = mongoose.model('Message', messageSchema);

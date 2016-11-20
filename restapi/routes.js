@@ -42,6 +42,7 @@ router.route('/messages')
   message.gender = req.body.gender;
   message.meeting = req.body.meeting;
   message.major = req.body.major;
+  message.blockUser = req.body.blockuser;
 
     // save message and check for errors
     message.save(function(err) {
@@ -75,6 +76,7 @@ router.route('/messages/:message_id')
       message.gender = req.body.gender;
       message.meeting = req.body.meeting;
       message.major = req.body.major;
+      message.blockUser = req.body.blockuser;
 
       message.save(function(err) {
         if (err)

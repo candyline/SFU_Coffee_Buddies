@@ -51,7 +51,7 @@ class ProfilePageViewController: UIViewController {
                         if email == userProfile.email
                         {
                             print("Loading user information in to location memory")
-                            ShakePage().getDatafromServer(userProfile: &userProfile, dataBaseArray: dataBaseArray, index : index)
+                            ShakePage().getDatafromServer(localProfile: &userProfile, dataBaseArray: dataBaseArray, index : index)
                                     completionHandler(UIBackgroundFetchResult.newData)
                             userFound = true
                         }
