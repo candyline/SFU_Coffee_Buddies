@@ -88,6 +88,7 @@ class ShakePage: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "shake iphone.png")!)
         //Instructing the user to shake their device
         shakePhone.isHidden = false
         placedInQueue.isHidden = true

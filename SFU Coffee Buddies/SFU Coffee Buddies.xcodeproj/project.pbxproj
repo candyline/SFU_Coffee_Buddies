@@ -12,6 +12,10 @@
 		AC0973871DD054A500191224 /* coffee cup.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AC0973861DD054A500191224 /* coffee cup.jpg */; };
 		AC0973891DD950DF00191224 /* QRGeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0973881DD950DF00191224 /* QRGeneratorViewController.swift */; };
 		AC09738B1DD95C7900191224 /* QRScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC09738A1DD95C7900191224 /* QRScannerViewController.swift */; };
+		AC0973911DE124A900191224 /* Ren Coffee.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = AC0973901DE124A900191224 /* Ren Coffee.jpeg */; };
+		AC0973931DE124C500191224 /* shake iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = AC0973921DE124C500191224 /* shake iphone.png */; };
+		AC0973951DE124CC00191224 /* Transit.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AC0973941DE124CC00191224 /* Transit.jpg */; };
+		AC0973971DE1250700191224 /* cute-coffee-cups-.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AC0973961DE1250700191224 /* cute-coffee-cups-.jpg */; };
 		ACB9BBAB1DADD2C600F550FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9BBAA1DADD2C600F550FF /* AppDelegate.swift */; };
 		ACB9BBAD1DADD2C600F550FF /* MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9BBAC1DADD2C600F550FF /* MainPage.swift */; };
 		ACB9BBB01DADD2C600F550FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACB9BBAE1DADD2C600F550FF /* Main.storyboard */; };
@@ -74,6 +78,10 @@
 		AC0973861DD054A500191224 /* coffee cup.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "coffee cup.jpg"; sourceTree = "<group>"; };
 		AC0973881DD950DF00191224 /* QRGeneratorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRGeneratorViewController.swift; sourceTree = "<group>"; };
 		AC09738A1DD95C7900191224 /* QRScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRScannerViewController.swift; sourceTree = "<group>"; };
+		AC0973901DE124A900191224 /* Ren Coffee.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Ren Coffee.jpeg"; sourceTree = "<group>"; };
+		AC0973921DE124C500191224 /* shake iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shake iphone.png"; sourceTree = "<group>"; };
+		AC0973941DE124CC00191224 /* Transit.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Transit.jpg; sourceTree = "<group>"; };
+		AC0973961DE1250700191224 /* cute-coffee-cups-.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cute-coffee-cups-.jpg"; sourceTree = "<group>"; };
 		ACB9BBA71DADD2C600F550FF /* SFU Coffee Buddies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SFU Coffee Buddies.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACB9BBAA1DADD2C600F550FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACB9BBAC1DADD2C600F550FF /* MainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPage.swift; sourceTree = "<group>"; };
@@ -198,6 +206,10 @@
 		ACB9BBEC1DCD44ED00F550FF /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				AC0973961DE1250700191224 /* cute-coffee-cups-.jpg */,
+				AC0973941DE124CC00191224 /* Transit.jpg */,
+				AC0973921DE124C500191224 /* shake iphone.png */,
+				AC0973901DE124A900191224 /* Ren Coffee.jpeg */,
 				7BFE1D5C1DE122C400C3620E /* LoginBackground.jpg */,
 				7B852E631DDFBA770063CABB /* vector-seamless-pattern-tea-coffee-cups-background-vintage-style-31666208.jpg */,
 				ACB9BBEF1DCD469A00F550FF /* 171410-200 (1).png */,
@@ -328,9 +340,13 @@
 				ACB9BBF01DCD469A00F550FF /* 171410-200 (1).png in Resources */,
 				AC0973871DD054A500191224 /* coffee cup.jpg in Resources */,
 				ACB9BBB51DADD2C600F550FF /* LaunchScreen.storyboard in Resources */,
+				AC0973951DE124CC00191224 /* Transit.jpg in Resources */,
+				AC0973971DE1250700191224 /* cute-coffee-cups-.jpg in Resources */,
 				7B852E641DDFBA770063CABB /* vector-seamless-pattern-tea-coffee-cups-background-vintage-style-31666208.jpg in Resources */,
 				ACB9BBB21DADD2C600F550FF /* Assets.xcassets in Resources */,
+				AC0973931DE124C500191224 /* shake iphone.png in Resources */,
 				ACB9BBB01DADD2C600F550FF /* Main.storyboard in Resources */,
+				AC0973911DE124A900191224 /* Ren Coffee.jpeg in Resources */,
 				ACB9BBF41DCD4A0900F550FF /* user_male_circle_filled1600 (1).png in Resources */,
 				ACB9BBF21DCD49FF00F550FF /* home-512 (1).png in Resources */,
 				7BFE1D5D1DE122C400C3620E /* LoginBackground.jpg in Resources */,
