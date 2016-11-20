@@ -80,6 +80,7 @@ class ShakePage: UIViewController
 
     @IBOutlet weak var letsChat: UIButton!
     @IBOutlet weak var nextOne: UIButton!
+    @IBOutlet weak var busTogether: UIButton!
     @IBOutlet weak var reportAbuse: UIButton!
     //Initilize the page when user enter the page
     //Author: Eton Kan
@@ -117,6 +118,7 @@ class ShakePage: UIViewController
         letsChat.isHidden = true
         nextOne.isHidden = true
         reportAbuse.isHidden = true
+        busTogether.isHidden = true
     }
     
     //Fill in all information in the struct profile
@@ -207,6 +209,7 @@ class ShakePage: UIViewController
         self.letsChat.isHidden = true
         self.nextOne.isHidden = true
         self.reportAbuse.isHidden = true
+        self.busTogether.isHidden = true
     }
     
     //User accepted the match, remove target from queue and start chating
@@ -341,7 +344,7 @@ class ShakePage: UIViewController
                                     self.letsChat.isHidden = false
                                     self.nextOne.isHidden = false
                                     self.reportAbuse.isHidden = false
-                                    
+                                    self.busTogether.isHidden = false
                                     return
                                 }
                             }

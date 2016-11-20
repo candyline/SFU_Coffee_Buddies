@@ -218,7 +218,7 @@ class ProfileSetupViewController: UIViewController,
                             response in
                             switch response.result
                             {
-                            case .success(let isSuccess):
+                            case .success:
                                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabBar") as! UITabBarController
                                 self.present(vc, animated:true, completion: nil)
                                 

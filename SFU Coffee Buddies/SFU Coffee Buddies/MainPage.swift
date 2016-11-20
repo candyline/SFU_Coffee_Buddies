@@ -26,8 +26,6 @@ let serverabuse = "http://127.0.0.1:8080/reportAbuse/"
 //Last Modifty: Nov 6,2016
 class MainPage: UIViewController
 {
-    //let Serverhost = URL(string: "http://127.0.0.1:8080/messages/")
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -1,15 +1,15 @@
 //
-//  File Name: ShakePage.swift
+//  File Name: ReportUser.swift
 //  Project Name: SFU Coffee Buddies
 //  Team Name: Group3Genius (G3G)
 //  Author: Eton Kan
 //  Creation Date: Nov 11, 2016
 //  List of Changes:
-//  V1.0: Created by Daniel Tan
-//  V1.1: default server address added
+//  V1.0: Created by Eton Kan
+//  V1.1: Posting Abuse now work
 //
 //  Last Modified Author: Eton Kan
-//  Last Modified Date: Nov 15, 2016
+//  Last Modified Date: Nov 20, 2016
 //
 //  List of Bugs: none
 //
@@ -32,7 +32,7 @@ class ReportUser: UIViewController, UITextViewDelegate, UINavigationControllerDe
     @IBOutlet weak var thankYouLabel: UILabel!
     @IBOutlet weak var reasonLabel: UILabel!
     
-    //@IBOutlet weak var returnToMainPage: UIButton!
+    @IBOutlet weak var returnToMainPage: UIButton!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var backButton: UIBarButtonItem!
     
@@ -78,14 +78,6 @@ class ReportUser: UIViewController, UITextViewDelegate, UINavigationControllerDe
         self.abuseMsg = reasonTextField.text
     }
     
-    /*
-    @IBAction func toShakePage(_ sender: UIButton)
-    {
-        self.tabBarController?.selectedIndex = 3
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabBar") as! UITabBarController
-        self.present(vc, animated:true, completion: nil)
-    }
-    */
     @IBAction func toMainPage(_ sender: UIButton)
     {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabBar") as! UITabBarController
