@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7B852E641DDFBA770063CABB /* vector-seamless-pattern-tea-coffee-cups-background-vintage-style-31666208.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7B852E631DDFBA770063CABB /* vector-seamless-pattern-tea-coffee-cups-background-vintage-style-31666208.jpg */; };
+		7BFE1D5D1DE122C400C3620E /* LoginBackground.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7BFE1D5C1DE122C400C3620E /* LoginBackground.jpg */; };
 		AC0973871DD054A500191224 /* coffee cup.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AC0973861DD054A500191224 /* coffee cup.jpg */; };
 		AC0973891DD950DF00191224 /* QRGeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0973881DD950DF00191224 /* QRGeneratorViewController.swift */; };
 		AC09738B1DD95C7900191224 /* QRScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC09738A1DD95C7900191224 /* QRScannerViewController.swift */; };
@@ -69,6 +70,7 @@
 
 /* Begin PBXFileReference section */
 		7B852E631DDFBA770063CABB /* vector-seamless-pattern-tea-coffee-cups-background-vintage-style-31666208.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "vector-seamless-pattern-tea-coffee-cups-background-vintage-style-31666208.jpg"; path = "../../vector-seamless-pattern-tea-coffee-cups-background-vintage-style-31666208.jpg"; sourceTree = "<group>"; };
+		7BFE1D5C1DE122C400C3620E /* LoginBackground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = LoginBackground.jpg; sourceTree = "<group>"; };
 		AC0973861DD054A500191224 /* coffee cup.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "coffee cup.jpg"; sourceTree = "<group>"; };
 		AC0973881DD950DF00191224 /* QRGeneratorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRGeneratorViewController.swift; sourceTree = "<group>"; };
 		AC09738A1DD95C7900191224 /* QRScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRScannerViewController.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 		ACB9BBEC1DCD44ED00F550FF /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				7BFE1D5C1DE122C400C3620E /* LoginBackground.jpg */,
 				7B852E631DDFBA770063CABB /* vector-seamless-pattern-tea-coffee-cups-background-vintage-style-31666208.jpg */,
 				ACB9BBEF1DCD469A00F550FF /* 171410-200 (1).png */,
 				ACB9BBF11DCD49FF00F550FF /* home-512 (1).png */,
@@ -330,6 +333,7 @@
 				ACB9BBB01DADD2C600F550FF /* Main.storyboard in Resources */,
 				ACB9BBF41DCD4A0900F550FF /* user_male_circle_filled1600 (1).png in Resources */,
 				ACB9BBF21DCD49FF00F550FF /* home-512 (1).png in Resources */,
+				7BFE1D5D1DE122C400C3620E /* LoginBackground.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
