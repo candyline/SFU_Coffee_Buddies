@@ -43,6 +43,12 @@ in the body field,
 add text, and user, and specify x-www-form-urlencoded
 
 --------------------------------------------------------------------------------------
+## Our MongoDB URI ##
+mongodb://<dbuser>:<dbpassword>@ds159497.mlab.com:59497/sfu_coffee_buddies
+
+## Server link for heroku ##
+https://guarded-shore-21847.herokuapp.com
+--------------------------------------------------------------------------------------
 ## To Fix compile errors + use carthage for project, Follow these steps: ##
 
 Do in any directory in terminal:
