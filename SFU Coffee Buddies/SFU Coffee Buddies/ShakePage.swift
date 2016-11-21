@@ -185,44 +185,67 @@ class ShakePage: UIViewController
         {
             if let blockUser = dataBaseArray[index]["blockUser"][users].string
             {
-                localProfile.blockedUser.append(blockUser)
+                if localProfile.blockedUser.count > 0
+                {
+                for userblocklist in 0 ... localProfile.blockedUser.count-1
+                {
+                    if blockUser != localProfile.blockedUser[userblocklist]
+                    {
+                        localProfile.blockedUser.append(blockUser)
+                    }
+                }
+                }
+                else
+                {
+                    localProfile.blockedUser.append(blockUser)
+                }
             }
         }
     }
-    //User didn't accpet the match, prompt user to shake again
+    
+    //Putting the target email to blocking
     //Author: Eton Kan
-    //Last Modify: Nov 11,2016
-    //Known Bugs: 1) Unable to block user due to server issue
-    @IBAction func nextOne(_ sender: UIButton)
+    //Last Modify: Nov 20,2016
+    //Known Bugs: none
+    func blockTarget(blockingEmail: String)
     {
-        print("User say no :(")
-
         print("Blocking target user now")
-        userProfile.blockedUser.append(targetProfile.email)
+        userProfile.blockedUser.append(blockingEmail)
         let appendedUserUrl = serverprofile + userProfile.id
         // Store the information on the database
         let parameters: [String: Any] =
-        [
-            "meeting"  : userProfile.meeting,
-            "gender"   : userProfile.gender,
-            "pw"       : userProfile.pw, // user's password
-            "email"    : userProfile.email,
-            "bio"      : userProfile.bio,
-            "username" : userProfile.username,
-            "interest" : userProfile.interest,
-            "bus"      : userProfile.bus,
-            "major"    : userProfile.major,
-            "blockUser": userProfile.blockedUser
+            [
+                "meeting"  : userProfile.meeting,
+                "gender"   : userProfile.gender,
+                "pw"       : userProfile.pw, // user's password
+                "email"    : userProfile.email,
+                "bio"      : userProfile.bio,
+                "username" : userProfile.username,
+                "interest" : userProfile.interest,
+                "bus"      : userProfile.bus,
+                "major"    : userProfile.major,
+                "blockUser": userProfile.blockedUser
         ]
-        print("Nextone")
         print(parameters)
         Alamofire.request(appendedUserUrl, method: .put, parameters: parameters, encoding: JSONEncoding.default)
             .responseString
             { response in
                 print(response)
-                self.viewDidLoad()
-            }
-        
+                print("blockTarget")
+                
+        }
+
+    }
+    
+    //User didn't accpet the match, prompt user to shake again
+    //Author: Eton Kan
+    //Last Modify: Nov 20,2016
+    //Known Bugs: none
+    @IBAction func nextOne(_ sender: UIButton)
+    {
+        print("User say no :(")
+        self.blockTarget(blockingEmail: targetProfile.email)
+        self.viewDidLoad()
     }
     
     //User accepted the match, remove target from queue and start chating
@@ -334,11 +357,11 @@ class ShakePage: UIViewController
                                 if target_email != userProfile.email && target_meeting == self.yesMeeting
                                 {
                                     //Checking if the targeted email is blocked or not by the user
-                                    for blockedIndex in 0 ... dataBaseArray[index]["blockedUser"].count
+                                    if userProfile.blockedUser.count > 0
                                     {
-                                        if let blockedUserEmail = dataBaseArray[index]["blockedUser"][blockedIndex].string
+                                        for blockedIndex in 0 ... userProfile.blockedUser.count-1
                                         {
-                                            if target_email == blockedUserEmail
+                                            if target_email == userProfile.blockedUser[blockedIndex]
                                             {
                                                 iscontinue = false
                                                 break
@@ -404,7 +427,6 @@ class ShakePage: UIViewController
                             "major"    : userProfile.major,
                             "blockUser": userProfile.blockedUser
                         ]
-                    print("putting on queue")
                     print(parameters)
                     Alamofire.request(appendedUserUrl, method: .put, parameters: parameters, encoding: JSONEncoding.default)
                         .responseString

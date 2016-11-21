@@ -20,13 +20,14 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 //import DLRadioButton
-
+/*
 var globalname : String = ""
 var globalmajor : String = ""
 var globalbusroute : String = ""
 var globalinterest : String = ""
 var globalbio : String = ""
 var globalgender : String = "male"
+*/
 var globalpicture : UIImage? = nil
 
 class ProfileSetupViewController: UIViewController,
@@ -145,7 +146,7 @@ class ProfileSetupViewController: UIViewController,
         default:
             break
         }
-        globalgender = gender
+        //globalgender = gender
     }
     
     // Creator : Daniel Tan
@@ -168,6 +169,8 @@ class ProfileSetupViewController: UIViewController,
     @IBAction func saveProfile(_ sender: UIButton)
     {
         var userFound = false
+        if !(name == "" || busRoute == "" || gender == "" || major == "" || interest == "" || bio == "")
+        {
         Alamofire.request(serverprofile).responseJSON
             {
                 response in
@@ -206,6 +209,7 @@ class ProfileSetupViewController: UIViewController,
                     print(appendedUserUrl)
                     
                     // Updating the user's information on the DB
+                    /*
                     let parameters: [String: Any] =
                         [
                             "meeting"  : "false",
@@ -217,6 +221,20 @@ class ProfileSetupViewController: UIViewController,
                             "interest" : globalinterest,
                             "bus"      : globalbusroute,
                             "major"    : globalmajor,
+                            "blockUser": userProfile.blockedUser
+                    ]
+                    */
+                    let parameters: [String: Any] =
+                        [
+                            "meeting"  : "false",
+                            "gender"   : self.gender,
+                            "pw"       : userProfile.pw,
+                            "email"    : userProfile.email,
+                            "bio"      : self.bio,
+                            "username" : self.name,
+                            "interest" : self.interest,
+                            "bus"      : self.busRoute,
+                            "major"    : self.major,
                             "blockUser": userProfile.blockedUser
                     ]
                     print(parameters)
@@ -242,6 +260,7 @@ class ProfileSetupViewController: UIViewController,
                     print("Cannot get data from server")
                     
                 }
+        }
         }
     }
     
@@ -281,7 +300,7 @@ class ProfileSetupViewController: UIViewController,
     func textFieldDidEndEditing(_ textField: UITextField)
     {
         name = nameTextField.text!
-        globalname = name
+        //globalname = name
         
     }
     
@@ -293,12 +312,12 @@ class ProfileSetupViewController: UIViewController,
         if (textView == interestTextField)
         {
             interest = interestTextField.text
-            globalinterest = interest
+            //globalinterest = interest
         }
         else
         {
             bio = bioTextView.text
-            globalbio = bio
+            //globalbio = bio
         }
     }
     
@@ -345,7 +364,7 @@ class ProfileSetupViewController: UIViewController,
             busRouteTextField.text = busList[row]
             busRouteDropDown.isHidden = true
             busRoute = busRouteTextField.text!
-            globalbusroute = busRoute
+            //globalbusroute = busRoute
         }
         else if (pickerView == majorDropDown)
         {
@@ -354,7 +373,7 @@ class ProfileSetupViewController: UIViewController,
             majorTextField.text = majorList[row]
             majorDropDown.isHidden = true
             major = majorTextField.text!
-            globalmajor = major
+            //globalmajor = major
         }
         
     }

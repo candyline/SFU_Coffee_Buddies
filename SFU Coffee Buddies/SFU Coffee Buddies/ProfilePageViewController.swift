@@ -59,8 +59,8 @@ class ProfilePageViewController: UIViewController {
                 }
                 if !(userFound)
                 {
-                    print("Unable to find user provided email in database (loadDetail)")
-                    print("Please create a new profile (loadDetail)")
+                    print("Unable to find user provided email in database (getUserProfile)")
+                    print("Please create a new profile (getUserProfile)")
                 }
 
             case .failure(let error):

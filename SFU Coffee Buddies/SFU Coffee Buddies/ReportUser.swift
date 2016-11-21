@@ -96,16 +96,18 @@ class ReportUser: UIViewController, UITextViewDelegate, UINavigationControllerDe
                 "fromEmail" : userProfile.email,
                 "toUser"    : targetProfile.username,
                 "toEmail"   : targetProfile.email,
-                "type"      : "", //not used for now
+                //"type"      : "", //not used for now
                 "message"   : self.abuseMsg
                 ]
         print(parameters)
         
         Alamofire.request(serverabuse, method: .post, parameters: parameters, encoding: JSONEncoding.default)
-            .responseJSON
+            .responseString
         {
                 response in
                 print(response)
+            ShakePage().blockTarget(blockingEmail:targetProfile.email)
+            print("Target email should be blocked (submitAbuse)")
         }
         submitButton.isHidden = true
         //backButton.isHidden = true
