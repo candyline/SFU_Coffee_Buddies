@@ -17,6 +17,7 @@
 //  List of Bugs:
 //  motionEnded(): 1) it will crash the database if zero entries are in it (Fixed - Eton Nov 11)
 //                 2) types used for variables are not efficient (Fixed - Eton Nov 11)
+//                 3) unable to block user due to server unable to return array in json
 //  Copyright © 2016 Eton Kan. All rights reserved.
 //
 
@@ -191,40 +192,15 @@ class ShakePage: UIViewController
     //User didn't accpet the match, prompt user to shake again
     //Author: Eton Kan
     //Last Modify: Nov 11,2016
-    //Known Bugs: none
+    //Known Bugs: 1) Unable to block user due to server issue
     @IBAction func nextOne(_ sender: UIButton)
     {
         print("User say no :(")
-        /*
-        self.shakePhone.isHidden = false
-        //Hiding all the target user profile information
-        self.placedInQueue.isHidden = true
-        self.matched.isHidden = true
-        
-        self.targetProfilePic.isHidden = true
-        self.targetNameDisplay.isHidden = true
-        self.targetGenderDisplay.isHidden = true
-        self.targetBusDisplay.isHidden = true
-        self.targetMajorDisplay.isHidden = true
-        self.targetInterestDisplay.isHidden = true
-        self.targetBioDisplay.isHidden = true
-        
-        self.targetNameLabel.isHidden = true
-        self.targetGenderLabel.isHidden = true
-        self.targetBusLabel.isHidden = true
-        self.targetMajorLabel.isHidden = true
-        self.targetInterestLabel.isHidden = true
-        self.targetBioLabel.isHidden = true
-        
-        self.letsChat.isHidden = true
-        self.nextOne.isHidden = true
-        self.reportAbuse.isHidden = true
-        self.busTogether.isHidden = true
-        */
+
         print("Blocking target user now")
         userProfile.blockedUser.append(targetProfile.email)
         let appendedUserUrl = serverprofile + userProfile.id
-        // Store the information on the DB
+        // Store the information on the database
         let parameters: [String: Any] =
         [
             "meeting"  : userProfile.meeting,
@@ -289,14 +265,16 @@ class ShakePage: UIViewController
     //Last Modify: Nov 11,2016
     //Known Bugs: 1) it will crash the database if zero entries are in it (Fix - Eton Nov 11)
     //            2) types used for variables are not efficient(warnings) (Fix - Eton Nov 11)
+    //            3) unable to block due to unable to get blockedUser list from database
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?)
     {
         if event?.subtype == UIEventSubtype.motionShake
         {
             //Showing the user that shake is detected
             //Initialize Variabes
-
             var userFound = false
+            var iscontinue = true
+            
             //Getting user information from database
             Alamofire.request(serverprofile).responseJSON
                 {
@@ -330,6 +308,7 @@ class ShakePage: UIViewController
                             }
                         }
                     }
+                    
                     //Checking if user have enetered their profile informations
                     if !userFound
                     {
@@ -342,6 +321,7 @@ class ShakePage: UIViewController
                     self.shakePhone.isHidden = true
                     print("User Found")
                     self.placedInQueue.isHidden = false
+                    
                     //Look for other users who want to meet
                     //If found, display the other user's information for current user
                     for index in 0 ... dataBaseArray.count
@@ -353,6 +333,22 @@ class ShakePage: UIViewController
                             {
                                 if target_email != userProfile.email && target_meeting == self.yesMeeting
                                 {
+                                    //Checking if the targeted email is blocked or not by the user
+                                    for blockedIndex in 0 ... dataBaseArray[index]["blockedUser"].count
+                                    {
+                                        if let blockedUserEmail = dataBaseArray[index]["blockedUser"][blockedIndex].string
+                                        {
+                                            if target_email == blockedUserEmail
+                                            {
+                                                iscontinue = false
+                                                break
+                                            }
+                                        }
+                                    }
+                                    if !iscontinue
+                                    {
+                                        continue
+                                    }
                                     //Enter the target user's information into a profile struct
                                     self.getDatafromServer(localProfile: &targetProfile, dataBaseArray: dataBaseArray, index : index)
                                     //Display target user information on the ShakePage
@@ -366,21 +362,21 @@ class ShakePage: UIViewController
                                     self.targetMajorDisplay.isHidden = false
                                     self.targetInterestDisplay.isHidden = false
                                     self.targetBioDisplay.isHidden = false
-                                
+                                    
                                     self.targetNameLabel.isHidden = false
                                     self.targetGenderLabel.isHidden = false
                                     self.targetBusLabel.isHidden = false
                                     self.targetMajorLabel.isHidden = false
                                     self.targetInterestLabel.isHidden = false
                                     self.targetBioLabel.isHidden = false
-                                
+                                    
                                     self.targetNameLabel.text = targetProfile.username
                                     self.targetGenderLabel.text = targetProfile.gender
                                     self.targetBusLabel.text = targetProfile.bus
                                     self.targetMajorLabel.text = targetProfile.major
                                     self.targetInterestLabel.text = targetProfile.interest
                                     self.targetBioLabel.text = targetProfile.bio
-                                
+                                    
                                     self.letsChat.isHidden = false
                                     self.nextOne.isHidden = false
                                     self.reportAbuse.isHidden = false

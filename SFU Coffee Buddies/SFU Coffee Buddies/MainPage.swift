@@ -18,9 +18,10 @@
 import UIKit
 
 //Default Server Address (localhost)
-let serverprofile = "http://127.0.0.1:8080/messages/"
-let serverabuse = "http://127.0.0.1:8080/reportAbuse/"
-
+//let serverprofile = "http://127.0.0.1:8080/messages/"
+let serverprofile = "http://guarded-shore-21847.herokuapp.com/contacts/"
+//let serverabuse = "http://127.0.0.1:8080/reportAbuse/"
+let serverabuse = "http://guarded-shore-21847.herokuapp.com/reportAbuse/"
 //This classs is the main manual of the app
 //Author: Eton Kan
 //Last Modifty: Nov 6,2016

@@ -77,7 +77,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate
                     print("Able to connect to server and data found (loadDetail)")
                     //Parsing the data taken from server
                     let dataBaseArray = JSON(response.result.value!)
-                    
+                    print(dataBaseArray)
                     //Searching for the user provided Email inside the JSON file from database
                     for index in 0 ... dataBaseArray.count
                     {

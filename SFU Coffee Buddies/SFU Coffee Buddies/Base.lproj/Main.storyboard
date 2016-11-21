@@ -787,13 +787,6 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Thank you!!! Our Admin will investigate on the abuse" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y2n-y9-mdD">
-                                <rect key="frame" x="91" y="123" width="212" height="62"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Whats wrong? Please tell us below" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uPS-FG-W4D">
                                 <rect key="frame" x="55" y="222" width="264" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -816,13 +809,6 @@
                                     <action selector="submitAbuse:" destination="ys3-vF-EaC" eventType="touchUpInside" id="p9h-1e-eCk"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="d9m-9w-YVr">
-                                <rect key="frame" x="26" y="313" width="323" height="216"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nmm-l6-fOZ">
                                 <rect key="frame" x="109" y="184" width="157" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -834,14 +820,28 @@
                                     <action selector="toMainPage:" destination="ys3-vF-EaC" eventType="touchUpInside" id="PTi-eg-wCS"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lgH-uJ-sN8">
+                                <rect key="frame" x="36" y="323" width="303" height="206"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Thank you!!! Our Admin will investigate on the abuse" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y2n-y9-mdD">
+                                <rect key="frame" x="81" y="114" width="212" height="62"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
                         <outlet property="backButton" destination="FcC-B1-Hfz" id="AcG-Hs-Be9"/>
                         <outlet property="reasonLabel" destination="4wp-FK-HpI" id="iGA-yz-2gL"/>
-                        <outlet property="reasonTextField" destination="d9m-9w-YVr" id="pFD-FC-EC7"/>
-                        <outlet property="returnToMainPage" destination="nmm-l6-fOZ" id="9vN-2D-nEv"/>
+                        <outlet property="reasonTextField" destination="lgH-uJ-sN8" id="TTu-tM-xDB"/>
+                        <outlet property="returnToMainPage" destination="nmm-l6-fOZ" id="qFG-Mz-AaK"/>
                         <outlet property="submitButton" destination="ffp-yr-C4J" id="4KN-t6-8fG"/>
                         <outlet property="thankYouLabel" destination="Y2n-y9-mdD" id="787-hJ-wlg"/>
                         <outlet property="whatsWrongLabel" destination="uPS-FG-W4D" id="xol-Oz-0aH"/>
@@ -849,7 +849,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M6B-d1-8W2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1536.8" y="-729.08545727136436"/>
+            <point key="canvasLocation" x="1537" y="-729"/>
         </scene>
         <!--Shake&Match-->
         <scene sceneID="KDM-Lf-DIu">
@@ -1172,8 +1172,8 @@
         <image name="user_male_circle_filled1600 (1).png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="IMt-nU-c6D"/>
+        <segue reference="QGm-Ze-gTz"/>
+        <segue reference="MC3-si-jo4"/>
         <segue reference="rtC-6k-NV3"/>
-        <segue reference="VET-rA-4H6"/>
     </inferredMetricsTieBreakers>
 </document>

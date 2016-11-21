@@ -178,7 +178,7 @@ class ProfileSetupViewController: UIViewController,
                     print("Data Found")
                     //Parsing the data taken from server
                     let dataBaseArray = JSON(response.result.value!)
-                    
+                    print (dataBaseArray)
                     //Search the user inside the JSON
                     for index in 0 ... dataBaseArray.count
                     {

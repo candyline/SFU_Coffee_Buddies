@@ -47,7 +47,7 @@ class ReportUser: UIViewController, UITextViewDelegate, UINavigationControllerDe
         thankYouLabel.isHidden = true
         reasonLabel.isHidden = false
         
-        //returnToMainPage.isHidden = true
+        returnToMainPage.isHidden = true
         submitButton.isHidden = false
         //backButton.isHidden = false
         
@@ -113,7 +113,7 @@ class ReportUser: UIViewController, UITextViewDelegate, UINavigationControllerDe
         reasonTextField.isHidden = true
         whatsWrongLabel.isHidden = true
         thankYouLabel.isHidden = false
-        //returnToMainPage.isHidden = false
+        returnToMainPage.isHidden = false
     }
     
     // Creator : Daniel Tan
