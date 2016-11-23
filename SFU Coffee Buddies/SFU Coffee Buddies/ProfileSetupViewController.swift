@@ -229,6 +229,7 @@ class ProfileSetupViewController: UIViewController,
                     "interest" : self.interest,
                     "bus"      : self.busRoute,
                     "major"    : self.major,
+                    "coffee"   : userProfile.coffee,
                     "blockUser": userProfile.blockedUser,
                     "QRcode"   : userProfile.qrCode,
                     "image"    : self.imageString

@@ -725,10 +725,53 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Coffee_Star.png" translatesAutoresizingMaskIntoConstraints="NO" id="CE5-T4-dPs">
+                                <rect key="frame" x="98" y="522" width="57" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Coffee_Star.png" translatesAutoresizingMaskIntoConstraints="NO" id="T0c-al-Ndc">
+                                <rect key="frame" x="163" y="522" width="57" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Coffee_Star.png" translatesAutoresizingMaskIntoConstraints="NO" id="7kw-5Y-X4A">
+                                <rect key="frame" x="220" y="522" width="57" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Coffee_Star.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ybs-VN-Ixw">
+                                <rect key="frame" x="285" y="522" width="57" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="FREE COFFEE TIME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lOw-sG-2HK">
+                                <rect key="frame" x="29" y="557" width="317" height="77"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="33"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Coffee_Star.png" translatesAutoresizingMaskIntoConstraints="NO" id="IxI-XG-BUm">
+                                <rect key="frame" x="33" y="522" width="57" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Reward Program" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7nw-h0-Hec">
+                                <rect key="frame" x="126" y="484" width="151" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="home-512 (1).png" id="lbo-DN-ZNv"/>
+                    <connections>
+                        <outlet property="freeCoffeeLabel" destination="lOw-sG-2HK" id="o08-hM-SiB"/>
+                        <outlet property="rewardProgramLabel" destination="7nw-h0-Hec" id="uer-5W-7Ly"/>
+                        <outlet property="starFive" destination="Ybs-VN-Ixw" id="zlH-gz-q4e"/>
+                        <outlet property="starFour" destination="7kw-5Y-X4A" id="9lK-J0-JIP"/>
+                        <outlet property="starOne" destination="IxI-XG-BUm" id="CKa-qz-87A"/>
+                        <outlet property="starThree" destination="T0c-al-Ndc" id="jtq-GW-aFE"/>
+                        <outlet property="starTwo" destination="CE5-T4-dPs" id="KeI-gw-393"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pXh-r5-dPO" sceneMemberID="firstResponder"/>
             </objects>
@@ -1158,6 +1201,7 @@
         <image name="171410-200 (1).png" width="30" height="30"/>
         <image name="Coffee Friend.jpg" width="570" height="570"/>
         <image name="Coffee Together.jpg" width="570" height="455"/>
+        <image name="Coffee_Star.png" width="880" height="840"/>
         <image name="Ren Coffee.jpeg" width="512" height="512"/>
         <image name="Transit.jpg" width="750" height="750"/>
         <image name="blank-stop-sign.jpg" width="200" height="200"/>

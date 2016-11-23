@@ -98,6 +98,7 @@ class QRScannerViewController: UIViewController,
                 lblQRCodeResult.text = objMetadataMachineReadableCodeObject.stringValue
             }
             // Do check with database here
+            
         }
     }
     

@@ -27,8 +27,68 @@ let serverabuse = "http://guarded-shore-21847.herokuapp.com/reportAbuse"
 //Last Modifty: Nov 6,2016
 class MainPage: UIViewController
 {
-    override func viewDidLoad() {
+    @IBOutlet weak var rewardProgramLabel: UILabel!
+    @IBOutlet weak var freeCoffeeLabel: UILabel!
+    @IBOutlet weak var starOne: UIImageView!
+    @IBOutlet weak var starTwo: UIImageView!
+    @IBOutlet weak var starThree: UIImageView!
+    @IBOutlet weak var starFour: UIImageView!
+    @IBOutlet weak var starFive: UIImageView!
+    
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
-
+        rewardProgramLabel.isHidden = false
+        freeCoffeeLabel.isHidden = true
+        
+        if (userProfile.coffee == "0")
+        {
+            self.starOne.isHidden = true
+            self.starTwo.isHidden = true
+            self.starThree.isHidden = true
+            self.starFour.isHidden = true
+            self.starFive.isHidden = true
+        }
+        else if (userProfile.coffee == "1")
+        {
+            self.starOne.isHidden = false
+            self.starTwo.isHidden = true
+            self.starThree.isHidden = true
+            self.starFour.isHidden = true
+            self.starFive.isHidden = true
+        }
+        else if (userProfile.coffee == "2")
+        {
+            self.starOne.isHidden = false
+            self.starTwo.isHidden = false
+            self.starThree.isHidden = true
+            self.starFour.isHidden = true
+            self.starFive.isHidden = true
+        }
+        else if (userProfile.coffee == "3")
+        {
+            self.starOne.isHidden = false
+            self.starTwo.isHidden = false
+            self.starThree.isHidden = false
+            self.starFour.isHidden = true
+            self.starFive.isHidden = true
+        }
+        else if (userProfile.coffee == "4")
+        {
+            self.starOne.isHidden = false
+            self.starTwo.isHidden = false
+            self.starThree.isHidden = false
+            self.starFour.isHidden = false
+            self.starFive.isHidden = true
+        }
+        else if (userProfile.coffee == "5")
+        {
+            self.starOne.isHidden = false
+            self.starTwo.isHidden = false
+            self.starThree.isHidden = false
+            self.starFour.isHidden = false
+            self.starFive.isHidden = false
+            self.freeCoffeeLabel.isHidden = false
+        }
     }
 }

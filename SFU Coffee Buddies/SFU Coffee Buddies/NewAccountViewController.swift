@@ -92,8 +92,9 @@ class NewAccountViewController: UIViewController, UITextFieldDelegate
             
             //Storing email and password to database (server)
             let parameters: [String: Any] =
-                [
+            [
                     "meeting"  : "false",
+                    "coffee"   : "0",
                     "pw"       : globalpw, // user's password
                     "email"    : globalemail
             ]

@@ -75,8 +75,10 @@ class QRGeneratorViewController: UIViewController
                             "interest" : userProfile.interest,
                             "bus"      : userProfile.bus,
                             "major"    : userProfile.major,
+                            "coffee"   : userProfile.coffee,
                             "blockUser": userProfile.blockedUser,
-                            "QRcode"   : userProfile.qrCode
+                            "QRcode"   : userProfile.qrCode,
+                            "image"    : userProfile.image
                     ]
                     print(parameters)
                     Alamofire.request(appendedUserUrl, method: .put, parameters: parameters, encoding: JSONEncoding.default)

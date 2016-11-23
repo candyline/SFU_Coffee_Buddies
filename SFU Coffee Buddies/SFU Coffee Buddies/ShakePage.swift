@@ -50,6 +50,7 @@ struct Profile
     var blockedUser = [String]()
     var qrCode = "0"
     var image = "0"
+    var coffee = "0"
 }
 
 //This classs is used to detect shake motion and communicate with user on the status placed on the queue
@@ -192,6 +193,10 @@ class ShakePage: UIViewController
         {
             localProfile.image = image
         }
+        if let coffee = dataBaseArray[index]["coffee"].string
+        {
+            localProfile.coffee = coffee
+        }
         for users in 0 ... dataBaseArray[index]["blockUser"].count
         {
             if let blockUser = dataBaseArray[index]["blockUser"][users].string
@@ -237,6 +242,7 @@ class ShakePage: UIViewController
                 "interest" : localProfile.interest,
                 "bus"      : localProfile.bus,
                 "major"    : localProfile.major,
+                "coffee"   : localProfile.coffee,
                 "blockUser": tempProfile.blockedUser,
                 "QRcode"   : localProfile.qrCode,
                 "image"    : localProfile.image
@@ -275,33 +281,6 @@ class ShakePage: UIViewController
         self.blockTarget(localProfile: targetProfile, blockingEmail: userProfile.email, meeting: "false")
         //Change user's meeting to false on DataBase
         self.blockTarget(localProfile: userProfile, blockingEmail: targetProfile.email, meeting: "false")
-        /*
-        let appendedUserUrl = serverprofile + targetProfile.id
-        // Store the information on the DB
-        let parameters: [String: Any] =
-            [
-                "meeting"  : "false",
-                "gender"   : targetProfile.gender,
-                "pw"       : targetProfile.pw, // user's password
-                "email"    : targetProfile.email,
-                "bio"      : targetProfile.bio,
-                "username" : targetProfile.username,
-                "interest" : targetProfile.interest,
-                "bus"      : targetProfile.bus,
-                "major"    : targetProfile.major,
-                "blockUser": targetProfile.blockedUser,
-                "QRcode"   : targetProfile.qrCode,
-                "image"    : targetProfile.image
-        ]
-        print("letChat")
-        print(parameters)
-        Alamofire.request(appendedUserUrl, method: .put, parameters: parameters, encoding: JSONEncoding.default)
-            .responseString
-            { response in
-                print(response)
-                //Go to chat page
-            }
-        */
         //Go to chat page
     }
     //A function that detects shake motion either match or put the current user on the queue
@@ -450,6 +429,7 @@ class ShakePage: UIViewController
                             "interest" : userProfile.interest,
                             "bus"      : userProfile.bus,
                             "major"    : userProfile.major,
+                            "coffee"   : userProfile.coffee,
                             "blockUser": userProfile.blockedUser,
                             "QRcode"   : userProfile.qrCode,
                             "image"    : userProfile.image

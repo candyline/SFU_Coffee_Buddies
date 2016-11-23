@@ -43,6 +43,7 @@
 		D04EEBB61DCFCDB200142635 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D04EEBB41DCFCDB200142635 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D05D33A21DDC218E00AD2EDA /* ReportUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05D33A11DDC218E00AD2EDA /* ReportUser.swift */; };
 		D0B438841DC41387009C5FFC /* ShakePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B438831DC41387009C5FFC /* ShakePage.swift */; };
+		D0E886971DE5B9A800BD23D8 /* Coffee_Star.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E886961DE5B9A800BD23D8 /* Coffee_Star.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +120,7 @@
 		D04EEBB41DCFCDB200142635 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		D05D33A11DDC218E00AD2EDA /* ReportUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportUser.swift; sourceTree = "<group>"; };
 		D0B438831DC41387009C5FFC /* ShakePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShakePage.swift; sourceTree = "<group>"; };
+		D0E886961DE5B9A800BD23D8 /* Coffee_Star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Coffee_Star.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +233,7 @@
 				ACB9BBF11DCD49FF00F550FF /* home-512 (1).png */,
 				ACB9BBF31DCD4A0900F550FF /* user_male_circle_filled1600 (1).png */,
 				AC0973861DD054A500191224 /* coffee cup.jpg */,
+				D0E886961DE5B9A800BD23D8 /* Coffee_Star.png */,
 			);
 			name = Icons;
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 				ACB9BBB21DADD2C600F550FF /* Assets.xcassets in Resources */,
 				AC0973931DE124C500191224 /* shake iphone.png in Resources */,
 				ACB9BBB01DADD2C600F550FF /* Main.storyboard in Resources */,
+				D0E886971DE5B9A800BD23D8 /* Coffee_Star.png in Resources */,
 				AC0973911DE124A900191224 /* Ren Coffee.jpeg in Resources */,
 				7BFE1D671DE15C0200C3620E /* Coffee Friend.jpg in Resources */,
 				ACB9BBF41DCD4A0900F550FF /* user_male_circle_filled1600 (1).png in Resources */,
