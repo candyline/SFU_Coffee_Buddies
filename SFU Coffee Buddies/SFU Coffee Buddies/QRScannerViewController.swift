@@ -12,6 +12,8 @@
 
 import UIKit
 import AVFoundation
+import Alamofire
+import SwiftyJSON
 
 class QRScannerViewController: UIViewController,
                                AVCaptureMetadataOutputObjectsDelegate{
@@ -97,8 +99,30 @@ class QRScannerViewController: UIViewController,
             {
                 lblQRCodeResult.text = objMetadataMachineReadableCodeObject.stringValue
             }
-            // Do check with database here
             
+            // Do check with database here
+            let appendedUrl = serverprofile + targetProfile.id
+            Alamofire.request(appendedUrl).responseJSON
+                {
+                    response in
+                    switch response.result
+                    {
+                    case .success:
+                        print("Grabbed data from database")
+                        let dataBaseArray = JSON(response.result.value!)
+                        ShakePage().getDatafromServer(localProfile: &targetProfile, dataBaseArray: dataBaseArray, index: 0)
+                        
+                        if self.lblQRCodeResult.text == targetProfile.qrCode
+                        {
+                            userProfile.coffee += 1
+                        }
+                        
+                    case . failure(let error):
+                        print(error)
+                        print("unable to grab data from database")
+                    }
+
+            }
         }
     }
     

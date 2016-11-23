@@ -44,6 +44,7 @@
 		D05D33A21DDC218E00AD2EDA /* ReportUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05D33A11DDC218E00AD2EDA /* ReportUser.swift */; };
 		D0B438841DC41387009C5FFC /* ShakePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B438831DC41387009C5FFC /* ShakePage.swift */; };
 		D0E886971DE5B9A800BD23D8 /* Coffee_Star.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E886961DE5B9A800BD23D8 /* Coffee_Star.png */; };
+		D0E8869D1DE5C7F800BD23D8 /* Coffee_BlackStar.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E8869C1DE5C7F800BD23D8 /* Coffee_BlackStar.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +122,7 @@
 		D05D33A11DDC218E00AD2EDA /* ReportUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportUser.swift; sourceTree = "<group>"; };
 		D0B438831DC41387009C5FFC /* ShakePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShakePage.swift; sourceTree = "<group>"; };
 		D0E886961DE5B9A800BD23D8 /* Coffee_Star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Coffee_Star.png; sourceTree = "<group>"; };
+		D0E8869C1DE5C7F800BD23D8 /* Coffee_BlackStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Coffee_BlackStar.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +236,7 @@
 				ACB9BBF31DCD4A0900F550FF /* user_male_circle_filled1600 (1).png */,
 				AC0973861DD054A500191224 /* coffee cup.jpg */,
 				D0E886961DE5B9A800BD23D8 /* Coffee_Star.png */,
+				D0E8869C1DE5C7F800BD23D8 /* Coffee_BlackStar.png */,
 			);
 			name = Icons;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				AC0973871DD054A500191224 /* coffee cup.jpg in Resources */,
 				ACB9BBB51DADD2C600F550FF /* LaunchScreen.storyboard in Resources */,
 				AC0973951DE124CC00191224 /* Transit.jpg in Resources */,
+				D0E8869D1DE5C7F800BD23D8 /* Coffee_BlackStar.png in Resources */,
 				AC0973971DE1250700191224 /* cute-coffee-cups-.jpg in Resources */,
 				7B852E641DDFBA770063CABB /* vector-seamless-pattern-tea-coffee-cups-background-vintage-style-31666208.jpg in Resources */,
 				ACB9BBB21DADD2C600F550FF /* Assets.xcassets in Resources */,

@@ -232,7 +232,8 @@ class ProfileSetupViewController: UIViewController,
                     "coffee"   : userProfile.coffee,
                     "blockUser": userProfile.blockedUser,
                     "QRcode"   : userProfile.qrCode,
-                    "image"    : self.imageString
+                    "image"    : self.imageString,
+                    "coffeeCode": userProfile.coffeeCode
             ]
             print(parameters)
             Alamofire.request(appendedUserUrl, method: .put, parameters: parameters, encoding: JSONEncoding.default).responseString

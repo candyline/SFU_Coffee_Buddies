@@ -37,11 +37,6 @@ class QRGeneratorViewController: UIViewController
         {
             let code = randomString(length: 10)
             userProfile.qrCode = code
-            print("I am generated qrCode")
-            print(code)
-            print("I am qrCode in userProfile")
-            print(userProfile.qrCode)
-            print(userProfile.email)
             // Store code variable as the QR code into the database
             let appendedUserUrl = serverprofile + userProfile.id
             Alamofire.request(appendedUserUrl).responseJSON
@@ -66,19 +61,20 @@ class QRGeneratorViewController: UIViewController
                     // Store the information on the DB
                     let parameters: [String: Any] =
                     [
-                            "meeting"  : userProfile.meeting,
-                            "gender"   : userProfile.gender,
-                            "pw"       : userProfile.pw, // user's password
-                            "email"    : userProfile.email,
-                            "bio"      : userProfile.bio,
-                            "username" : userProfile.username,
-                            "interest" : userProfile.interest,
-                            "bus"      : userProfile.bus,
-                            "major"    : userProfile.major,
-                            "coffee"   : userProfile.coffee,
-                            "blockUser": userProfile.blockedUser,
-                            "QRcode"   : userProfile.qrCode,
-                            "image"    : userProfile.image
+                            "meeting"   : userProfile.meeting,
+                            "gender"    : userProfile.gender,
+                            "pw"        : userProfile.pw, // user's password
+                            "email"     : userProfile.email,
+                            "bio"       : userProfile.bio,
+                            "username"  : userProfile.username,
+                            "interest"  : userProfile.interest,
+                            "bus"       : userProfile.bus,
+                            "major"     : userProfile.major,
+                            "coffee"    : userProfile.coffee,
+                            "blockUser" : userProfile.blockedUser,
+                            "QRcode"    : userProfile.qrCode,
+                            "image"     : userProfile.image,
+                            "coffeeCode": userProfile.coffeeCode
                     ]
                     print(parameters)
                     Alamofire.request(appendedUserUrl, method: .put, parameters: parameters, encoding: JSONEncoding.default)

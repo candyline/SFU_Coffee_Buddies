@@ -50,7 +50,8 @@ struct Profile
     var blockedUser = [String]()
     var qrCode = "0"
     var image = "0"
-    var coffee = "0"
+    var coffee = 0
+    var coffeeCode = "0"
 }
 
 //This classs is used to detect shake motion and communicate with user on the status placed on the queue
@@ -193,9 +194,13 @@ class ShakePage: UIViewController
         {
             localProfile.image = image
         }
-        if let coffee = dataBaseArray[index]["coffee"].string
+        if let coffee = dataBaseArray[index]["coffee"].int
         {
             localProfile.coffee = coffee
+        }
+        if let coffeeCode = dataBaseArray[index]["coffeeCode"].string
+        {
+            localProfile.coffeeCode = coffeeCode
         }
         for users in 0 ... dataBaseArray[index]["blockUser"].count
         {
@@ -233,19 +238,20 @@ class ShakePage: UIViewController
         // Store the information on the database
         let parameters: [String: Any] =
             [
-                "meeting"  : meeting,
-                "gender"   : localProfile.gender,
-                "pw"       : localProfile.pw, // user's password
-                "email"    : localProfile.email,
-                "bio"      : localProfile.bio,
-                "username" : localProfile.username,
-                "interest" : localProfile.interest,
-                "bus"      : localProfile.bus,
-                "major"    : localProfile.major,
-                "coffee"   : localProfile.coffee,
-                "blockUser": tempProfile.blockedUser,
-                "QRcode"   : localProfile.qrCode,
-                "image"    : localProfile.image
+                "meeting"   : meeting,
+                "gender"    : localProfile.gender,
+                "pw"        : localProfile.pw, // user's password
+                "email"     : localProfile.email,
+                "bio"       : localProfile.bio,
+                "username"  : localProfile.username,
+                "interest"  : localProfile.interest,
+                "bus"       : localProfile.bus,
+                "major"     : localProfile.major,
+                "coffee"    : localProfile.coffee,
+                "blockUser" : tempProfile.blockedUser,
+                "QRcode"    : localProfile.qrCode,
+                "image"     : localProfile.image,
+                "coffeeCode": localProfile.coffee,
         ]
         print(parameters)
         Alamofire.request(appendedUserUrl, method: .put, parameters: parameters, encoding: JSONEncoding.default)
@@ -420,19 +426,20 @@ class ShakePage: UIViewController
                     // Store the information on the DB
                     let parameters: [String: Any] =
                         [
-                            "meeting"  : self.yesMeeting,
-                            "gender"   : userProfile.gender,
-                            "pw"       : userProfile.pw, // user's password
-                            "email"    : userProfile.email,
-                            "bio"      : userProfile.bio,
-                            "username" : userProfile.username,
-                            "interest" : userProfile.interest,
-                            "bus"      : userProfile.bus,
-                            "major"    : userProfile.major,
-                            "coffee"   : userProfile.coffee,
-                            "blockUser": userProfile.blockedUser,
-                            "QRcode"   : userProfile.qrCode,
-                            "image"    : userProfile.image
+                            "meeting"   : self.yesMeeting,
+                            "gender"    : userProfile.gender,
+                            "pw"        : userProfile.pw, // user's password
+                            "email"     : userProfile.email,
+                            "bio"       : userProfile.bio,
+                            "username"  : userProfile.username,
+                            "interest"  : userProfile.interest,
+                            "bus"       : userProfile.bus,
+                            "major"     : userProfile.major,
+                            "coffee"    : userProfile.coffee,
+                            "blockUser" : userProfile.blockedUser,
+                            "QRcode"    : userProfile.qrCode,
+                            "image"     : userProfile.image,
+                            "coffeeCode": userProfile.coffeeCode
                         ]
                     print(parameters)
                     Alamofire.request(appendedUserUrl, method: .put, parameters: parameters, encoding: JSONEncoding.default)
