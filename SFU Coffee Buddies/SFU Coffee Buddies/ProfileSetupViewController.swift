@@ -105,6 +105,12 @@ class ProfileSetupViewController: UIViewController,
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
+        ProfilePageViewController().getUserProfile(urlPath: serverprofile, userEmail: userProfile.email, completionHandler:
+            {
+                (UIBackgroundFetchResult) -> Void in
+                print("User profile ready for edit")
+        })
+
     }
 
     func imageToString(userImage: UIImage) -> String
@@ -202,89 +208,46 @@ class ProfileSetupViewController: UIViewController,
     //            First time cannot put information in to database (due to unable to get user id)
     @IBAction func saveProfile(_ sender: UIButton)
     {
-        var userFound = false
         if (globalpicture != nil)
         {
             imageString = imageToString(userImage: globalpicture!)
         }
         if !(name == "" || busRoute == "" || gender == "" || major == "" || interest == "" || bio == "")
         {
-        Alamofire.request(serverprofile).responseJSON
+            let appendedUserUrl = serverprofile + userProfile.id
+            print(appendedUserUrl)
+            
+            // Updating the user's information on the DB
+            let parameters: [String: Any] =
+            [
+                    "meeting"  : "false",
+                    "gender"   : self.gender,
+                    "pw"       : userProfile.pw,
+                    "email"    : userProfile.email,
+                    "bio"      : self.bio,
+                    "username" : self.name,
+                    "interest" : self.interest,
+                    "bus"      : self.busRoute,
+                    "major"    : self.major,
+                    "blockUser": userProfile.blockedUser,
+                    "QRcode"   : userProfile.qrCode,
+                    "image"    : self.imageString
+            ]
+            print(parameters)
+            Alamofire.request(appendedUserUrl, method: .put, parameters: parameters, encoding: JSONEncoding.default).responseString
             {
-                response in
-                //Testing if data available for grab
-                switch response.result
-                {
-                case .success:
-                    print("Data Found")
-                    //Parsing the data taken from server
-                    let dataBaseArray = JSON(response.result.value!)
-                    print (dataBaseArray)
-                    //Search the user inside the JSON
-                    for index in 0 ... dataBaseArray.count
+                    response in
+                    switch response.result
                     {
-                        if let email  = dataBaseArray[index]["email"].string
-                        {
-                            if email == userProfile.email
-                            {
-                                if let id = dataBaseArray[index]["_id"].string
-                                {
-                                    userProfile.id = id
-                                    print(userProfile.id)
-                                    userFound = true
-                                    break
-                                }
-                            }
-                        }
+                    case .success:
+                        print("I put up")
+                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabBar") as! UITabBarController
+                        self.present(vc, animated:true, completion: nil)
+                        
+                    case .failure(let error):
+                        print(error)
+                        print("Cannot put data to server")
                     }
-                    if !(userFound)
-                    {
-                        print("Unable to find user in database")
-                        return
-                    }
-                    print(globalid)
-                    let appendedUserUrl = serverprofile + userProfile.id
-                    print(appendedUserUrl)
-                    
-                    // Updating the user's information on the DB
-                    let parameters: [String: Any] =
-                    [
-                            "meeting"  : "false",
-                            "gender"   : self.gender,
-                            "pw"       : userProfile.pw,
-                            "email"    : userProfile.email,
-                            "bio"      : self.bio,
-                            "username" : self.name,
-                            "interest" : self.interest,
-                            "bus"      : self.busRoute,
-                            "major"    : self.major,
-                            "blockUser": userProfile.blockedUser,
-                            "QRcode"   : userProfile.qrCode,
-                            "image"    : self.imageString
-                    ]
-                    print(parameters)
-                    Alamofire.request(appendedUserUrl, method: .put, parameters: parameters, encoding: JSONEncoding.default).responseString
-                        {
-                            response in
-                            switch response.result
-                            {
-                            case .success:
-                                print("I put up")
-                                let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabBar") as! UITabBarController
-                                self.present(vc, animated:true, completion: nil)
-                                
-                            case .failure(let error):
-                                print(error)
-                                print("Cannot put data to server")
-                            }
-                            
-                    }
-                    
-                case .failure(let error):
-                    print(error)
-                    print("Cannot get data from server (saveProfile)")
-                    
-                }
             }
         }
     }
