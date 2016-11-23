@@ -106,7 +106,8 @@ class ReportUser: UIViewController, UITextViewDelegate, UINavigationControllerDe
         {
                 response in
                 print(response)
-            ShakePage().blockTarget(blockingEmail:targetProfile.email)
+                ShakePage().blockTarget(localProfile: targetProfile, blockingEmail: userProfile.email, meeting: targetProfile.meeting)
+                ShakePage().blockTarget(localProfile: userProfile, blockingEmail: targetProfile.email, meeting: userProfile.meeting)
             print("Target email should be blocked (submitAbuse)")
         }
         submitButton.isHidden = true

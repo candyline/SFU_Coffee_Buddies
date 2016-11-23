@@ -65,6 +65,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate
     func loadDetail(urlPath: String, completionHandler: ((UIBackgroundFetchResult)     -> Void)!)
     {
         var userFound = false
+        print(self.username)
         //Look for user in the database with user provided email
         print("Looking for user in the database (loadDetail)")
         Alamofire.request(urlPath).responseJSON
@@ -83,6 +84,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate
                     {
                         if let email  = dataBaseArray[index]["email"].string
                         {
+                            print(email)
                             if email == self.username
                             {
                                 print("User Found")

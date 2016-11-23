@@ -20,14 +20,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 //import DLRadioButton
-/*
-var globalname : String = ""
-var globalmajor : String = ""
-var globalbusroute : String = ""
-var globalinterest : String = ""
-var globalbio : String = ""
-var globalgender : String = "male"
-*/
+
 var globalpicture : UIImage? = nil
 
 class ProfileSetupViewController: UIViewController,
@@ -47,6 +40,7 @@ class ProfileSetupViewController: UIViewController,
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var busRouteDropDown: UIPickerView!
     @IBOutlet weak var majorDropDown: UIPickerView!
+    var imageString = ""
     var name = ""
     var gender = "male"
     var interest = ""
@@ -113,6 +107,46 @@ class ProfileSetupViewController: UIViewController,
         
     }
 
+    func imageToString(userImage: UIImage) -> String
+    {
+        let targetSize = CGSize(width: 200, height: 200)
+        let size = userImage.size
+        
+        let widthRatio = targetSize.width / userImage.size.width
+        let heightRatio = targetSize.height / userImage.size.height
+        
+        var newSize: CGSize
+        if(widthRatio > heightRatio)
+        {
+            newSize = CGSize(width: size.width * heightRatio, height: size.height * heightRatio)
+        }
+        else
+        {
+            newSize = CGSize(width: size.width * widthRatio, height: size.height * widthRatio)
+        }
+        
+        let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
+        
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+        userImage.draw(in:rect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+       
+        let imageData = UIImageJPEGRepresentation(newImage!, 0.0)
+        let base64String: String  = imageData!.base64EncodedString()
+        //let imageData = UIImageJPEGRepresentation(userImage, 0.0)
+        //let base64String: String  = imageData!.base64EncodedString()
+        
+        return base64String
+    }
+    
+    func stringToImage(userString: String) ->UIImage
+    {
+        let dataDecoded = NSData(base64Encoded: userString, options: NSData.Base64DecodingOptions.ignoreUnknownCharacters)!
+        let image = UIImage(data: dataDecoded as Data)
+        return image!
+    }
+    
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
@@ -169,6 +203,10 @@ class ProfileSetupViewController: UIViewController,
     @IBAction func saveProfile(_ sender: UIButton)
     {
         var userFound = false
+        if (globalpicture != nil)
+        {
+            imageString = imageToString(userImage: globalpicture!)
+        }
         if !(name == "" || busRoute == "" || gender == "" || major == "" || interest == "" || bio == "")
         {
         Alamofire.request(serverprofile).responseJSON
@@ -209,23 +247,8 @@ class ProfileSetupViewController: UIViewController,
                     print(appendedUserUrl)
                     
                     // Updating the user's information on the DB
-                    /*
                     let parameters: [String: Any] =
-                        [
-                            "meeting"  : "false",
-                            "gender"   : globalgender,
-                            "pw"       : userProfile.pw,
-                            "email"    : userProfile.email,
-                            "bio"      : globalbio,
-                            "username" : globalname,
-                            "interest" : globalinterest,
-                            "bus"      : globalbusroute,
-                            "major"    : globalmajor,
-                            "blockUser": userProfile.blockedUser
-                    ]
-                    */
-                    let parameters: [String: Any] =
-                        [
+                    [
                             "meeting"  : "false",
                             "gender"   : self.gender,
                             "pw"       : userProfile.pw,
@@ -235,7 +258,9 @@ class ProfileSetupViewController: UIViewController,
                             "interest" : self.interest,
                             "bus"      : self.busRoute,
                             "major"    : self.major,
-                            "blockUser": userProfile.blockedUser
+                            "blockUser": userProfile.blockedUser,
+                            "QRcode"   : userProfile.qrCode,
+                            "image"    : self.imageString
                     ]
                     print(parameters)
                     Alamofire.request(appendedUserUrl, method: .put, parameters: parameters, encoding: JSONEncoding.default).responseString
@@ -257,10 +282,10 @@ class ProfileSetupViewController: UIViewController,
                     
                 case .failure(let error):
                     print(error)
-                    print("Cannot get data from server")
+                    print("Cannot get data from server (saveProfile)")
                     
                 }
-        }
+            }
         }
     }
     

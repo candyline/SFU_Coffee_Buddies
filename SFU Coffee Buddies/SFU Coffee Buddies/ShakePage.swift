@@ -48,6 +48,8 @@ struct Profile
     var bus = "0"
     var major = "0"
     var blockedUser = [String]()
+    var qrCode = "0"
+    var image = "0"
 }
 
 //This classs is used to detect shake motion and communicate with user on the status placed on the queue
@@ -181,6 +183,15 @@ class ShakePage: UIViewController
             localProfile.email = email
             //print(userProfile.meeting)
         }
+        if let qrcode = dataBaseArray[index]["QRcode"].string
+        {
+            localProfile.qrCode = qrcode
+            //print(localProfile.qrcode)
+        }
+        if let image = dataBaseArray[index]["image"].string
+        {
+            localProfile.image = image
+        }
         for users in 0 ... dataBaseArray[index]["blockUser"].count
         {
             if let blockUser = dataBaseArray[index]["blockUser"][users].string
@@ -207,34 +218,37 @@ class ShakePage: UIViewController
     //Author: Eton Kan
     //Last Modify: Nov 20,2016
     //Known Bugs: none
-    func blockTarget(blockingEmail: String)
+    func blockTarget(localProfile: Profile, blockingEmail: String, meeting: String)
     {
+        var tempProfile = Profile()
         print("Blocking target user now")
-        userProfile.blockedUser.append(blockingEmail)
+        tempProfile.blockedUser = localProfile.blockedUser
+        tempProfile.blockedUser.append(blockingEmail)
         let appendedUserUrl = serverprofile + userProfile.id
         // Store the information on the database
         let parameters: [String: Any] =
             [
-                "meeting"  : userProfile.meeting,
-                "gender"   : userProfile.gender,
-                "pw"       : userProfile.pw, // user's password
-                "email"    : userProfile.email,
-                "bio"      : userProfile.bio,
-                "username" : userProfile.username,
-                "interest" : userProfile.interest,
-                "bus"      : userProfile.bus,
-                "major"    : userProfile.major,
-                "blockUser": userProfile.blockedUser
+                "meeting"  : meeting,
+                "gender"   : localProfile.gender,
+                "pw"       : localProfile.pw, // user's password
+                "email"    : localProfile.email,
+                "bio"      : localProfile.bio,
+                "username" : localProfile.username,
+                "interest" : localProfile.interest,
+                "bus"      : localProfile.bus,
+                "major"    : localProfile.major,
+                "blockUser": tempProfile.blockedUser,
+                "QRcode"   : localProfile.qrCode,
+                "image"    : localProfile.image
         ]
         print(parameters)
         Alamofire.request(appendedUserUrl, method: .put, parameters: parameters, encoding: JSONEncoding.default)
             .responseString
-            { response in
-                print(response)
-                print("blockTarget")
-                
+         {
+            response in
+            print(response)
+            print("blockTarget")
         }
-
     }
     
     //User didn't accpet the match, prompt user to shake again
@@ -244,7 +258,8 @@ class ShakePage: UIViewController
     @IBAction func nextOne(_ sender: UIButton)
     {
         print("User say no :(")
-        self.blockTarget(blockingEmail: targetProfile.email)
+        //Change the blocking of target and user so they will never see each other
+        self.blockTarget(localProfile: userProfile, blockingEmail: targetProfile.email, meeting: userProfile.meeting)
         self.viewDidLoad()
     }
     
@@ -256,7 +271,11 @@ class ShakePage: UIViewController
     {
         //Updateing Target meeting information
         //.put change targetProfile.meeting to false
-        //Change user's meeting to true on DataBase and let the other users look for you
+        //Change target's meeting to false on DataBase
+        self.blockTarget(localProfile: targetProfile, blockingEmail: userProfile.email, meeting: "false")
+        //Change user's meeting to false on DataBase
+        self.blockTarget(localProfile: userProfile, blockingEmail: targetProfile.email, meeting: "false")
+        /*
         let appendedUserUrl = serverprofile + targetProfile.id
         // Store the information on the DB
         let parameters: [String: Any] =
@@ -270,8 +289,9 @@ class ShakePage: UIViewController
                 "interest" : targetProfile.interest,
                 "bus"      : targetProfile.bus,
                 "major"    : targetProfile.major,
-                "blockUser": targetProfile.blockedUser
-                
+                "blockUser": targetProfile.blockedUser,
+                "QRcode"   : targetProfile.qrCode,
+                "image"    : targetProfile.image
         ]
         print("letChat")
         print(parameters)
@@ -281,7 +301,8 @@ class ShakePage: UIViewController
                 print(response)
                 //Go to chat page
             }
-        
+        */
+        //Go to chat page
     }
     //A function that detects shake motion either match or put the current user on the queue
     //Author: Eton Kan
@@ -399,6 +420,10 @@ class ShakePage: UIViewController
                                     self.targetMajorLabel.text = targetProfile.major
                                     self.targetInterestLabel.text = targetProfile.interest
                                     self.targetBioLabel.text = targetProfile.bio
+                                    if !(targetProfile.image.isEmpty  || targetProfile.image == "0")
+                                    {
+                                        self.targetProfilePic.image  = ProfileSetupViewController().stringToImage(userString: targetProfile.image)
+                                    }
                                     
                                     self.letsChat.isHidden = false
                                     self.nextOne.isHidden = false
@@ -425,7 +450,9 @@ class ShakePage: UIViewController
                             "interest" : userProfile.interest,
                             "bus"      : userProfile.bus,
                             "major"    : userProfile.major,
-                            "blockUser": userProfile.blockedUser
+                            "blockUser": userProfile.blockedUser,
+                            "QRcode"   : userProfile.qrCode,
+                            "image"    : userProfile.image
                         ]
                     print(parameters)
                     Alamofire.request(appendedUserUrl, method: .put, parameters: parameters, encoding: JSONEncoding.default)

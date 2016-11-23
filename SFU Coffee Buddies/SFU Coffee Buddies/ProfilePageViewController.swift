@@ -28,7 +28,7 @@ class ProfilePageViewController: UIViewController {
     @IBOutlet weak var majorLabel: UILabel!
     @IBOutlet weak var interestTextView: UITextView!
     @IBOutlet weak var bioTextView: UITextView!
-    
+
     func getUserProfile(urlPath: String, userEmail: String, completionHandler: ((UIBackgroundFetchResult) -> Void)!)
     {
         var userFound = false
@@ -87,8 +87,13 @@ class ProfilePageViewController: UIViewController {
             
                 self.interestTextView.text = userProfile.interest
                 self.bioTextView.text = userProfile.bio
-            
-                self.profileImage.image = globalpicture
+                
+                if !(userProfile.image.isEmpty || userProfile.image == "0")
+                {
+                    self.profileImage.image = ProfileSetupViewController().stringToImage(userString: userProfile.image)
+                }
+                
+                //self.profileImage.image = globalpicture
                 print("User profile ready for display")
         })
     }

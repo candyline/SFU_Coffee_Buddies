@@ -13,6 +13,8 @@
 
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class QRGeneratorViewController: UIViewController
 {
@@ -22,6 +24,10 @@ class QRGeneratorViewController: UIViewController
     @IBOutlet weak var sizeSlider: UISlider!
     @IBOutlet weak var QRCodeImage: UIImageView!
     
+    
+    
+    //Haven't save it to user targetProfile yet
+    //Need chat function to determine how to save it
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -30,18 +36,69 @@ class QRGeneratorViewController: UIViewController
         if qrcodeImage == nil
         {
             let code = randomString(length: 10)
+            userProfile.qrCode = code
+            print("I am generated qrCode")
+            print(code)
+            print("I am qrCode in userProfile")
+            print(userProfile.qrCode)
+            print(userProfile.email)
             // Store code variable as the QR code into the database
-            let data = code.data(using: String.Encoding.isoLatin1, allowLossyConversion: false)
-            
-            let filter = CIFilter(name: "CIQRCodeGenerator")
-            
-            filter?.setValue(data, forKey: "inputMessage")
-            filter?.setValue("Q", forKey: "inputCorrectionLevel")
-            
-            qrcodeImage = filter?.outputImage
-            
-            //QRCodeImage.image = UIImage(ciImage: qrcodeImage)
-            displayQRCodeImage()
+            let appendedUserUrl = serverprofile + userProfile.id
+            Alamofire.request(appendedUserUrl).responseJSON
+                {
+                    response in
+                    //Testing if data available for grab
+                    switch response.result
+                    {
+                    case .success:
+                        print("Data Found")
+                    case .failure(let error):
+                        print(error)
+                        print("Cannot get data from server")
+                        return
+                    }
+                    
+                    //Parsing the data taken from server
+                    let dataBaseArray = JSON(response.result.value!)
+                    
+                    //Search the user inside the JSON
+                    ShakePage().getDatafromServer(localProfile: &userProfile, dataBaseArray: dataBaseArray, index : 0)
+                    // Store the information on the DB
+                    let parameters: [String: Any] =
+                    [
+                            "meeting"  : userProfile.meeting,
+                            "gender"   : userProfile.gender,
+                            "pw"       : userProfile.pw, // user's password
+                            "email"    : userProfile.email,
+                            "bio"      : userProfile.bio,
+                            "username" : userProfile.username,
+                            "interest" : userProfile.interest,
+                            "bus"      : userProfile.bus,
+                            "major"    : userProfile.major,
+                            "blockUser": userProfile.blockedUser,
+                            "QRcode"   : userProfile.qrCode
+                    ]
+                    print(parameters)
+                    Alamofire.request(appendedUserUrl, method: .put, parameters: parameters, encoding: JSONEncoding.default)
+                        .responseString
+                    {
+                        response in
+                        print(response)
+                        print("QRcode uploaded")
+                        
+                        let data = code.data(using: String.Encoding.isoLatin1, allowLossyConversion: false)
+                        
+                        let filter = CIFilter(name: "CIQRCodeGenerator")
+                        
+                        filter?.setValue(data, forKey: "inputMessage")
+                        filter?.setValue("Q", forKey: "inputCorrectionLevel")
+                        
+                        self.qrcodeImage = filter?.outputImage
+                        
+                        //QRCodeImage.image = UIImage(ciImage: qrcodeImage)
+                        self.displayQRCodeImage()
+                    }
+            }
         }
     }
 
