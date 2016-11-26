@@ -66,6 +66,9 @@ class ProfileSetupViewController: UIViewController,
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        // making profile pic circular
+        profilePictureImageView.layer.cornerRadius = profilePictureImageView.frame.size.width/2
+        profilePictureImageView.clipsToBounds = true
         
         // Set the border and color of the text view
         interestTextField.layer.cornerRadius = 8.0

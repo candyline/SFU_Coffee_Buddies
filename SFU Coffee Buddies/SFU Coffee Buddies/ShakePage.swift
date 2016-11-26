@@ -124,6 +124,11 @@ class ShakePage: UIViewController
         nextOne.isHidden = true
         reportAbuse.isHidden = true
         busTogether.isHidden = true
+        
+        //making circular profile pic image
+        targetProfilePic.layer.cornerRadius = targetProfilePic.frame.size.width/2
+        targetProfilePic.clipsToBounds = true
+        
     }
     
     //Fill in all information in the struct profile

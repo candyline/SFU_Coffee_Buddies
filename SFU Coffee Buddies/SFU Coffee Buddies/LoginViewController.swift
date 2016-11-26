@@ -23,17 +23,22 @@ import Alamofire
 import SwiftyJSON
 
 //This classs is used to login and verify user provided email and password matched with database
+
+
 //Author: Daniel Tan
 //Last Modifty: Nov 18,2016
 class LoginViewController: UIViewController, UITextFieldDelegate
 {
     // Outlets and variables
+    @IBOutlet weak var img: UIImageView!
+   
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     var username = ""
     var password = ""
     var expectedPassword = ""
     @IBOutlet weak var incorrectMessageLabel: UITextView!
+    
     
     // viewDidLoad function, anyhting that needs to be declared or initialized before the view loads is done here
     override func viewDidLoad()
@@ -50,6 +55,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate
         // Tap Gesture will close the keyboard, when tapping the view, will call the tappedAwayFunction
         let myGesture = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.tappedAwayFunction(sender:)))
         self.view.addGestureRecognizer(myGesture)
+        img.layer.cornerRadius = img.frame.size.width/2
+        img.clipsToBounds = true
+        
     }
 
     override func didReceiveMemoryWarning()

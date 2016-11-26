@@ -71,6 +71,10 @@ class ProfilePageViewController: UIViewController {
     // viewDidLoad function, anyhting that needs to be declared or initialized before the view loads is done here
     override func viewDidLoad()
     {
+        //making profile pic circular
+        profileImage.layer.cornerRadius = profileImage.frame.size.width/2
+        profileImage.clipsToBounds = true
+        
         super.viewDidLoad()
         //Getting user information from database
         self.getUserProfile(urlPath: serverprofile, userEmail: userProfile.email, completionHandler:
