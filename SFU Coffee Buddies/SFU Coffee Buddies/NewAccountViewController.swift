@@ -48,7 +48,13 @@ class NewAccountViewController: UIViewController, UITextFieldDelegate
         
         // Hide the warning label
         incorrectEmailLabel.isHidden = true
+        
+        // Rounded Submit Button
+        signUpButton.layer.cornerRadius = 5.0
+        signUpButton.clipsToBounds = true
+        
     }
+    
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()

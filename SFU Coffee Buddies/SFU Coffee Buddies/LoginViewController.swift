@@ -31,7 +31,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate
 {
     // Outlets and variables
     @IBOutlet weak var img: UIImageView!
-   
+    @IBOutlet weak var button: UIButton!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     var username = ""
@@ -55,8 +55,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate
         // Tap Gesture will close the keyboard, when tapping the view, will call the tappedAwayFunction
         let myGesture = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.tappedAwayFunction(sender:)))
         self.view.addGestureRecognizer(myGesture)
-        img.layer.cornerRadius = img.frame.size.width/2
+        
+        //Rounded Corner Image with red border
+        img.layer.cornerRadius = 10.0
         img.clipsToBounds = true
+        img.layer.borderWidth = 3.0
+        img.layer.borderColor = UIColor.red.cgColor
+        
+        //Rounded Login Button 
+        button.layer.cornerRadius = 5.0
+        button.clipsToBounds = true
         
     }
 
