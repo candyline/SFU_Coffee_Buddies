@@ -238,7 +238,7 @@ class ProfileSetupViewController: UIViewController,
                     "image"    : self.imageString,
                     "coffeeCode": userProfile.coffeeCode
             ]
-            print(parameters)
+            //print(parameters)
             Alamofire.request(appendedUserUrl, method: .put, parameters: parameters, encoding: JSONEncoding.default).responseString
             {
                     response in
