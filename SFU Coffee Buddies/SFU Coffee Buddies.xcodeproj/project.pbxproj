@@ -18,7 +18,6 @@
 		AC0973891DD950DF00191224 /* QRGeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0973881DD950DF00191224 /* QRGeneratorViewController.swift */; };
 		AC09738B1DD95C7900191224 /* QRScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC09738A1DD95C7900191224 /* QRScannerViewController.swift */; };
 		AC0973911DE124A900191224 /* Ren Coffee.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = AC0973901DE124A900191224 /* Ren Coffee.jpeg */; };
-		AC0973931DE124C500191224 /* shake iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = AC0973921DE124C500191224 /* shake iphone.png */; };
 		AC0973951DE124CC00191224 /* Transit.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AC0973941DE124CC00191224 /* Transit.jpg */; };
 		ACB9BBAB1DADD2C600F550FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9BBAA1DADD2C600F550FF /* AppDelegate.swift */; };
 		ACB9BBAD1DADD2C600F550FF /* MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9BBAC1DADD2C600F550FF /* MainPage.swift */; };
@@ -90,7 +89,6 @@
 		AC0973881DD950DF00191224 /* QRGeneratorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRGeneratorViewController.swift; sourceTree = "<group>"; };
 		AC09738A1DD95C7900191224 /* QRScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRScannerViewController.swift; sourceTree = "<group>"; };
 		AC0973901DE124A900191224 /* Ren Coffee.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Ren Coffee.jpeg"; sourceTree = "<group>"; };
-		AC0973921DE124C500191224 /* shake iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shake iphone.png"; sourceTree = "<group>"; };
 		AC0973941DE124CC00191224 /* Transit.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Transit.jpg; sourceTree = "<group>"; };
 		ACB9BBA71DADD2C600F550FF /* SFU Coffee Buddies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SFU Coffee Buddies.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACB9BBAA1DADD2C600F550FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -224,7 +222,6 @@
 				7BFE1D661DE15C0200C3620E /* Coffee Friend.jpg */,
 				7BFE1D641DE1440C00C3620E /* SFU Loop.jpg */,
 				AC0973941DE124CC00191224 /* Transit.jpg */,
-				AC0973921DE124C500191224 /* shake iphone.png */,
 				AC0973901DE124A900191224 /* Ren Coffee.jpeg */,
 				7B852E631DDFBA770063CABB /* vector-seamless-pattern-tea-coffee-cups-background-vintage-style-31666208.jpg */,
 				ACB9BBEF1DCD469A00F550FF /* 171410-200 (1).png */,
@@ -363,7 +360,6 @@
 				D0E8869D1DE5C7F800BD23D8 /* Coffee_BlackStar.png in Resources */,
 				7B852E641DDFBA770063CABB /* vector-seamless-pattern-tea-coffee-cups-background-vintage-style-31666208.jpg in Resources */,
 				ACB9BBB21DADD2C600F550FF /* Assets.xcassets in Resources */,
-				AC0973931DE124C500191224 /* shake iphone.png in Resources */,
 				ACB9BBB01DADD2C600F550FF /* Main.storyboard in Resources */,
 				D0E886971DE5B9A800BD23D8 /* Coffee_Star.png in Resources */,
 				7BE588EC1DEF7B9600F7DC9D /* Login Pic.jpg in Resources */,

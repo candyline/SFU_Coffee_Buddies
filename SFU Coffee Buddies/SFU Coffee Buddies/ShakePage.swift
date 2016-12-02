@@ -69,12 +69,12 @@ class ShakePage: UIViewController
     @IBOutlet weak var matched: UILabel!
     
     @IBOutlet weak var targetProfilePic: UIImageView!
-    @IBOutlet weak var targetNameDisplay: UILabel!
-    @IBOutlet weak var targetGenderDisplay: UILabel!
-    @IBOutlet weak var targetBusDisplay: UILabel!
-    @IBOutlet weak var targetMajorDisplay: UILabel!
-    @IBOutlet weak var targetInterestDisplay: UILabel!
-    @IBOutlet weak var targetBioDisplay: UILabel!
+    //@IBOutlet weak var targetNameDisplay: UILabel! // please comment out the code without the solid circle, see like line 71 is fine but this line is not
+    //@IBOutlet weak var targetGenderDisplay: UILabel!
+    //@IBOutlet weak var targetBusDisplay: UILabel!
+    //@IBOutlet weak var targetMajorDisplay: UILabel!
+    //@IBOutlet weak var targetInterestDisplay: UILabel!
+    //@IBOutlet weak var targetBioDisplay: UILabel!
     
     @IBOutlet weak var targetNameLabel: UILabel!
     @IBOutlet weak var targetGenderLabel: UILabel!
@@ -94,7 +94,7 @@ class ShakePage: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "shake iphone.png")!)
+        //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "shake iphone.png")!)
         //Instructing the user to shake their device
         shakePhone.isHidden = false
         placedInQueue.isHidden = true
@@ -103,13 +103,13 @@ class ShakePage: UIViewController
         matched.isHidden = true
         
         //Hiding displays from user
-        targetProfilePic.isHidden = true
-        targetNameDisplay.isHidden = true
-        targetGenderDisplay.isHidden = true
-        targetBusDisplay.isHidden = true
-        targetMajorDisplay.isHidden = true
-        targetInterestDisplay.isHidden = true
-        targetBioDisplay.isHidden = true
+        //targetProfilePic.isHidden = true
+        //targetNameDisplay.isHidden = true
+        //targetGenderDisplay.isHidden = true
+        //targetBusDisplay.isHidden = true
+        //targetMajorDisplay.isHidden = true
+        //targetInterestDisplay.isHidden = true
+        //targetBioDisplay.isHidden = true
         
         //Hiding labels from user
         targetNameLabel.isHidden = true
@@ -390,12 +390,12 @@ class ShakePage: UIViewController
                                     self.matched.isHidden = false
                                     
                                     self.targetProfilePic.isHidden = false
-                                    self.targetNameDisplay.isHidden = false
-                                    self.targetGenderDisplay.isHidden = false
-                                    self.targetBusDisplay.isHidden = false
-                                    self.targetMajorDisplay.isHidden = false
-                                    self.targetInterestDisplay.isHidden = false
-                                    self.targetBioDisplay.isHidden = false
+                                    //self.targetNameDisplay.isHidden = false
+                                    //self.targetGenderDisplay.isHidden = false
+                                    //self.targetBusDisplay.isHidden = false
+                                    //self.targetMajorDisplay.isHidden = false
+                                    //self.targetInterestDisplay.isHidden = false
+                                    //self.targetBioDisplay.isHidden = false
                                     
                                     self.targetNameLabel.isHidden = false
                                     self.targetGenderLabel.isHidden = false

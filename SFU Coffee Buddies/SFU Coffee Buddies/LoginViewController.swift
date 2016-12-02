@@ -30,6 +30,7 @@ import SwiftyJSON
 class LoginViewController: UIViewController, UITextFieldDelegate
 {
     // Outlets and variables
+    @IBOutlet weak var signup: UIButton!
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var usernameTextField: UITextField!
@@ -65,6 +66,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate
         //Rounded Login Button 
         button.layer.cornerRadius = 5.0
         button.clipsToBounds = true
+        
+        //Rounded Signup Button
+        signup.layer.cornerRadius = 5.0
+        signup.clipsToBounds = true
         
     }
 
