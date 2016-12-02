@@ -155,6 +155,30 @@ class MainPage: UIViewController
         }
     }
     
+    func resetProfile(localProfile: inout Profile)
+    {
+        localProfile.id = "0"
+        localProfile.meeting = "0"
+        localProfile.pw = "0"
+        localProfile.username = "0"
+        localProfile.bio = "0"
+        localProfile.interest = "0"
+        localProfile.email = "0"
+        localProfile.bus = "0"
+        localProfile.major = "0"
+        localProfile.blockedUser.removeAll()
+        localProfile.qrCode = "0"
+        localProfile.image = "0"
+        localProfile.coffee = 0
+        localProfile.coffeeCode = "0"
+    }
+    
+    @IBAction func logout(_ sender: UIButton)
+    {
+        self.resetProfile(localProfile: &userProfile)
+        self.resetProfile(localProfile: &targetProfile)
+    }
+    
     @IBAction func reset(_ sender: UIButton)
     {
         self.viewDidLoad()
