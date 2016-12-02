@@ -137,8 +137,8 @@ class ShakePage: UIViewController
     //Known Bugs: none
     func getDatafromServer(localProfile: inout Profile, dataBaseArray: JSON , index: Int)
     {
-        print(dataBaseArray)
-        print(index)
+        //print(dataBaseArray)
+        //print(index)
         //Enter the user's information into the Profile struct
         if let username  = dataBaseArray[index]["username"].string
         {
@@ -258,7 +258,7 @@ class ShakePage: UIViewController
                 "image"     : localProfile.image,
                 "coffeeCode": localProfile.coffee,
         ]
-        print(parameters)
+        //print(parameters)
         Alamofire.request(appendedUserUrl, method: .put, parameters: parameters, encoding: JSONEncoding.default)
             .responseString
          {
