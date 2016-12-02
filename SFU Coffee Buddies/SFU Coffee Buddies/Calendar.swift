@@ -24,6 +24,7 @@ import EventKit
 //Author: Eton Kan
 //Last Modifty: Nov 6,2016
 class Calendar: UIViewController,
+                UIImagePickerControllerDelegate,
                 UINavigationControllerDelegate,
                 UITextFieldDelegate,
                 UITextViewDelegate,
@@ -37,8 +38,6 @@ class Calendar: UIViewController,
     @IBOutlet var eventEndDatePicker: UIDatePicker!
     @IBOutlet var locationTextField: UITextField!
     @IBOutlet var locationDropDown: UIPickerView!
-    @IBOutlet var startTimeTextField: UITextField!
-    @IBOutlet var endTimeTextField: UITextField!
     
     override func viewDidLoad()
     {
@@ -47,7 +46,13 @@ class Calendar: UIViewController,
         locationDropDown.layer.cornerRadius = 8.0
         locationDropDown.layer.borderColor = UIColor.black.cgColor
         locationDropDown.layer.borderWidth = 0.8
+        
         locationDropDown.delegate = self
+        
+        // Tap Gesture will close the keyboard, when tapping the view, will call the tappedAwayFunction
+        let myGesture = UITapGestureRecognizer(target: self, action: #selector(ProfileSetupViewController.tappedAwayFunction(sender:)))
+        self.view.addGestureRecognizer(myGesture)
+        
         locationDropDown.isHidden = true
     }
     // Purpose : overrided function to assign how many components in the picker view
@@ -82,11 +87,8 @@ class Calendar: UIViewController,
     //           shows the picker view when the user starts "editting" the text field
     func textFieldDidBeginEditing(_ textField: UITextField)
     {
-        if (textField == locationTextField){
-            locationDropDown.isHidden = false
-            
-            textField.endEditing(true)
-        }
+        locationDropDown.isHidden = false
+        textField.endEditing(true)
     }
     
     @IBAction func submit(_ sender: UIButton)
