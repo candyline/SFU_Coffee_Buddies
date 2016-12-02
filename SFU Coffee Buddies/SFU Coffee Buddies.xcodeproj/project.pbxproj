@@ -7,18 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7B852E641DDFBA770063CABB /* vector-seamless-pattern-tea-coffee-cups-background-vintage-style-31666208.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7B852E631DDFBA770063CABB /* vector-seamless-pattern-tea-coffee-cups-background-vintage-style-31666208.jpg */; };
+		7B00E9AC1DF201B7006B0904 /* compasscard.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7B00E9AB1DF201B7006B0904 /* compasscard.jpg */; };
+		7B00E9AE1DF205EA006B0904 /* stop sign.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B00E9AD1DF205EA006B0904 /* stop sign.png */; };
+		7B00E9B01DF207A5006B0904 /* Home Back.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7B00E9AF1DF207A5006B0904 /* Home Back.jpg */; };
+		7B00E9B21DF208F1006B0904 /* CoffeeCUPS.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7B00E9B11DF208F1006B0904 /* CoffeeCUPS.jpg */; };
 		7BE588EC1DEF7B9600F7DC9D /* Login Pic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7BE588EB1DEF7B9600F7DC9D /* Login Pic.jpg */; };
-		7BFE1D651DE1440C00C3620E /* SFU Loop.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7BFE1D641DE1440C00C3620E /* SFU Loop.jpg */; };
 		7BFE1D671DE15C0200C3620E /* Coffee Friend.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7BFE1D661DE15C0200C3620E /* Coffee Friend.jpg */; };
 		7BFE1D691DE15D0800C3620E /* Coffee Together.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7BFE1D681DE15D0800C3620E /* Coffee Together.jpg */; };
-		7BFE1D6B1DE1961F00C3620E /* stop .jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7BFE1D6A1DE1961F00C3620E /* stop .jpg */; };
-		7BFE1D6D1DE196C800C3620E /* blank-stop-sign.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7BFE1D6C1DE196C800C3620E /* blank-stop-sign.jpg */; };
 		AC0973871DD054A500191224 /* coffee cup.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AC0973861DD054A500191224 /* coffee cup.jpg */; };
 		AC0973891DD950DF00191224 /* QRGeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0973881DD950DF00191224 /* QRGeneratorViewController.swift */; };
 		AC09738B1DD95C7900191224 /* QRScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC09738A1DD95C7900191224 /* QRScannerViewController.swift */; };
 		AC0973911DE124A900191224 /* Ren Coffee.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = AC0973901DE124A900191224 /* Ren Coffee.jpeg */; };
-		AC0973951DE124CC00191224 /* Transit.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AC0973941DE124CC00191224 /* Transit.jpg */; };
 		ACB9BBAB1DADD2C600F550FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9BBAA1DADD2C600F550FF /* AppDelegate.swift */; };
 		ACB9BBAD1DADD2C600F550FF /* MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9BBAC1DADD2C600F550FF /* MainPage.swift */; };
 		ACB9BBB01DADD2C600F550FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACB9BBAE1DADD2C600F550FF /* Main.storyboard */; };
@@ -78,18 +77,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		7B852E631DDFBA770063CABB /* vector-seamless-pattern-tea-coffee-cups-background-vintage-style-31666208.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "vector-seamless-pattern-tea-coffee-cups-background-vintage-style-31666208.jpg"; path = "../../vector-seamless-pattern-tea-coffee-cups-background-vintage-style-31666208.jpg"; sourceTree = "<group>"; };
+		7B00E9AB1DF201B7006B0904 /* compasscard.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = compasscard.jpg; sourceTree = "<group>"; };
+		7B00E9AD1DF205EA006B0904 /* stop sign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stop sign.png"; sourceTree = "<group>"; };
+		7B00E9AF1DF207A5006B0904 /* Home Back.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Home Back.jpg"; sourceTree = "<group>"; };
+		7B00E9B11DF208F1006B0904 /* CoffeeCUPS.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = CoffeeCUPS.jpg; sourceTree = "<group>"; };
 		7BE588EB1DEF7B9600F7DC9D /* Login Pic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Login Pic.jpg"; sourceTree = "<group>"; };
-		7BFE1D641DE1440C00C3620E /* SFU Loop.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "SFU Loop.jpg"; sourceTree = "<group>"; };
 		7BFE1D661DE15C0200C3620E /* Coffee Friend.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Coffee Friend.jpg"; sourceTree = "<group>"; };
 		7BFE1D681DE15D0800C3620E /* Coffee Together.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Coffee Together.jpg"; sourceTree = "<group>"; };
-		7BFE1D6A1DE1961F00C3620E /* stop .jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "stop .jpg"; sourceTree = "<group>"; };
-		7BFE1D6C1DE196C800C3620E /* blank-stop-sign.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "blank-stop-sign.jpg"; sourceTree = "<group>"; };
 		AC0973861DD054A500191224 /* coffee cup.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "coffee cup.jpg"; sourceTree = "<group>"; };
 		AC0973881DD950DF00191224 /* QRGeneratorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRGeneratorViewController.swift; sourceTree = "<group>"; };
 		AC09738A1DD95C7900191224 /* QRScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRScannerViewController.swift; sourceTree = "<group>"; };
 		AC0973901DE124A900191224 /* Ren Coffee.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Ren Coffee.jpeg"; sourceTree = "<group>"; };
-		AC0973941DE124CC00191224 /* Transit.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Transit.jpg; sourceTree = "<group>"; };
 		ACB9BBA71DADD2C600F550FF /* SFU Coffee Buddies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SFU Coffee Buddies.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACB9BBAA1DADD2C600F550FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACB9BBAC1DADD2C600F550FF /* MainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPage.swift; sourceTree = "<group>"; };
@@ -216,14 +214,13 @@
 		ACB9BBEC1DCD44ED00F550FF /* Icons */ = {
 			isa = PBXGroup;
 			children = (
-				7BFE1D6C1DE196C800C3620E /* blank-stop-sign.jpg */,
-				7BFE1D6A1DE1961F00C3620E /* stop .jpg */,
+				7B00E9B11DF208F1006B0904 /* CoffeeCUPS.jpg */,
+				7B00E9AF1DF207A5006B0904 /* Home Back.jpg */,
+				7B00E9AD1DF205EA006B0904 /* stop sign.png */,
+				7B00E9AB1DF201B7006B0904 /* compasscard.jpg */,
 				7BFE1D681DE15D0800C3620E /* Coffee Together.jpg */,
 				7BFE1D661DE15C0200C3620E /* Coffee Friend.jpg */,
-				7BFE1D641DE1440C00C3620E /* SFU Loop.jpg */,
-				AC0973941DE124CC00191224 /* Transit.jpg */,
 				AC0973901DE124A900191224 /* Ren Coffee.jpeg */,
-				7B852E631DDFBA770063CABB /* vector-seamless-pattern-tea-coffee-cups-background-vintage-style-31666208.jpg */,
 				ACB9BBEF1DCD469A00F550FF /* 171410-200 (1).png */,
 				ACB9BBF11DCD49FF00F550FF /* home-512 (1).png */,
 				ACB9BBF31DCD4A0900F550FF /* user_male_circle_filled1600 (1).png */,
@@ -352,24 +349,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7BFE1D6B1DE1961F00C3620E /* stop .jpg in Resources */,
 				ACB9BBF01DCD469A00F550FF /* 171410-200 (1).png in Resources */,
+				7B00E9AC1DF201B7006B0904 /* compasscard.jpg in Resources */,
 				AC0973871DD054A500191224 /* coffee cup.jpg in Resources */,
 				ACB9BBB51DADD2C600F550FF /* LaunchScreen.storyboard in Resources */,
-				AC0973951DE124CC00191224 /* Transit.jpg in Resources */,
 				D0E8869D1DE5C7F800BD23D8 /* Coffee_BlackStar.png in Resources */,
-				7B852E641DDFBA770063CABB /* vector-seamless-pattern-tea-coffee-cups-background-vintage-style-31666208.jpg in Resources */,
+				7B00E9AE1DF205EA006B0904 /* stop sign.png in Resources */,
 				ACB9BBB21DADD2C600F550FF /* Assets.xcassets in Resources */,
 				ACB9BBB01DADD2C600F550FF /* Main.storyboard in Resources */,
+				7B00E9B01DF207A5006B0904 /* Home Back.jpg in Resources */,
 				D0E886971DE5B9A800BD23D8 /* Coffee_Star.png in Resources */,
 				7BE588EC1DEF7B9600F7DC9D /* Login Pic.jpg in Resources */,
 				AC0973911DE124A900191224 /* Ren Coffee.jpeg in Resources */,
 				7BFE1D671DE15C0200C3620E /* Coffee Friend.jpg in Resources */,
 				ACB9BBF41DCD4A0900F550FF /* user_male_circle_filled1600 (1).png in Resources */,
 				7BFE1D691DE15D0800C3620E /* Coffee Together.jpg in Resources */,
+				7B00E9B21DF208F1006B0904 /* CoffeeCUPS.jpg in Resources */,
 				ACB9BBF21DCD49FF00F550FF /* home-512 (1).png in Resources */,
-				7BFE1D6D1DE196C800C3620E /* blank-stop-sign.jpg in Resources */,
-				7BFE1D651DE1440C00C3620E /* SFU Loop.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

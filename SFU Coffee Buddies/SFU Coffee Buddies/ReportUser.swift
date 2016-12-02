@@ -30,7 +30,7 @@ class ReportUser: UIViewController, UITextViewDelegate, UINavigationControllerDe
     
     @IBOutlet weak var whatsWrongLabel: UILabel!
     @IBOutlet weak var thankYouLabel: UILabel!
-    @IBOutlet weak var reasonLabel: UILabel!
+    //@IBOutlet weak var reasonLabel: UILabel!
     
     @IBOutlet weak var returnToMainPage: UIButton!
     @IBOutlet weak var submitButton: UIButton!
@@ -45,14 +45,16 @@ class ReportUser: UIViewController, UITextViewDelegate, UINavigationControllerDe
         super.viewDidLoad()
         whatsWrongLabel.isHidden = false
         thankYouLabel.isHidden = true
-        reasonLabel.isHidden = false
+        //reasonLabel.isHidden = false
         
         returnToMainPage.isHidden = true
         submitButton.isHidden = false
         //backButton.isHidden = false
         
-        reasonTextField.isHidden = false
+        submitButton.layer.cornerRadius = 5.0
+        submitButton.clipsToBounds = true
         
+        reasonTextField.isHidden = false
         reasonTextField.layer.cornerRadius = 8.0
         reasonTextField.layer.borderColor = UIColor.black.cgColor
         reasonTextField.layer.borderWidth = 0.8
@@ -112,7 +114,7 @@ class ReportUser: UIViewController, UITextViewDelegate, UINavigationControllerDe
         }
         submitButton.isHidden = true
         //backButton.isHidden = true
-        reasonLabel.isHidden = true
+        //reasonLabel.isHidden = true
         reasonTextField.isHidden = true
         whatsWrongLabel.isHidden = true
         thankYouLabel.isHidden = false
