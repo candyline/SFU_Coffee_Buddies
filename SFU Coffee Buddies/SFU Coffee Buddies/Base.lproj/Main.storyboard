@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="syC-e2-IRy">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="syC-e2-IRy">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -168,7 +168,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gyG-Cc-hqa">
-                                <rect key="frame" x="67" y="408" width="240" height="30"/>
+                                <rect key="frame" x="67" y="462" width="240" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
@@ -179,8 +179,16 @@
                                     <action selector="signUp:" destination="YAV-dU-4kY" eventType="touchUpInside" id="yIc-GV-zaM"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="You are agreeing to our terms and conditions by pressing submit" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1z4-qU-SiK">
+                                <rect key="frame" x="16" y="408" width="343" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="You have entered an invalid email, please enter an sfu email and try again" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="g3z-dW-9N6">
-                                <rect key="frame" x="67" y="446" width="240" height="68"/>
+                                <rect key="frame" x="67" y="500" width="240" height="68"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -874,7 +882,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9qD-pk-GNu">
                                 <rect key="frame" x="152" y="447" width="70" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <state key="normal" title="Submit">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -886,7 +894,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="What's wrong? Please tell us below" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X3x-yQ-6Uw">
                                 <rect key="frame" x="37" y="188" width="300" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -901,11 +909,20 @@
                                     <action selector="toMainPage:" destination="fAw-OD-U0F" eventType="touchUpInside" id="zi3-5o-Z4d"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Unable to save the message, please tap out side the text box before continuing with submit" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P7W-bq-cuA">
+                                <rect key="frame" x="37" y="533" width="308" height="84"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="backButton" destination="K9M-cr-MrW" id="PJw-Ay-Feg"/>
+                        <outlet property="errorSavingMsg" destination="P7W-bq-cuA" id="NrP-p1-Dl1"/>
                         <outlet property="reasonTextField" destination="Jdc-Ff-H25" id="cSw-K3-ag7"/>
                         <outlet property="returnToMainPage" destination="bOi-ni-Ibs" id="xtZ-7R-3eF"/>
                         <outlet property="submitButton" destination="9qD-pk-GNu" id="dBY-9x-Wtd"/>
@@ -1302,7 +1319,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3AA-Hi-v9s">
                                 <rect key="frame" x="152" y="581" width="70" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <state key="normal" title="Submit">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1343,8 +1360,8 @@
         <image name="user_male_circle_filled1600 (1).png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fGE-Ur-tpd"/>
+        <segue reference="ALo-F1-NGQ"/>
+        <segue reference="UZG-16-4Af"/>
         <segue reference="QGm-Ze-gTz"/>
-        <segue reference="rtC-6k-NV3"/>
     </inferredMetricsTieBreakers>
 </document>

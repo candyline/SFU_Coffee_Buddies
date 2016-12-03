@@ -30,6 +30,7 @@ class ReportUser: UIViewController, UITextViewDelegate, UINavigationControllerDe
     @IBOutlet weak var whatsWrongLabel: UILabel!
     @IBOutlet weak var thankYouLabel: UILabel!
     //@IBOutlet weak var reasonLabel: UILabel!
+    @IBOutlet weak var errorSavingMsg: UILabel!
     
     @IBOutlet weak var returnToMainPage: UIButton!
     @IBOutlet weak var submitButton: UIButton!
@@ -49,6 +50,7 @@ class ReportUser: UIViewController, UITextViewDelegate, UINavigationControllerDe
         //Prompting user to tell what is wrong with target user
         whatsWrongLabel.isHidden = false
         thankYouLabel.isHidden = true
+        errorSavingMsg.isHidden = true
         //reasonLabel.isHidden = false
         
         returnToMainPage.isHidden = true
@@ -109,36 +111,44 @@ class ReportUser: UIViewController, UITextViewDelegate, UINavigationControllerDe
     //Known Bugs: none
     @IBAction func submitAbuse(_ sender: UIButton)
     {
-        print("Begin .POST to database")
-        
-        //Storing user abuse complain to database
-        let parameters: [String: Any] =
-            [
-                "fromUser"  : userprofile.username,
-                "fromEmail" : userprofile.email,
-                "toUser"    : targetprofile.username,
-                "toEmail"   : targetprofile.email,
-                "message"   : self.abuseMsg
-            ]
-        //print(parameters)
-        //Uploading user text message to database
-        Alamofire.request(serverabuse, method: .post, parameters: parameters, encoding: JSONEncoding.default)
-            .responseString
+        if !(self.abuseMsg == "" || targetprofile.email == "" || targetprofile.username == "" || userprofile.email == "" || userprofile.username == "")
         {
+            print("Begin .POST to database")
+        
+            //Storing user abuse complain to database
+            let parameters: [String: Any] =
+                [
+                    "fromUser"  : userprofile.username,
+                    "fromEmail" : userprofile.email,
+                    "toUser"    : targetprofile.username,
+                    "toEmail"   : targetprofile.email,
+                    "message"   : self.abuseMsg
+                ]
+            //print(parameters)
+            //Uploading user text message to database
+            Alamofire.request(serverabuse, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+                .responseString
+            {
                 response in
                 print(response)
                 //Blocking each other so they will not see each other again
                 ShakePage().blockTarget(localProfile: targetprofile, blockingEmail: userprofile.email, meeting: targetprofile.meeting)
-                ShakePage().blockTarget(localProfile: userprofile, blockingEmail: targetprofile.email, meeting: userprofile.meeting)
-                print("Target email should be blocked (submitAbuse)")
+                ShakePage().blockTarget(localProfile:   userprofile, blockingEmail: targetprofile.email, meeting: userprofile.meeting)
+                print("Target email blocked (submitAbuse)")
+            }
+            submitButton.isHidden = true
+            //backButton.isHidden = true
+            //reasonLabel.isHidden = true
+            reasonTextField.isHidden = true
+            whatsWrongLabel.isHidden = true
+            thankYouLabel.isHidden = false
+            errorSavingMsg.isHidden = true
+            returnToMainPage.isHidden = false
         }
-        submitButton.isHidden = true
-        //backButton.isHidden = true
-        //reasonLabel.isHidden = true
-        reasonTextField.isHidden = true
-        whatsWrongLabel.isHidden = true
-        thankYouLabel.isHidden = false
-        returnToMainPage.isHidden = false
+        else
+        {
+            errorSavingMsg.isHidden = false
+        }
     }
     
     // Creator : Daniel Tan
