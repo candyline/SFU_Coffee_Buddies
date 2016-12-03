@@ -2,13 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <!-- 🖼 Photo Library -->
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>$(PRODUCT_NAME) browse photos for profile picture</string>
-    
-    <!-- 📷 Camera -->
-    <key>NSCameraUsageDescription</key>
-    <string>$(PRODUCT_NAME) take a picture to set as profile picture</string>	<key>CFBundleDevelopmentRegion</key>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>$(PRODUCT_NAME) browse photos for profile picture</string>
+	<key>NSCameraUsageDescription</key>
+	<string>$(PRODUCT_NAME) take a picture to set as profile picture</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>$(PRODUCT_NAME) Adding meeting time and location to calendar</string>
+	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
@@ -47,10 +47,10 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    <key>NSAppTransportSecurity</key>
-    <dict>
-        <key>NSAllowsArbitraryLoads</key>
-        <true/>
-    </dict>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>

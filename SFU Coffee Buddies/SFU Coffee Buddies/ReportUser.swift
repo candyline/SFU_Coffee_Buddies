@@ -98,7 +98,6 @@ class ReportUser: UIViewController, UITextViewDelegate, UINavigationControllerDe
                 "fromEmail" : userProfile.email,
                 "toUser"    : targetProfile.username,
                 "toEmail"   : targetProfile.email,
-                //"type"      : "", //not used for now
                 "message"   : self.abuseMsg
                 ]
         print(parameters)

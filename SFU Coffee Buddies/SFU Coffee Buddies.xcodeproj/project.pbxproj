@@ -42,6 +42,7 @@
 		D04EEBB51DCFCDB200142635 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D04EEBB41DCFCDB200142635 /* SwiftyJSON.framework */; };
 		D04EEBB61DCFCDB200142635 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D04EEBB41DCFCDB200142635 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D05D33A21DDC218E00AD2EDA /* ReportUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05D33A11DDC218E00AD2EDA /* ReportUser.swift */; };
+		D0609C741DF1535B00F7ED59 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0609C731DF1535B00F7ED59 /* Calendar.swift */; };
 		D0B438841DC41387009C5FFC /* ShakePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B438831DC41387009C5FFC /* ShakePage.swift */; };
 		D0E886971DE5B9A800BD23D8 /* Coffee_Star.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E886961DE5B9A800BD23D8 /* Coffee_Star.png */; };
 		D0E8869D1DE5C7F800BD23D8 /* Coffee_BlackStar.png in Resources */ = {isa = PBXBuildFile; fileRef = D0E8869C1DE5C7F800BD23D8 /* Coffee_BlackStar.png */; };
@@ -120,6 +121,7 @@
 		D04EEBAF1DCFB85E00142635 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		D04EEBB41DCFCDB200142635 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		D05D33A11DDC218E00AD2EDA /* ReportUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportUser.swift; sourceTree = "<group>"; };
+		D0609C731DF1535B00F7ED59 /* Calendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		D0B438831DC41387009C5FFC /* ShakePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShakePage.swift; sourceTree = "<group>"; };
 		D0E886961DE5B9A800BD23D8 /* Coffee_Star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Coffee_Star.png; sourceTree = "<group>"; };
 		D0E8869C1DE5C7F800BD23D8 /* Coffee_BlackStar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Coffee_BlackStar.png; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				ACB9BBAC1DADD2C600F550FF /* MainPage.swift */,
 				ACB9BBAA1DADD2C600F550FF /* AppDelegate.swift */,
 				D0B438831DC41387009C5FFC /* ShakePage.swift */,
+				D0609C731DF1535B00F7ED59 /* Calendar.swift */,
 				D05D33A11DDC218E00AD2EDA /* ReportUser.swift */,
 				D002A7161DDFCB5B00692B52 /* BusTogether.swift */,
 				ACB9BBE41DC5228200F550FF /* LoginViewController.swift */,
@@ -411,6 +414,7 @@
 				D002A7171DDFCB5B00692B52 /* BusTogether.swift in Sources */,
 				ACB9BBE71DC5267300F550FF /* NewAccountViewController.swift in Sources */,
 				ACB9BBEB1DC52CA200F550FF /* ProfileSetupViewController.swift in Sources */,
+				D0609C741DF1535B00F7ED59 /* Calendar.swift in Sources */,
 				D0B438841DC41387009C5FFC /* ShakePage.swift in Sources */,
 				ACFB4E581DCECBCC00E159D4 /* ProfilePageViewController.swift in Sources */,
 				D05D33A21DDC218E00AD2EDA /* ReportUser.swift in Sources */,

@@ -189,7 +189,6 @@ class ProfileSetupViewController: UIViewController,
         default:
             break
         }
-        //globalgender = gender
     }
     
     // Creator : Daniel Tan
