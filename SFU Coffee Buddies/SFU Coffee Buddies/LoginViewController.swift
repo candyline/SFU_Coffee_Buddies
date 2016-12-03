@@ -1,5 +1,3 @@
-//  Copyright © 2016 Daniel Tan. All rights reserved.
-//
 //  File Name: LoginViewController.swift
 //  Project Name: SFU Coffee Buddies
 //  Team Name: Group3Genius (G3G)
@@ -7,26 +5,28 @@
 //  Creation Date: Oct 29, 2016
 //
 //  Changelog:
-//      - File Created and Fundamental Functions Implemented
-//      - Grabbing data from database implemented
-//      - Matching user login from database implemented
+//      V1.0: File Created and Fundamental Functions Implemented
+//      V1.1: Grabbing data from database implemented
+//      V1.2: Matching user login from database implemented
 //
 //  Last Modified Author: Eton Kan
-//  Last Modified Date: Nov 18, 2016
+//  Last Modified Date: Dec 2, 2016
 //
 //  List of Bugs:
 //      - username and password fields don't read from database because database isn't done yet - November 6 (Fixed - Eton Nov 18)
-//      - can't press button to login unless tapped away (first responder resigned) - November 6
+//      - can't press button to login unless tapped away (first responder resigned) (Fixed - Eton Dec 2)
+//
+//  Copyright © 2016 Daniel Tan. All rights reserved.
+
 
 import UIKit
 import Alamofire
 import SwiftyJSON
 
 //This classs is used to login and verify user provided email and password matched with database
-
-
 //Author: Daniel Tan
 //Last Modifty: Nov 18,2016
+//Known Bugs: none
 class LoginViewController: UIViewController, UITextFieldDelegate
 {
     // Outlets and variables
@@ -42,11 +42,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate
     
     
     // viewDidLoad function, anyhting that needs to be declared or initialized before the view loads is done here
+    //Author: Daniel Tan
+    //Last Modify: Dec 2,2016
+    //Known Bugs: none
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
-        // hide the incorrect message label
+        // Hide the incorrect message label
         incorrectMessageLabel.isHidden = true
         
         // Handle the text field's user input through delegate callbacks
@@ -72,7 +75,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate
         signup.clipsToBounds = true
         
     }
-
+    
+    //For error handling
+    //Author: Daniel Tan
+    //Last Modify: Dec 2,2016
+    //Known Bugs: none
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
@@ -81,7 +88,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate
     
     //Grabing data from the server and search user using user provided email
     //Author: Eton Kan
-    //Last Modify: Nov 18,2016
+    //Last Modify: Dec 2,2016
     //Known Bugs: none
     func loadDetail(urlPath: String, completionHandler: ((UIBackgroundFetchResult)     -> Void)!)
     {
@@ -109,6 +116,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate
                             if email == self.username
                             {
                                 print("User Found")
+                                //Matching to see if the user provided password is correct
                                 if let userPassword = dataBaseArray[index]["pw"].string
                                 {
                                     userFound = true
@@ -145,8 +153,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate
             {
                 print("Correct Password and Email combo (loginPressed)")
                 print("Login and go to Profile (loginPressed)")
-                userProfile.email = self.username
-                //Switching storyboard to main menu
+                userprofile.email = self.username
+                //Switching storyboard to main menu (login)
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabBar") as! UITabBarController
                 self.present(vc, animated:true, completion: nil)
             }

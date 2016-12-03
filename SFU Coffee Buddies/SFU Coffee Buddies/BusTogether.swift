@@ -1,15 +1,14 @@
-//
 //  File Name: BusTogether.swift
 //  Project Name: SFU Coffee Buddies
 //  Team Name: Group3Genius (G3G)
 //  Author: Eton Kan
 //  Creation Date: Nov 18, 2016
 //  List of Changes:
-//      - Created by Eton Kan
-//      - Implemented Bus Together Function
+//    V1.0: Created by Eton Kan
+//    V1.1: Implemented Bus Together Function
 //
 //  Last Modified Author: Eton Kan
-//  Last Modified Date: Nov 19, 2016
+//  Last Modified Date: Dec 2, 2016
 //
 //  List of Bugs: none
 //
@@ -22,7 +21,8 @@ import SwiftyJSON
 
 //Class to get and display BusTogether informations
 //Author: Eton Kan
-//Last Modifty: Nov 18,2016
+//Last Modifty: Dec 2,2016
+//Known Bugs: none
 class BusTogether: UIViewController
 {
     @IBOutlet weak var busRouteDisplay: UILabel!
@@ -44,11 +44,12 @@ class BusTogether: UIViewController
     var stopNumber135Exchange: String = "53096"//upper bus loop 135 bay 1
     var stopNumberAllCentre: String = "51863"//lower bus loop for 135,143,144 and 145 buses
     var apiKey: String = "exyt3dACJAzO9wookvg5"
-    var count: String = "3" //"&count=" + self.count +
+    var count: String = "3"
     var routeNo: String = "0"
     //var timeFrame: String = "0" //"&timeframe=" + self.timeFrame
     var timeArray = [String]()
     var timeArrayLower = [String]()
+    
     //This function grab data from Translink's API and display bus information to the user (SFU Transite Exchange only)
     //Author: Eton Kan
     //Last Modify: Nov 19,2016
@@ -57,8 +58,8 @@ class BusTogether: UIViewController
     {
         super.viewDidLoad()
         //Perparing bus numbers for Translink's API url
-        self.busRouteLabel.text = userProfile.bus
-        self.routeNo = userProfile.bus
+        self.busRouteLabel.text = userprofile.bus
+        self.routeNo = userprofile.bus
         if (self.routeNo == "145")
         {
             self.stopNumber = self.stopNumber145Exchange
@@ -81,13 +82,12 @@ class BusTogether: UIViewController
             return
         }
         //Get next three bus time from Translink's API
-        getNextThreeBusUpperAPI(busNum: userProfile.bus)
-        
+        getNextThreeBusUpperAPI(busNum: userprofile.bus)
     }
     
     //This function next three buses time from Translink's API SFU Transit Exchange
     //Author: Eton Kan
-    //Last Modify: Nov 19,2016
+    //Last Modify: Dec 2,2016
     //Known Bugs: none
     func getNextThreeBusUpperAPI (busNum: String)
     {
@@ -144,7 +144,7 @@ class BusTogether: UIViewController
                         self.busTimeTwo.text = ""
                         self.busTimeThree.text = ""
                     }
-                    self.getNextThreeBusLowerAPI(busNum: userProfile.bus)
+                    self.getNextThreeBusLowerAPI(busNum: userprofile.bus)
 
                 case .failure(let error):
                     print("Request failed with error: \(error)")

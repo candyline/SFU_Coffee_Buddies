@@ -1,4 +1,3 @@
-//
 //  File Name: ShakePage.swift
 //  Project Name: SFU Coffee Buddies
 //  Team Name: Group3Genius (G3G)
@@ -12,12 +11,12 @@
 //  -Read and PUT to database are implemented
 //
 //  Last Modified Author: Eton Kan
-//  Last Modified Date: Nov 11, 2016
+//  Last Modified Date: Dec 2, 2016
 //
 //  List of Bugs:
 //  motionEnded(): 1) it will crash the database if zero entries are in it (Fixed - Eton Nov 11)
 //                 2) types used for variables are not efficient (Fixed - Eton Nov 11)
-//                 3) unable to block user due to server unable to return array in json
+//                 3) unable to block user due to server unable to return array in json (Fixed - Eton Dec 2)
 //  Copyright © 2016 Eton Kan. All rights reserved.
 //
 
@@ -27,12 +26,12 @@ import Alamofire
 import SwiftyJSON
 
 //Struct used to save user and target informations
-var userProfile = Profile()
-var targetProfile = Profile()
+var userprofile = Profile()
+var targetprofile = Profile()
 
-//public struct that is used to save information from database
+//Profile struct used to save user's or target user's information from database
 //Author: Eton Kan
-//Last Modifty: Nov 11,2016
+//Last Modifty: Dec 2,2016
 //Known Bugs: none
 struct Profile
 {
@@ -56,7 +55,7 @@ struct Profile
 
 //This classs is used to detect shake motion and communicate with user on the status placed on the queue
 //Author: Eton Kan
-//Last Modifty: Nov 11,2016
+//Last Modifty: Dec 2,2016
 class ShakePage: UIViewController
 {
 
@@ -69,7 +68,9 @@ class ShakePage: UIViewController
     @IBOutlet weak var matched: UILabel!
     
     @IBOutlet weak var targetProfilePic: UIImageView!
-    //@IBOutlet weak var targetNameDisplay: UILabel! // please comment out the code without the solid circle, see like line 71 is fine but this line is not
+    
+    //Codes are unlinked (non solid circle) should be commented out due to graphic change
+    //@IBOutlet weak var targetNameDisplay: UILabel!
     //@IBOutlet weak var targetGenderDisplay: UILabel!
     //@IBOutlet weak var targetBusDisplay: UILabel!
     //@IBOutlet weak var targetMajorDisplay: UILabel!
@@ -87,14 +88,16 @@ class ShakePage: UIViewController
     @IBOutlet weak var nextOne: UIButton!
     @IBOutlet weak var busTogether: UIButton!
     @IBOutlet weak var reportAbuse: UIButton!
+    
     //Initilize the page when user enter the page
     //Author: Eton Kan
-    //Last Modify: Nov 11,2016
+    //Last Modify: Dec 2,2016
     //Known Bugs: none
     override func viewDidLoad()
     {
         super.viewDidLoad()
         //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "shake iphone.png")!)
+        
         //Instructing the user to shake their device
         shakePhone.isHidden = false
         placedInQueue.isHidden = true
@@ -103,7 +106,7 @@ class ShakePage: UIViewController
         matched.isHidden = true
         
         //Hiding displays from user
-        //targetProfilePic.isHidden = true
+        targetProfilePic.isHidden = true
         //targetNameDisplay.isHidden = true
         //targetGenderDisplay.isHidden = true
         //targetBusDisplay.isHidden = true
@@ -133,7 +136,7 @@ class ShakePage: UIViewController
     
     //Fill in all information in the struct profile
     //Author: Eton Kan
-    //Last Modify: Nov 11,2016
+    //Last Modify: Dec 2,2016
     //Known Bugs: none
     func getDatafromServer(localProfile: inout Profile, dataBaseArray: JSON , index: Int)
     {
@@ -143,52 +146,52 @@ class ShakePage: UIViewController
         if let username  = dataBaseArray[index]["username"].string
         {
             localProfile.username = username
-            //print(userProfile.username)
+            //print(userprofile.username)
         }
         if let id = dataBaseArray[index]["_id"].string
         {
             localProfile.id = id
-            //print(userProfile.id)
+            //print(userprofile.id)
         }
         if let gender = dataBaseArray[index]["gender"].string
         {
             localProfile.gender = gender
-            //print(userProfile.gender)
+            //print(userprofile.gender)
         }
         if let password = dataBaseArray[index]["pw"].string
         {
             localProfile.pw = password
-            //print(userProfile.password)
+            //print(userprofile.password)
         }
         if let bio = dataBaseArray[index]["bio"].string
         {
             localProfile.bio = bio
-            //print(userProfile.text)
+            //print(userprofile.text)
         }
         if let meeting = dataBaseArray[index]["meeting"].string
         {
             localProfile.meeting = meeting
-            //print(userProfile.meeting)
+            //print(userprofile.meeting)
         }
         if let interest = dataBaseArray[index]["interest"].string
         {
             localProfile.interest = interest
-            //print(userProfile.meeting)
+            //print(userprofile.meeting)
         }
         if let bus = dataBaseArray[index]["bus"].string
         {
             localProfile.bus = bus
-            //print(userProfile.meeting)
+            //print(userprofile.meeting)
         }
         if let major = dataBaseArray[index]["major"].string
         {
             localProfile.major = major
-            //print(userProfile.meeting)
+            //print(userprofile.meeting)
         }
         if let email = dataBaseArray[index]["email"].string
         {
             localProfile.email = email
-            //print(userProfile.meeting)
+            //print(userprofile.meeting)
         }
         if let qrcode = dataBaseArray[index]["QRcode"].string
         {
@@ -229,17 +232,18 @@ class ShakePage: UIViewController
         }
     }
     
-    //Putting the target email to blocking
+    //Blocking target email and update blockUser array on database
     //Author: Eton Kan
-    //Last Modify: Nov 20,2016
+    //Last Modify: Dec 2,2016
     //Known Bugs: none
     func blockTarget(localProfile: Profile, blockingEmail: String, meeting: String)
     {
         var tempProfile = Profile()
         print("Blocking target user now")
+        //Append targetUser's email on to user's blockUser array
         tempProfile.blockedUser = localProfile.blockedUser
         tempProfile.blockedUser.append(blockingEmail)
-        let appendedUserUrl = serverprofile + userProfile.id
+        let appendedUserUrl = serverprofile + userprofile.id
         // Store the information on the database
         let parameters: [String: Any] =
             [
@@ -259,6 +263,7 @@ class ShakePage: UIViewController
                 "coffeeCode": localProfile.coffee,
         ]
         //print(parameters)
+        //Uploading updated user's information to database
         Alamofire.request(appendedUserUrl, method: .put, parameters: parameters, encoding: JSONEncoding.default)
             .responseString
          {
@@ -276,30 +281,30 @@ class ShakePage: UIViewController
     {
         print("User say no :(")
         //Change the blocking of target and user so they will never see each other
-        self.blockTarget(localProfile: userProfile, blockingEmail: targetProfile.email, meeting: userProfile.meeting)
+        self.blockTarget(localProfile: userprofile, blockingEmail: targetprofile.email, meeting: userprofile.meeting)
         self.viewDidLoad()
     }
     
     //User accepted the match, remove target from queue and start chating
     //Author: Eton Kan
-    //Last Modify: Nov 11,2016
+    //Last Modify: Dec 2,2016
     //Known Bugs: none
     @IBAction func letChat(_ sender: UIButton)
     {
-        //Updateing Target meeting information
-        //.put change targetProfile.meeting to false
+        //User accepted wants to chat with targetUser
+        //Updating both user's blocking list to prevent repeated matching of the same user
         //Change target's meeting to false on DataBase
-        self.blockTarget(localProfile: targetProfile, blockingEmail: userProfile.email, meeting: "false")
+        self.blockTarget(localProfile: targetprofile, blockingEmail: userprofile.email, meeting: "false")
         //Change user's meeting to false on DataBase
-        self.blockTarget(localProfile: userProfile, blockingEmail: targetProfile.email, meeting: "false")
+        self.blockTarget(localProfile: userprofile, blockingEmail: targetprofile.email, meeting: "false")
         //Go to chat page
     }
     //A function that detects shake motion either match or put the current user on the queue
     //Author: Eton Kan
-    //Last Modify: Nov 11,2016
+    //Last Modify: Dec 2,2016
     //Known Bugs: 1) it will crash the database if zero entries are in it (Fix - Eton Nov 11)
     //            2) types used for variables are not efficient(warnings) (Fix - Eton Nov 11)
-    //            3) unable to block due to unable to get blockedUser list from database
+    //            3) unable to block due to unable to get blockedUser list from database (Fix - Eton Dec 1)
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?)
     {
         if event?.subtype == UIEventSubtype.motionShake
@@ -333,9 +338,9 @@ class ShakePage: UIViewController
                     {
                         if let email  = dataBaseArray[index]["email"].string
                         {
-                            if email == userProfile.email
+                            if email == userprofile.email
                             {
-                                self.getDatafromServer(localProfile: &userProfile, dataBaseArray:   dataBaseArray, index : index)
+                                self.getDatafromServer(localProfile: &userprofile, dataBaseArray:   dataBaseArray, index : index)
                                 userFound = true
                                 self.profileMissing.isHidden = true
                                 break
@@ -365,14 +370,14 @@ class ShakePage: UIViewController
                         {
                             if let target_meeting = dataBaseArray[index]["meeting"].string
                             {
-                                if target_email != userProfile.email && target_meeting == self.yesMeeting
+                                if target_email != userprofile.email && target_meeting == self.yesMeeting
                                 {
                                     //Checking if the targeted email is blocked or not by the user
-                                    if userProfile.blockedUser.count > 0
+                                    if userprofile.blockedUser.count > 0
                                     {
-                                        for blockedIndex in 0 ... userProfile.blockedUser.count-1
+                                        for blockedIndex in 0 ... userprofile.blockedUser.count-1
                                         {
-                                            if target_email == userProfile.blockedUser[blockedIndex]
+                                            if target_email == userprofile.blockedUser[blockedIndex]
                                             {
                                                 iscontinue = false
                                                 break
@@ -384,7 +389,7 @@ class ShakePage: UIViewController
                                         continue
                                     }
                                     //Enter the target user's information into a profile struct
-                                    self.getDatafromServer(localProfile: &targetProfile, dataBaseArray: dataBaseArray, index : index)
+                                    self.getDatafromServer(localProfile: &targetprofile, dataBaseArray: dataBaseArray, index : index)
                                     //Display target user information on the ShakePage
                                     self.placedInQueue.isHidden = true
                                     self.matched.isHidden = false
@@ -404,17 +409,18 @@ class ShakePage: UIViewController
                                     self.targetInterestLabel.isHidden = false
                                     self.targetBioLabel.isHidden = false
                                     
-                                    self.targetNameLabel.text = targetProfile.username
-                                    self.targetGenderLabel.text = targetProfile.gender
-                                    self.targetBusLabel.text = targetProfile.bus
-                                    self.targetMajorLabel.text = targetProfile.major
-                                    self.targetInterestLabel.text = targetProfile.interest
-                                    self.targetBioLabel.text = targetProfile.bio
-                                    if !(targetProfile.image.isEmpty  || targetProfile.image == "0")
+                                    self.targetNameLabel.text = targetprofile.username
+                                    self.targetGenderLabel.text = targetprofile.gender
+                                    self.targetBusLabel.text = targetprofile.bus
+                                    self.targetMajorLabel.text = targetprofile.major
+                                    self.targetInterestLabel.text = targetprofile.interest
+                                    self.targetBioLabel.text = targetprofile.bio
+                                    if !(targetprofile.image.isEmpty  || targetprofile.image == "0")
                                     {
-                                        self.targetProfilePic.image  = ProfileSetupViewController().stringToImage(userString: targetProfile.image)
+                                        self.targetProfilePic.image  = ProfileSetupViewController().stringToImage(userString: targetprofile.image)
                                     }
                                     
+                                    //Let user decide if target user catch their interest
                                     self.letsChat.isHidden = false
                                     self.nextOne.isHidden = false
                                     self.reportAbuse.isHidden = false
@@ -427,26 +433,27 @@ class ShakePage: UIViewController
                     print("NO Match Found")
                     print("Putting User ON Queue")
                     //Change user's meeting to true on DataBase and let the other users look for you
-                    let appendedUserUrl = serverprofile + userProfile.id
+                    let appendedUserUrl = serverprofile + userprofile.id
                     // Store the information on the DB
                     let parameters: [String: Any] =
                         [
                             "meeting"   : self.yesMeeting,
-                            "gender"    : userProfile.gender,
-                            "pw"        : userProfile.pw, // user's password
-                            "email"     : userProfile.email,
-                            "bio"       : userProfile.bio,
-                            "username"  : userProfile.username,
-                            "interest"  : userProfile.interest,
-                            "bus"       : userProfile.bus,
-                            "major"     : userProfile.major,
-                            "coffee"    : userProfile.coffee,
-                            "blockUser" : userProfile.blockedUser,
-                            "QRcode"    : userProfile.qrCode,
-                            "image"     : userProfile.image,
-                            "coffeeCode": userProfile.coffeeCode
+                            "gender"    : userprofile.gender,
+                            "pw"        : userprofile.pw, // user's password
+                            "email"     : userprofile.email,
+                            "bio"       : userprofile.bio,
+                            "username"  : userprofile.username,
+                            "interest"  : userprofile.interest,
+                            "bus"       : userprofile.bus,
+                            "major"     : userprofile.major,
+                            "coffee"    : userprofile.coffee,
+                            "blockUser" : userprofile.blockedUser,
+                            "QRcode"    : userprofile.qrCode,
+                            "image"     : userprofile.image,
+                            "coffeeCode": userprofile.coffeeCode
                         ]
-                    print(parameters)
+                    //print(parameters)
+                    //Updating user status of meeting to yes
                     Alamofire.request(appendedUserUrl, method: .put, parameters: parameters, encoding: JSONEncoding.default)
                         .responseString
                         { response in

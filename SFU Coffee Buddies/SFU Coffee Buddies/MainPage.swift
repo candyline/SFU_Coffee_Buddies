@@ -1,5 +1,4 @@
-//
-//  File Name: ShakePage.swift
+//  File Name: MainPage.swift
 //  Project Name: SFU Coffee Buddies
 //  Team Name: Group3Genius (G3G)
 //  Author: Daniel Tan
@@ -7,9 +6,10 @@
 //  List of Changes:
 //  V1.0: Created by Daniel Tan
 //  V1.1: default server address added
+//  V1.2: Reward Program added
 //
 //  Last Modified Author: Eton Kan
-//  Last Modified Date: Nov 6, 2016
+//  Last Modified Date: Dec 2, 2016
 //
 //  List of Bugs: none
 //
@@ -19,32 +19,42 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-//Default Server Address (localhost)
-//let serverprofile = "http://127.0.0.1:8080/messages/"
+//Default Server Address
 let serverprofile = "http://guarded-shore-21847.herokuapp.com/contacts/"
-//let serverabuse = "http://127.0.0.1:8080/reportAbuse/"
 let serverabuse = "http://guarded-shore-21847.herokuapp.com/reportAbuse"
-//This classs is the main manual of the app
+
+//This classs contains: 
+//  1) Logout
+//  2) Reward Program
 //Author: Eton Kan
-//Last Modifty: Nov 6,2016
+//Last Modifty: Dec 2,2016
 class MainPage: UIViewController
 {
+    //Yellow stars for matched with QRCode
+    //Black stars for matched needed to redeem free coffee
     @IBOutlet weak var rewardProgramLabel: UILabel!
+    
     @IBOutlet weak var starYellowOne: UIImageView!
     @IBOutlet weak var starYellowTwo: UIImageView!
     @IBOutlet weak var starYellowThree: UIImageView!
     @IBOutlet weak var starYellowFour: UIImageView!
     @IBOutlet weak var starYellowFive: UIImageView!
+    
     @IBOutlet weak var starBlackOne: UIImageView!
     @IBOutlet weak var starBlackTwo: UIImageView!
     @IBOutlet weak var starBlackThree: UIImageView!
     @IBOutlet weak var starBlackFour: UIImageView!
     @IBOutlet weak var starBlackFive: UIImageView!
+    
     @IBOutlet weak var redeemCoffeeButton: UIButton!
     @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var redeemCoffeeDisplay: UILabel!
     @IBOutlet weak var coffeeCodeDisplay: UILabel!
     
+    //Initilize the page when user enter the page
+    //Author: Eton Kan
+    //Last Modify: Dec 2,2016
+    //Known Bugs: none
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -67,7 +77,8 @@ class MainPage: UIViewController
         self.starBlackFour.isHidden = true
         self.starBlackFive.isHidden = true
         
-        if (userProfile.coffee == 0)
+        //Turning on stars depend on the number of match made
+        if (userprofile.coffee == 0)
         {
             self.starYellowOne.isHidden = true
             self.starYellowTwo.isHidden = true
@@ -81,7 +92,7 @@ class MainPage: UIViewController
             self.starBlackFour.isHidden = false
             self.starBlackFive.isHidden = false
         }
-        else if (userProfile.coffee == 1)
+        else if (userprofile.coffee == 1)
         {
             self.starYellowOne.isHidden = false
             self.starYellowTwo.isHidden = true
@@ -95,7 +106,7 @@ class MainPage: UIViewController
             self.starBlackFour.isHidden = false
             self.starBlackFive.isHidden = false
         }
-        else if (userProfile.coffee == 1)
+        else if (userprofile.coffee == 1)
         {
             self.starYellowOne.isHidden = false
             self.starYellowTwo.isHidden = false
@@ -109,7 +120,7 @@ class MainPage: UIViewController
             self.starBlackFour.isHidden = false
             self.starBlackFive.isHidden = false
         }
-        else if (userProfile.coffee == 3)
+        else if (userprofile.coffee == 3)
         {
             self.starYellowOne.isHidden = false
             self.starYellowTwo.isHidden = false
@@ -123,7 +134,7 @@ class MainPage: UIViewController
             self.starBlackFour.isHidden = false
             self.starBlackFive.isHidden = false
         }
-        else if (userProfile.coffee == 4)
+        else if (userprofile.coffee == 4)
         {
             self.starYellowOne.isHidden = false
             self.starYellowTwo.isHidden = false
@@ -137,7 +148,7 @@ class MainPage: UIViewController
             self.starBlackFour.isHidden = true
             self.starBlackFive.isHidden = false
         }
-        else if (userProfile.coffee == 5)
+        else if (userprofile.coffee == 5)
         {
             self.starYellowOne.isHidden = false
             self.starYellowTwo.isHidden = false
@@ -151,10 +162,15 @@ class MainPage: UIViewController
             self.starBlackFour.isHidden = true
             self.starBlackFive.isHidden = true
             
+            //User matched five times, about to redeem free coffee
             redeemCoffeeButton.isHidden = false
         }
     }
     
+    //Reset global variable that uses Profile struct when logout
+    //Author: Eton Kan
+    //Last Modify: Dec 2,2016
+    //Known Bugs: none
     func resetProfile(localProfile: inout Profile)
     {
         localProfile.id = "0"
@@ -173,47 +189,58 @@ class MainPage: UIViewController
         localProfile.coffeeCode = "0"
     }
     
+    //User logout of the app and delete all user info stored
+    //Author: Eton Kan
+    //Last Modify: Dec 2,2016
+    //Known Bugs: none
     @IBAction func logout(_ sender: UIButton)
     {
-        self.resetProfile(localProfile: &userProfile)
-        self.resetProfile(localProfile: &targetProfile)
+        self.resetProfile(localProfile: &userprofile)
+        self.resetProfile(localProfile: &targetprofile)
+        let vc = (self.storyboard?.instantiateViewController(withIdentifier: "loginPage"))! as UIViewController
+        self.present(vc, animated:true, completion: nil)
     }
     
+    //After redeeming coffee, user will be reset to zero yellow stars
+    //Author: Eton Kan
+    //Last Modify: Dec 2,2016
+    //Known Bugs: none
     @IBAction func reset(_ sender: UIButton)
     {
         self.viewDidLoad()
     }
-    //User accepted the match, remove target from queue and start chating
+    
+    //Redeem and upload coffee code to server for record
     //Author: Eton Kan
-    //Last Modify: Nov 11,2016
+    //Last Modify: Dec 2,2016
     //Known Bugs: none
     @IBAction func redeemCoffee(_ sender: UIButton)
     {
-        userProfile.coffeeCode = QRGeneratorViewController().randomString(length: 10)
+        userprofile.coffeeCode = QRGeneratorViewController().randomString(length: 10)
         //User redeemed coffee
-        userProfile.coffee = 0
+        userprofile.coffee = 0
         coffeeCodeDisplay.text = ""
         
         // Store code variable as the QR code into the database
-        let appendedUserUrl = serverprofile + userProfile.id
+        let appendedUserUrl = serverprofile + userprofile.id
         
         // Store the information on the DB
         let parameters: [String: Any] =
         [
-                "meeting"   : userProfile.meeting,
-                "gender"    : userProfile.gender,
-                "pw"        : userProfile.pw, // user's password
-                "email"     : userProfile.email,
-                "bio"       : userProfile.bio,
-                "username"  : userProfile.username,
-                "interest"  : userProfile.interest,
-                "bus"       : userProfile.bus,
-                "major"     : userProfile.major,
-                "coffee"    : userProfile.coffee,
-                "blockUser" : userProfile.blockedUser,
-                "QRcode"    : userProfile.qrCode,
-                "image"     : userProfile.image,
-                "coffeeCode": userProfile.coffeeCode
+                "meeting"   : userprofile.meeting,
+                "gender"    : userprofile.gender,
+                "pw"        : userprofile.pw, // user's password
+                "email"     : userprofile.email,
+                "bio"       : userprofile.bio,
+                "username"  : userprofile.username,
+                "interest"  : userprofile.interest,
+                "bus"       : userprofile.bus,
+                "major"     : userprofile.major,
+                "coffee"    : userprofile.coffee,
+                "blockUser" : userprofile.blockedUser,
+                "QRcode"    : userprofile.qrCode,
+                "image"     : userprofile.image,
+                "coffeeCode": userprofile.coffeeCode
         ]
         print(parameters)
         Alamofire.request(appendedUserUrl, method: .put, parameters: parameters, encoding: JSONEncoding.default)
@@ -228,7 +255,7 @@ class MainPage: UIViewController
                     self.redeemCoffeeButton.isHidden = true
                     self.redeemCoffeeDisplay.isHidden = false
                     self.coffeeCodeDisplay.isHidden = false
-                    self.coffeeCodeDisplay.text = userProfile.coffeeCode
+                    self.coffeeCodeDisplay.text = userprofile.coffeeCode
                     self.resetButton.isHidden = false
                     
                 case .failure(let error):
@@ -236,7 +263,7 @@ class MainPage: UIViewController
                     print("unable to upload free coffee Code to database")
                     self.redeemCoffeeButton.isHidden = true
                     self.coffeeCodeDisplay.text = "Unable to put coffee code to server, please try again later"
-                    userProfile.coffee = 5
+                    userprofile.coffee = 5
                 }
             }
     }

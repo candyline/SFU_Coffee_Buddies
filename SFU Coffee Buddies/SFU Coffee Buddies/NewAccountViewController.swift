@@ -1,17 +1,19 @@
-//
-//  NewAccountViewController.swift
-//  SFU Coffee Buddies
-//
-//  Created by Daniel Tan on 2016-10-29.
-//  Copyright © 2016 CMPT275-3. All rights reserved.
-//
-//  Team : Group3Genius
+//  File: NewAccountViewController.swift
+//  Project Name: SFU Coffee Buddies
+//  Team Name: Group3Genius (G3G)
+//  Author: Daniel Tan
+//  Creation Date: Oct 29, 2016
 //
 //  Changelog:
-//      -File Created and Fundamental Functions Implemented
+//      V1.0: File Created and Fundamental Functions Implemented
 //
 //  Known Bugs:
-//      - Email sending and code generation doesn't work - November 6
+//      1) Email sending and code generation doesn't work - November 6
+//
+//  Last Modified Author: Eton Kan
+//  Last Modified Date: Dec 2, 2016
+//
+//  Copyright © 2016 CMPT275-3. All rights reserved.
 
 import UIKit
 import Alamofire

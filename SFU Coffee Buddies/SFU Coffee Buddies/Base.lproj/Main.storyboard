@@ -12,7 +12,7 @@
         <!--Login View Controller-->
         <scene sceneID="zfn-zh-BCb">
             <objects>
-                <viewController id="syC-e2-IRy" customClass="LoginViewController" customModule="SFU_Coffee_Buddies" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginPage" id="syC-e2-IRy" customClass="LoginViewController" customModule="SFU_Coffee_Buddies" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1zb-fQ-1fb"/>
                         <viewControllerLayoutGuide type="bottom" id="cit-B7-vdO"/>
@@ -689,7 +689,7 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="LogOut"/>
                                                 <connections>
-                                                    <segue destination="syC-e2-IRy" kind="presentation" id="bMG-Xe-s7Q"/>
+                                                    <action selector="logout:" destination="Ybf-jb-5kR" eventType="touchUpInside" id="CoF-o3-qGs"/>
                                                 </connections>
                                             </button>
                                         </barButtonItem>
@@ -1338,7 +1338,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="fGE-Ur-tpd"/>
-        <segue reference="bMG-Xe-s7Q"/>
         <segue reference="QGm-Ze-gTz"/>
         <segue reference="rtC-6k-NV3"/>
     </inferredMetricsTieBreakers>

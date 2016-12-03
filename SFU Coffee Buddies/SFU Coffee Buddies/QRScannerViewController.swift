@@ -1,20 +1,29 @@
-//
-//  QRScannerViewController.swift
-//  SFU Coffee Buddies
-//
-//  Created by Daniel Tan on 2016-11-13.
-//  Copyright © 2016 CMPT275-3. All rights reserved.
-//
-//  Team : Group3Genius
+//  File Name: QRScannerViewController.swift
+//  Project Name: SFU Coffee Buddies
+//  Team Name: Group3Genius (G3G)
+//  Author: Daniel Tan
+//  Creation Date: Nov 20, 2016
 //
 //  Changelog:
-//      -File Created and Fundamental Functions Implemented
+//      V1.0: File Created and Fundamental Functions Implemented
+//
+//  Last Modified Author: Eton Kan
+//  Last Modified Date: Dec 2, 2016
+//
+//  List of Bugs:
+//      - N/A
+//
+//  Copyright © 2016 CMPT275-3. All rights reserved.
 
 import UIKit
 import AVFoundation
 import Alamofire
 import SwiftyJSON
 
+//Class for QRCode scanning using camera
+//Author: Daniel Tan
+//Last Modify: Dec 2,2016
+//Known Bugs: none
 class QRScannerViewController: UIViewController,
                                AVCaptureMetadataOutputObjectsDelegate{
 
@@ -26,21 +35,28 @@ class QRScannerViewController: UIViewController,
     var objCaptureVideoPreviewLayer:AVCaptureVideoPreviewLayer?
     var vwQRCode:UIView?
     
+    //Initilize the page when user enter the page
+    //Author: Daniel Tan
+    //Last Modify: Dec 2,2016
+    //Known Bugs: none
     override func viewDidLoad()
     {
         super.viewDidLoad()
         self.configureVideoCapture()
         self.addVideoPreviewLayer()
         self.initializeQRView()
-        
     }
-
+    
+    //For error handling
+    //Author: Daniel Tan
+    //Last Modify: Dec 2,2016
+    //Known Bugs: none
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     func configureVideoCapture()
     {
         let objCaptureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
@@ -101,7 +117,7 @@ class QRScannerViewController: UIViewController,
             }
             
             // Do check with database here
-            let appendedUrl = serverprofile + targetProfile.id
+            let appendedUrl = serverprofile + targetprofile.id
             Alamofire.request(appendedUrl).responseJSON
                 {
                     response in
@@ -110,11 +126,11 @@ class QRScannerViewController: UIViewController,
                     case .success:
                         print("Grabbed data from database")
                         let dataBaseArray = JSON(response.result.value!)
-                        ShakePage().getDatafromServer(localProfile: &targetProfile, dataBaseArray: dataBaseArray, index: 0)
+                        ShakePage().getDatafromServer(localProfile: &targetprofile, dataBaseArray: dataBaseArray, index: 0)
                         
-                        if self.lblQRCodeResult.text == targetProfile.qrCode
+                        if self.lblQRCodeResult.text == targetprofile.qrCode
                         {
-                            userProfile.coffee += 1
+                            userprofile.coffee += 1
                         }
                         
                     case . failure(let error):

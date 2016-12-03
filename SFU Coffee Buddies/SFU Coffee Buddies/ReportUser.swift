@@ -1,4 +1,3 @@
-//
 //  File Name: ReportUser.swift
 //  Project Name: SFU Coffee Buddies
 //  Team Name: Group3Genius (G3G)
@@ -6,10 +5,10 @@
 //  Creation Date: Nov 11, 2016
 //  List of Changes:
 //  V1.0: Created by Eton Kan
-//  V1.1: Posting Abuse now work
+//  V1.1: Posting Abuse to database
 //
 //  Last Modified Author: Eton Kan
-//  Last Modified Date: Nov 20, 2016
+//  Last Modified Date: Dec 2, 2016
 //
 //  List of Bugs: none
 //
@@ -40,9 +39,14 @@ class ReportUser: UIViewController, UITextViewDelegate, UINavigationControllerDe
     
     var abuseMsg: String = ""
     
+    //Initilize the page when user enter the page
+    //Author: Eton Kan
+    //Last Modify: Dec 2,2016
+    //Known Bugs: none
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        //Prompting user to tell what is wrong with target user
         whatsWrongLabel.isHidden = false
         thankYouLabel.isHidden = true
         //reasonLabel.isHidden = false
@@ -70,46 +74,63 @@ class ReportUser: UIViewController, UITextViewDelegate, UINavigationControllerDe
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
+    //Detecting if user taped somewhere else
+    //Author: Daniel Tan
+    //Last Modify: Dec 2,2016
+    //Known Bugs: none
     func tappedAwayFunction(sender: UITapGestureRecognizer)
     {
         reasonTextField.resignFirstResponder()
     }
     
+    //Saving report abuse text
+    //Author: Eton Kan
+    //Last Modify: Dec 2,2016
+    //Known Bugs: none
     func textViewDidEndEditing(_ textField: UITextView)
     {
         self.abuseMsg = reasonTextField.text
     }
     
+    //Return to main page after reporting user
+    //Author: Eton Kan
+    //Last Modify: Dec 2,2016
+    //Known Bugs: none
     @IBAction func toMainPage(_ sender: UIButton)
     {
+        MainPage().resetProfile(localProfile: &targetprofile)
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabBar") as! UITabBarController
         self.present(vc, animated:true, completion: nil)
     }
     
+    //Uploading report abuse text from user to database
+    //Author: Eton Kan
+    //Last Modify: Dec 2,2016
+    //Known Bugs: none
     @IBAction func submitAbuse(_ sender: UIButton)
     {
         print("Begin .POST to database")
         
-        //let message = reasonTextField
         //Storing user abuse complain to database
         let parameters: [String: Any] =
             [
-                "fromUser"  : userProfile.username,
-                "fromEmail" : userProfile.email,
-                "toUser"    : targetProfile.username,
-                "toEmail"   : targetProfile.email,
+                "fromUser"  : userprofile.username,
+                "fromEmail" : userprofile.email,
+                "toUser"    : targetprofile.username,
+                "toEmail"   : targetprofile.email,
                 "message"   : self.abuseMsg
-                ]
-        print(parameters)
-        
+            ]
+        //print(parameters)
+        //Uploading user text message to database
         Alamofire.request(serverabuse, method: .post, parameters: parameters, encoding: JSONEncoding.default)
             .responseString
         {
                 response in
                 print(response)
-                ShakePage().blockTarget(localProfile: targetProfile, blockingEmail: userProfile.email, meeting: targetProfile.meeting)
-                ShakePage().blockTarget(localProfile: userProfile, blockingEmail: targetProfile.email, meeting: userProfile.meeting)
-            print("Target email should be blocked (submitAbuse)")
+                //Blocking each other so they will not see each other again
+                ShakePage().blockTarget(localProfile: targetprofile, blockingEmail: userprofile.email, meeting: targetprofile.meeting)
+                ShakePage().blockTarget(localProfile: userprofile, blockingEmail: targetprofile.email, meeting: userprofile.meeting)
+                print("Target email should be blocked (submitAbuse)")
         }
         submitButton.isHidden = true
         //backButton.isHidden = true

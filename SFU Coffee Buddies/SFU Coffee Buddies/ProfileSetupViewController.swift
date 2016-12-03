@@ -1,25 +1,25 @@
-//
-//  ProfileSetupViewController.swift
-//  SFU Coffee Buddies
-//
-//  Created by Daniel Tan on 2016-10-29.
-//  Copyright © 2016 CMPT275-3. All rights reserved.
-//
-//
-//  Team : Group3Genius
+//  File: ProfileSetupViewController.swift
+//  Project Name: SFU Coffee Buddies
+//  Team Name: Group3Genius (G3G)
+//  Author: Daniel Tan
+//  Creation Date: Oct 29, 2016
 //
 //  Changelog:
-//      -File Created and Fundamental Functions Implemented
+//      V1.0: File Created and Fundamental Functions Implemented
 //
 //  Known Bugs:
-//      - Save button doesn't work if not tapped out from a text field
-//      - Save button doesn't store the data on the database
-//      - Profile edit doesn't save the profile fields because there is no database
+//      1) Save button doesn't work if not tapped out from a text field (Fixed - Eton Nov 20)
+//      2) Save button doesn't store the data on the database
+//      3) Profile edit doesn't save the profile fields because there is no database
+//
+//  Last Modified Author: Eton Kan
+//  Last Modified Date: Dec 2, 2016
+//
+//  Copyright © 2016 CMPT275-3. All rights reserved.
 
 import UIKit
 import Alamofire
 import SwiftyJSON
-//import DLRadioButton
 
 var globalpicture : UIImage? = nil
 
@@ -108,7 +108,7 @@ class ProfileSetupViewController: UIViewController,
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
-        ProfilePageViewController().getUserProfile(urlPath: serverprofile, userEmail: userProfile.email, completionHandler:
+        ProfilePageViewController().getUserProfile(urlPath: serverprofile, userEmail: userprofile.email, completionHandler:
             {
                 (UIBackgroundFetchResult) -> Void in
                 print("User profile ready for edit")
@@ -216,7 +216,7 @@ class ProfileSetupViewController: UIViewController,
         }
         if !(name == "" || busRoute == "" || gender == "" || major == "" || interest == "" || bio == "")
         {
-            let appendedUserUrl = serverprofile + userProfile.id
+            let appendedUserUrl = serverprofile + userprofile.id
             print(appendedUserUrl)
             
             // Updating the user's information on the DB
@@ -224,18 +224,18 @@ class ProfileSetupViewController: UIViewController,
             [
                     "meeting"  : "false",
                     "gender"   : self.gender,
-                    "pw"       : userProfile.pw,
-                    "email"    : userProfile.email,
+                    "pw"       : userprofile.pw,
+                    "email"    : userprofile.email,
                     "bio"      : self.bio,
                     "username" : self.name,
                     "interest" : self.interest,
                     "bus"      : self.busRoute,
                     "major"    : self.major,
-                    "coffee"   : userProfile.coffee,
-                    "blockUser": userProfile.blockedUser,
-                    "QRcode"   : userProfile.qrCode,
+                    "coffee"   : userprofile.coffee,
+                    "blockUser": userprofile.blockedUser,
+                    "QRcode"   : userprofile.qrCode,
                     "image"    : self.imageString,
-                    "coffeeCode": userProfile.coffeeCode
+                    "coffeeCode": userprofile.coffeeCode
             ]
             //print(parameters)
             Alamofire.request(appendedUserUrl, method: .put, parameters: parameters, encoding: JSONEncoding.default).responseString

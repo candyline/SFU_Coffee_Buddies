@@ -22,7 +22,7 @@ import EventKit
 
 //Calendar Functions are located in this class (add)
 //Author: Eton Kan
-//Last Modifty: Nov 6,2016
+//Last Modifty: Dec 2,2016
 class Calendar: UIViewController,
                 UIImagePickerControllerDelegate,
                 UINavigationControllerDelegate,
@@ -40,6 +40,10 @@ class Calendar: UIViewController,
     @IBOutlet var locationTextField: UITextField!
     @IBOutlet var locationDropDown: UIPickerView!
     
+    //Initilize the page when user enter the page
+    //Author: Eton Kan
+    //Last Modify: Dec 2,2016
+    //Known Bugs: none
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -58,11 +62,13 @@ class Calendar: UIViewController,
         
         locationDropDown.isHidden = true
     }
+    
     // Purpose : overrided function to assign how many components in the picker view
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int
     {
         return 1
     }
+    
     // Purpose : overrided function that returns the number of rows in a picker view according to the list that populates it
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
     {
@@ -94,11 +100,19 @@ class Calendar: UIViewController,
         textField.endEditing(true)
     }
     
+    //Set user's calendar with the coffee meeting time
+    //Author: Eton Kan
+    //Last Modify: Dec 2,2016
+    //Known Bugs: none
     @IBAction func submit(_ sender: UIButton)
     {
-        let msgTitle = meetingAndCoffee + targetProfile.username
+        let msgTitle = meetingAndCoffee + targetprofile.username
         let msgDescription = "Meeting at " + location + " Renaissance"
-        
+        //Set user's calender with coffee meeting time with (example):
+        //  msgTitle: Coffee meeting with targerUser's name
+        //  msgDescription: Meeting at ASB Renaissance
+        //  startDate: Dec 2, 4:00PM in NSDate format
+        //  endDate: Dec 2, 5:00PM in NSDate format
         addEventToCalendar(title: msgTitle, description: msgDescription, startDate: eventStartDatePicker.date as NSDate, endDate: eventEndDatePicker.date as NSDate)
         //Return to main page after creating an event in user's calender
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "TabBar") as! UITabBarController
@@ -113,6 +127,7 @@ class Calendar: UIViewController,
     {
         let eventStore = EKEventStore()
         
+        //Storing event to user's calendar
         eventStore.requestAccess(to: .event, completion:
         {
             (granted, error) in
@@ -128,6 +143,7 @@ class Calendar: UIViewController,
                 
                 do
                 {
+                    //Storing 
                     try eventStore.save(event, span: .thisEvent)
                 }
                 catch let e as NSError

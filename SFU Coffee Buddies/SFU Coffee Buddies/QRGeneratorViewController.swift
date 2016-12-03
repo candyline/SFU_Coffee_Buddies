@@ -1,21 +1,28 @@
-//
-//  QRGeneratorViewController.swift
-//  SFU Coffee Buddies
-//
-//  Created by Daniel Tan on 2016-11-13.
-//  Copyright © 2016 CMPT275-3. All rights reserved.
-//
-//
-//  Team : Group3Genius
+//  File Name: QRGeneratorViewController.swift
+//  Project Name: SFU Coffee Buddies
+//  Team Name: Group3Genius (G3G)
+//  Author: Daniel Tan
+//  Creation Date: Nov 20, 2016
 //
 //  Changelog:
-//      -File Created and Fundamental Functions Implemented
-
+//      V1.0: File Created and Fundamental Functions Implemented
+//
+//  Last Modified Author: Eton Kan
+//  Last Modified Date: Dec 2, 2016
+//
+//  List of Bugs:
+//      - N/A
+//
+//  Copyright © 2016 CMPT275-3. All rights reserved.
 
 import UIKit
 import Alamofire
 import SwiftyJSON
 
+//Class for generating random QRCodes for matching
+//Author: Daniel Tan
+//Last Modify: Dec 2,2016
+//Known Bugs: none
 class QRGeneratorViewController: UIViewController
 {
     
@@ -24,10 +31,12 @@ class QRGeneratorViewController: UIViewController
     @IBOutlet weak var sizeSlider: UISlider!
     @IBOutlet weak var QRCodeImage: UIImageView!
     
-    
-    
-    //Haven't save it to user targetProfile yet
-    //Need chat function to determine how to save it
+    //Initilize the page when user enter the page
+    //Author: Daniel Tan
+    //Last Modify: Dec 2,2016
+    //Known Bugs:
+    //  1)Haven't save it to user targetProfile yet
+    //  2)Need chat function to determine how to save it
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -36,9 +45,9 @@ class QRGeneratorViewController: UIViewController
         if qrcodeImage == nil
         {
             let code = randomString(length: 10)
-            userProfile.qrCode = code
+            userprofile.qrCode = code
             // Store code variable as the QR code into the database
-            let appendedUserUrl = serverprofile + userProfile.id
+            let appendedUserUrl = serverprofile + userprofile.id
             Alamofire.request(appendedUserUrl).responseJSON
                 {
                     response in
@@ -57,26 +66,27 @@ class QRGeneratorViewController: UIViewController
                     let dataBaseArray = JSON(response.result.value!)
                     
                     //Search the user inside the JSON
-                    ShakePage().getDatafromServer(localProfile: &userProfile, dataBaseArray: dataBaseArray, index : 0)
+                    ShakePage().getDatafromServer(localProfile: &userprofile, dataBaseArray: dataBaseArray, index : 0)
                     // Store the information on the DB
                     let parameters: [String: Any] =
                     [
-                            "meeting"   : userProfile.meeting,
-                            "gender"    : userProfile.gender,
-                            "pw"        : userProfile.pw, // user's password
-                            "email"     : userProfile.email,
-                            "bio"       : userProfile.bio,
-                            "username"  : userProfile.username,
-                            "interest"  : userProfile.interest,
-                            "bus"       : userProfile.bus,
-                            "major"     : userProfile.major,
-                            "coffee"    : userProfile.coffee,
-                            "blockUser" : userProfile.blockedUser,
-                            "QRcode"    : userProfile.qrCode,
-                            "image"     : userProfile.image,
-                            "coffeeCode": userProfile.coffeeCode
+                            "meeting"   : userprofile.meeting,
+                            "gender"    : userprofile.gender,
+                            "pw"        : userprofile.pw, // user's password
+                            "email"     : userprofile.email,
+                            "bio"       : userprofile.bio,
+                            "username"  : userprofile.username,
+                            "interest"  : userprofile.interest,
+                            "bus"       : userprofile.bus,
+                            "major"     : userprofile.major,
+                            "coffee"    : userprofile.coffee,
+                            "blockUser" : userprofile.blockedUser,
+                            "QRcode"    : userprofile.qrCode,
+                            "image"     : userprofile.image,
+                            "coffeeCode": userprofile.coffeeCode
                     ]
-                    print(parameters)
+                    //print(parameters)
+                    //Uploading updated user info to database
                     Alamofire.request(appendedUserUrl, method: .put, parameters: parameters, encoding: JSONEncoding.default)
                         .responseString
                     {
@@ -100,6 +110,10 @@ class QRGeneratorViewController: UIViewController
         }
     }
 
+    //For error handling
+    //Author: Daniel Tan
+    //Last Modify: Dec 2,2016
+    //Known Bugs: none
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
@@ -139,14 +153,4 @@ class QRGeneratorViewController: UIViewController
         
         return randomString
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

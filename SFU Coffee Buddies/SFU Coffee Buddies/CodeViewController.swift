@@ -1,18 +1,20 @@
-//
-//  CodeViewController.swift
-//  SFU Coffee Buddies
-//
-//  Created by Daniel Tan on 2016-10-29.
-//  Copyright © 2016 CMPT275-3. All rights reserved.
-//
-//
-//  Team : Group3Genius
+//  File: CodeViewController.swift
+//  Project Name: SFU Coffee Buddies
+//  Team Name: Group3Genius (G3G)
+//  Author: Daniel Tan
+//  Creation Date: Oct 29, 2016
 //
 //  Changelog:
-//      -File Created and Fundamental Functions Implemented
+//      V1.0: File Created and Fundamental Functions Implemented
 //
 //  Known Bugs:
-//      - Database doesn't work, no way to verify codes, since email sneding and generation doesn't work too so this doesn't work - November 6
+//      1) Database doesn't work, no way to verify codes - November 6
+//      2) Since email sending and generating doesn't work - November 6
+//
+//  Last Modified Author: Daniel Tan
+//  Last Modified Date: Oct 29, 2016
+//
+//  Copyright © 2016 CMPT275-3. All rights reserved.
 
 import UIKit
 

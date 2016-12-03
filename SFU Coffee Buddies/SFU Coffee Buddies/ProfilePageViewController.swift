@@ -1,25 +1,28 @@
-//
-//  ProfilePageViewController.swift
-//  SFU Coffee Buddies
-//
-//  Created by Daniel Tan on 2016-11-05.
-//  Copyright © 2016 CMPT275-3. All rights reserved.
-//
-//
-//  Team : Group3Genius
+//  File Name: ProfilePageViewController.swift
+//  Project Name: SFU Coffee Buddies
+//  Team Name: Group3Genius (G3G)
+//  Author: Daniel Tan
+//  Creation Date: Oct 29, 2016
 //
 //  Changelog:
-//      -File Created and Fundamental Functions Implemented
+//      V1.0: File Created and Fundamental Functions Implemented
+//      V1.1: Grabbing data from database implemented
+//      V1.2: user profile pictures from database implemented
 //
-//  Known Bugs:
+//  Last Modified Author: Eton Kan
+//  Last Modified Date: Dec 2, 2016
+//
+//  List of Bugs:
 //      - N/A
+//
+//  Copyright © 2016 CMPT275-3. All rights reserved.
 
 import UIKit
 import Alamofire
 import SwiftyJSON
 
-class ProfilePageViewController: UIViewController {
-
+class ProfilePageViewController: UIViewController
+{
     // Outlets
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -29,6 +32,10 @@ class ProfilePageViewController: UIViewController {
     @IBOutlet weak var interestTextView: UITextView!
     @IBOutlet weak var bioTextView: UITextView!
 
+    //Getting user's information for display later
+    //Author: Eton Kan
+    //Last Modify: Dec 2,2016
+    //Known Bugs: none
     func getUserProfile(urlPath: String, userEmail: String, completionHandler: ((UIBackgroundFetchResult) -> Void)!)
     {
         var userFound = false
@@ -48,10 +55,10 @@ class ProfilePageViewController: UIViewController {
                 {
                     if let email  = dataBaseArray[index]["email"].string
                     {
-                        if email == userProfile.email
+                        if email == userprofile.email
                         {
                             print("Loading user information in to location memory")
-                            ShakePage().getDatafromServer(localProfile: &userProfile, dataBaseArray: dataBaseArray, index : index)
+                            ShakePage().getDatafromServer(localProfile: &userprofile, dataBaseArray: dataBaseArray, index : index)
                                     completionHandler(UIBackgroundFetchResult.newData)
                             userFound = true
                         }
@@ -68,7 +75,10 @@ class ProfilePageViewController: UIViewController {
             }
         }
     }
-    // viewDidLoad function, anyhting that needs to be declared or initialized before the view loads is done here
+    // viewDidLoad function, anything that needs to be declared or initialized before the view loads is done here
+    //Author: Eton Kan
+    //Last Modify: Dec 2,2016
+    //Known Bugs: none
     override func viewDidLoad()
     {
         //making profile pic circular
@@ -77,33 +87,37 @@ class ProfilePageViewController: UIViewController {
         
         super.viewDidLoad()
         //Getting user information from database
-        self.getUserProfile(urlPath: serverprofile, userEmail: userProfile.email, completionHandler:
-            {
-                (UIBackgroundFetchResult) -> Void in
-                // Assign the labels on the view as the values saved from database
-                self.nameLabel.text = userProfile.username
-                self.busRouteLabel.text = userProfile.bus
-                self.genderLabel.text = userProfile.gender
-                self.majorLabel.text = userProfile.major
+        self.getUserProfile(urlPath: serverprofile, userEmail: userprofile.email, completionHandler:
+        {
+            (UIBackgroundFetchResult) -> Void in
+            // Assign the labels on the view as the values saved from database
+            self.nameLabel.text = userprofile.username
+            self.busRouteLabel.text = userprofile.bus
+            self.genderLabel.text = userprofile.gender
+            self.majorLabel.text = userprofile.major
                 
-                self.interestTextView.isEditable = false
-                self.bioTextView.isEditable = false
+            self.interestTextView.isEditable = false
+            self.bioTextView.isEditable = false
             
-                self.interestTextView.text = userProfile.interest
-                self.bioTextView.text = userProfile.bio
+            self.interestTextView.text = userprofile.interest
+            self.bioTextView.text = userprofile.bio
+            
+            if !(userprofile.image.isEmpty || userprofile.image == "0")
+            {
+                self.profileImage.image = ProfileSetupViewController().stringToImage(userString: userprofile.image)
+            }
                 
-                if !(userProfile.image.isEmpty || userProfile.image == "0")
-                {
-                    self.profileImage.image = ProfileSetupViewController().stringToImage(userString: userProfile.image)
-                }
-                
-                //self.profileImage.image = globalpicture
-                print("User profile ready for display")
+            //self.profileImage.image = globalpicture
+            print("User profile ready for display")
         })
     }
     
-
-    override func didReceiveMemoryWarning() {
+    //For error handling
+    //Author: Eton Kan
+    //Last Modify: Dec 2,2016
+    //Known Bugs: none
+    override func didReceiveMemoryWarning()
+    {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
