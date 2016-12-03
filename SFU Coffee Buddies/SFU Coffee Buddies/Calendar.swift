@@ -48,6 +48,9 @@ class Calendar: UIViewController,
     {
         super.viewDidLoad()
         
+        submitButton.layer.cornerRadius = 5.0
+        submitButton.clipsToBounds = true
+        
         locationTextField.delegate = self
         
         locationDropDown.layer.cornerRadius = 8.0
