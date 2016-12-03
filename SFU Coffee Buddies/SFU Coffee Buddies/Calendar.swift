@@ -124,6 +124,7 @@ class Calendar: UIViewController,
                 event.endDate = endDate as Date
                 event.notes = description
                 event.calendar = eventStore.defaultCalendarForNewEvents
+                event.addAlarm(EKAlarm(absoluteDate: event.startDate))
                 
                 do
                 {
