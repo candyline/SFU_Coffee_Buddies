@@ -11,6 +11,9 @@
 		7B00E9AE1DF205EA006B0904 /* stop sign.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B00E9AD1DF205EA006B0904 /* stop sign.png */; };
 		7B00E9B01DF207A5006B0904 /* Home Back.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7B00E9AF1DF207A5006B0904 /* Home Back.jpg */; };
 		7B00E9B21DF208F1006B0904 /* CoffeeCUPS.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7B00E9B11DF208F1006B0904 /* CoffeeCUPS.jpg */; };
+		7B03FA901DF255F40084AED5 /* shakephone.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7B03FA8F1DF255F40084AED5 /* shakephone.jpg */; };
+		7B03FA921DF25DAD0084AED5 /* Home Page.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B03FA911DF25DAD0084AED5 /* Home Page.png */; };
+		7B03FA961DF260370084AED5 /* home .jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7B03FA951DF260370084AED5 /* home .jpg */; };
 		7BE588EC1DEF7B9600F7DC9D /* Login Pic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7BE588EB1DEF7B9600F7DC9D /* Login Pic.jpg */; };
 		7BFE1D671DE15C0200C3620E /* Coffee Friend.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7BFE1D661DE15C0200C3620E /* Coffee Friend.jpg */; };
 		7BFE1D691DE15D0800C3620E /* Coffee Together.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7BFE1D681DE15D0800C3620E /* Coffee Together.jpg */; };
@@ -81,6 +84,9 @@
 		7B00E9AD1DF205EA006B0904 /* stop sign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stop sign.png"; sourceTree = "<group>"; };
 		7B00E9AF1DF207A5006B0904 /* Home Back.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Home Back.jpg"; sourceTree = "<group>"; };
 		7B00E9B11DF208F1006B0904 /* CoffeeCUPS.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = CoffeeCUPS.jpg; sourceTree = "<group>"; };
+		7B03FA8F1DF255F40084AED5 /* shakephone.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = shakephone.jpg; sourceTree = "<group>"; };
+		7B03FA911DF25DAD0084AED5 /* Home Page.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Home Page.png"; sourceTree = "<group>"; };
+		7B03FA951DF260370084AED5 /* home .jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "home .jpg"; sourceTree = "<group>"; };
 		7BE588EB1DEF7B9600F7DC9D /* Login Pic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Login Pic.jpg"; sourceTree = "<group>"; };
 		7BFE1D661DE15C0200C3620E /* Coffee Friend.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Coffee Friend.jpg"; sourceTree = "<group>"; };
 		7BFE1D681DE15D0800C3620E /* Coffee Together.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Coffee Together.jpg"; sourceTree = "<group>"; };
@@ -214,6 +220,9 @@
 		ACB9BBEC1DCD44ED00F550FF /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				7B03FA951DF260370084AED5 /* home .jpg */,
+				7B03FA911DF25DAD0084AED5 /* Home Page.png */,
+				7B03FA8F1DF255F40084AED5 /* shakephone.jpg */,
 				7B00E9B11DF208F1006B0904 /* CoffeeCUPS.jpg */,
 				7B00E9AF1DF207A5006B0904 /* Home Back.jpg */,
 				7B00E9AD1DF205EA006B0904 /* stop sign.png */,
@@ -349,15 +358,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B03FA921DF25DAD0084AED5 /* Home Page.png in Resources */,
 				ACB9BBF01DCD469A00F550FF /* 171410-200 (1).png in Resources */,
 				7B00E9AC1DF201B7006B0904 /* compasscard.jpg in Resources */,
 				AC0973871DD054A500191224 /* coffee cup.jpg in Resources */,
 				ACB9BBB51DADD2C600F550FF /* LaunchScreen.storyboard in Resources */,
+				7B03FA961DF260370084AED5 /* home .jpg in Resources */,
 				D0E8869D1DE5C7F800BD23D8 /* Coffee_BlackStar.png in Resources */,
 				7B00E9AE1DF205EA006B0904 /* stop sign.png in Resources */,
 				ACB9BBB21DADD2C600F550FF /* Assets.xcassets in Resources */,
 				ACB9BBB01DADD2C600F550FF /* Main.storyboard in Resources */,
 				7B00E9B01DF207A5006B0904 /* Home Back.jpg in Resources */,
+				7B03FA901DF255F40084AED5 /* shakephone.jpg in Resources */,
 				D0E886971DE5B9A800BD23D8 /* Coffee_Star.png in Resources */,
 				7BE588EC1DEF7B9600F7DC9D /* Login Pic.jpg in Resources */,
 				AC0973911DE124A900191224 /* Ren Coffee.jpeg in Resources */,

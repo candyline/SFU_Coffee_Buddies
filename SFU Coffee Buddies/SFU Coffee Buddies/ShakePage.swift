@@ -103,7 +103,7 @@ class ShakePage: UIViewController
         matched.isHidden = true
         
         //Hiding displays from user
-        //targetProfilePic.isHidden = true
+        targetProfilePic.isHidden = true
         //targetNameDisplay.isHidden = true
         //targetGenderDisplay.isHidden = true
         //targetBusDisplay.isHidden = true
