@@ -22,6 +22,7 @@
 		AC0973891DD950DF00191224 /* QRGeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0973881DD950DF00191224 /* QRGeneratorViewController.swift */; };
 		AC09738B1DD95C7900191224 /* QRScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC09738A1DD95C7900191224 /* QRScannerViewController.swift */; };
 		AC0973911DE124A900191224 /* Ren Coffee.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = AC0973901DE124A900191224 /* Ren Coffee.jpeg */; };
+		AC0973991DF4D64800191224 /* CodeScannedScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0973981DF4D64800191224 /* CodeScannedScene.swift */; };
 		ACB9BBAB1DADD2C600F550FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9BBAA1DADD2C600F550FF /* AppDelegate.swift */; };
 		ACB9BBAD1DADD2C600F550FF /* MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB9BBAC1DADD2C600F550FF /* MainPage.swift */; };
 		ACB9BBB01DADD2C600F550FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACB9BBAE1DADD2C600F550FF /* Main.storyboard */; };
@@ -97,6 +98,7 @@
 		AC0973881DD950DF00191224 /* QRGeneratorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRGeneratorViewController.swift; sourceTree = "<group>"; };
 		AC09738A1DD95C7900191224 /* QRScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRScannerViewController.swift; sourceTree = "<group>"; };
 		AC0973901DE124A900191224 /* Ren Coffee.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Ren Coffee.jpeg"; sourceTree = "<group>"; };
+		AC0973981DF4D64800191224 /* CodeScannedScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeScannedScene.swift; sourceTree = "<group>"; };
 		ACB9BBA71DADD2C600F550FF /* SFU Coffee Buddies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SFU Coffee Buddies.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACB9BBAA1DADD2C600F550FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ACB9BBAC1DADD2C600F550FF /* MainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPage.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 			children = (
 				ACB9BBEC1DCD44ED00F550FF /* Icons */,
 				ACB9BBAE1DADD2C600F550FF /* Main.storyboard */,
+				AC0973981DF4D64800191224 /* CodeScannedScene.swift */,
 				ACB9BBAC1DADD2C600F550FF /* MainPage.swift */,
 				ACB9BBAA1DADD2C600F550FF /* AppDelegate.swift */,
 				D0B438831DC41387009C5FFC /* ShakePage.swift */,
@@ -420,6 +423,7 @@
 				D0609C741DF1535B00F7ED59 /* Calendar.swift in Sources */,
 				4EAABADB1DF3A4DD005C99E5 /* SocketIOManager.swift in Sources */,
 				D0B438841DC41387009C5FFC /* ShakePage.swift in Sources */,
+				AC0973991DF4D64800191224 /* CodeScannedScene.swift in Sources */,
 				ACFB4E581DCECBCC00E159D4 /* ProfilePageViewController.swift in Sources */,
 				D05D33A21DDC218E00AD2EDA /* ReportUser.swift in Sources */,
 			);

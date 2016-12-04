@@ -44,7 +44,7 @@ class QRGeneratorViewController: UIViewController
         // Generate and put the QR code on the screen when the view loads
         if qrcodeImage == nil
         {
-            let code = randomString(length: 10)
+            let code = randomString(length: 5)
             userprofile.qrCode = code
             // Store code variable as the QR code into the database
             let appendedUserUrl = serverprofile + userprofile.id
