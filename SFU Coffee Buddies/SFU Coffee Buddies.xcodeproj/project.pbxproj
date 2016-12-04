@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4EAABADB1DF3A4DD005C99E5 /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAABADA1DF3A4DD005C99E5 /* SocketIOManager.swift */; };
 		7B00E9AC1DF201B7006B0904 /* compasscard.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7B00E9AB1DF201B7006B0904 /* compasscard.jpg */; };
 		7B00E9AE1DF205EA006B0904 /* stop sign.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B00E9AD1DF205EA006B0904 /* stop sign.png */; };
 		7B00E9B01DF207A5006B0904 /* Home Back.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7B00E9AF1DF207A5006B0904 /* Home Back.jpg */; };
@@ -81,6 +82,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4EAABADA1DF3A4DD005C99E5 /* SocketIOManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
 		7B00E9AB1DF201B7006B0904 /* compasscard.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = compasscard.jpg; sourceTree = "<group>"; };
 		7B00E9AD1DF205EA006B0904 /* stop sign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stop sign.png"; sourceTree = "<group>"; };
 		7B00E9AF1DF207A5006B0904 /* Home Back.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Home Back.jpg"; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				ACB9BBE61DC5267300F550FF /* NewAccountViewController.swift */,
 				ACB9BBE81DC5282E00F550FF /* CodeViewController.swift */,
 				ACB9BBB11DADD2C600F550FF /* Assets.xcassets */,
+				4EAABADA1DF3A4DD005C99E5 /* SocketIOManager.swift */,
 				ACB9BBB31DADD2C600F550FF /* LaunchScreen.storyboard */,
 				ACB9BBB61DADD2C600F550FF /* Info.plist */,
 				ACB9BBFC1DCD99BF00F550FF /* SFU Coffee Buddies-Bridging-Header.h */,
@@ -415,6 +418,7 @@
 				ACB9BBE71DC5267300F550FF /* NewAccountViewController.swift in Sources */,
 				ACB9BBEB1DC52CA200F550FF /* ProfileSetupViewController.swift in Sources */,
 				D0609C741DF1535B00F7ED59 /* Calendar.swift in Sources */,
+				4EAABADB1DF3A4DD005C99E5 /* SocketIOManager.swift in Sources */,
 				D0B438841DC41387009C5FFC /* ShakePage.swift in Sources */,
 				ACFB4E581DCECBCC00E159D4 /* ProfilePageViewController.swift in Sources */,
 				D05D33A21DDC218E00AD2EDA /* ReportUser.swift in Sources */,
