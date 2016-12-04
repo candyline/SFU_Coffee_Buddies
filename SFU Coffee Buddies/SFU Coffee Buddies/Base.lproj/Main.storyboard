@@ -661,6 +661,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="QR Code Text:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g09-K4-8AT">
                                 <frame key="frameInset" minX="16" minY="626" width="111" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -668,6 +669,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="NO QR Code Text Detected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FXY-2f-tsl">
                                 <frame key="frameInset" minX="150" minY="626" width="210" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -683,8 +685,10 @@
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="8Cc-qx-yVH" id="cYI-yn-l9c"/>
                         <outlet property="lblQRCodeLabel" destination="g09-K4-8AT" id="QdC-pV-mN4"/>
                         <outlet property="lblQRCodeResult" destination="FXY-2f-tsl" id="hIb-V1-Xey"/>
+                        <outlet property="navigationBar" destination="Kdg-NJ-pAd" id="8ZH-3D-YYi"/>
                         <outlet property="promptlbl" destination="6eF-I7-isc" id="3PB-nU-SWZ"/>
                     </connections>
                 </viewController>
@@ -709,16 +713,15 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="barTintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
-                                    <navigationItem title="SFU Coffee Buddies" id="ciR-5K-oXb"/>
+                                    <navigationItem title="SFU Coffee Buddies" id="ciR-5K-oXb">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="RuN-xa-DpD">
+                                            <connections>
+                                                <segue destination="lj3-SR-thM" kind="presentation" id="RVw-JX-04c"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Thank you for using SFU Coffee Buddies Here is you discount code, please show it to the cashier to receive your discount" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="xnV-Ee-g7N">
-                                <frame key="frameInset" minX="67" minY="115" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UhK-TS-Mws">
                                 <frame key="frameInset" minX="146" minY="311" width="82" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -726,6 +729,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Thank you for using SFU Coffee Buddies  Here is your discount code, please show it to the cashier to receive your discount" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="xnV-Ee-g7N">
+                                <frame key="frameInset" minX="67" minY="133" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -735,7 +745,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2U5-aM-W9U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2716" y="800.14992503748135"/>
+            <point key="canvasLocation" x="2694" y="803"/>
         </scene>
         <!--Home-->
         <scene sceneID="a4P-hH-1vw">
@@ -1437,8 +1447,8 @@
         <image name="user_male_circle_filled1600 (1).png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="rtC-6k-NV3"/>
+        <segue reference="RVw-JX-04c"/>
         <segue reference="QGm-Ze-gTz"/>
-        <segue reference="UZG-16-4Af"/>
+        <segue reference="ALo-F1-NGQ"/>
     </inferredMetricsTieBreakers>
 </document>
