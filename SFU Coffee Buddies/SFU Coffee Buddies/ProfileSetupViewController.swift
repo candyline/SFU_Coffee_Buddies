@@ -113,21 +113,21 @@ class ProfileSetupViewController: UIViewController,
             {
                 (UIBackgroundFetchResult) -> Void in
                 print("User profile ready for edit")
+                if !(userprofile.username == "0" || userprofile.interest == "0" || userprofile.bio == "0" || userprofile.bus == "0" || userprofile.major == "0")
+                {
+                    self.nameTextField.text = userprofile.username
+                    self.interestTextField.text = userprofile.interest
+                    self.bioTextView.text = userprofile.bio
+                    self.busRouteTextField.text = userprofile.bus
+                    self.majorTextField.text = userprofile.major
+                    self.gender = userprofile.gender
+                    if !(userprofile.image.isEmpty || userprofile.image == "0")
+                    {
+                        self.profilePictureImageView.image = ProfileSetupViewController().stringToImage(userString: userprofile.image)
+                        self.imageString = userprofile.image
+                    }
+                }
         })
-        if !(userprofile.username == "0" || userprofile.interest == "0" || userprofile.bio == "0" || userprofile.bus == "0" || userprofile.major == "0")
-        {
-            self.nameTextField.text = userprofile.username
-            self.interestTextField.text = userprofile.interest
-            self.bioTextView.text = userprofile.bio
-            self.busRouteTextField.text = userprofile.bus
-            self.majorTextField.text = userprofile.major
-            self.gender = userprofile.gender
-            if !(userprofile.image.isEmpty || userprofile.image == "0")
-            {
-                self.profilePictureImageView.image = ProfileSetupViewController().stringToImage(userString: userprofile.image)
-                imageString = userprofile.image
-            }
-        }
     }
     
     //Putting text into their respective variables
@@ -190,8 +190,11 @@ class ProfileSetupViewController: UIViewController,
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
     {
         // Image will be set to the UIImageView on the view controller
-        profilePictureImageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
-        globalpicture = profilePictureImageView.image
+        //profilePictureImageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        //globalpicture = profilePictureImageView.image
+        globalpicture = info[UIImagePickerControllerOriginalImage] as? UIImage
+        imageString = imageToString(userImage: globalpicture!)
+        profilePictureImageView.image = stringToImage(userString: imageString)
         // Store the image in the db
         self.dismiss(animated: true, completion: nil)
     }
