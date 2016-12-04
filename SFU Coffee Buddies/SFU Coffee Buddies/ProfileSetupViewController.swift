@@ -87,8 +87,9 @@ class ProfileSetupViewController: UIViewController,
         majorDropDown.layer.borderColor = UIColor.black.cgColor
         majorDropDown.layer.borderWidth = 0.8
         
+        nameTextField.addTarget(self,action: #selector(didChangeText(textField:)), for: .editingChanged)
         // Assign Delegates
-        nameTextField.delegate = self
+        //nameTextField.delegate = self
         interestTextField.delegate = self
         bioTextView.delegate = self
         busRouteTextField.delegate = self
@@ -113,9 +114,35 @@ class ProfileSetupViewController: UIViewController,
                 (UIBackgroundFetchResult) -> Void in
                 print("User profile ready for edit")
         })
-
+        if !(userprofile.username == "0" || userprofile.interest == "0" || userprofile.bio == "0" || userprofile.bus == "0" || userprofile.major == "0")
+        {
+            self.nameTextField.text = userprofile.username
+            self.interestTextField.text = userprofile.interest
+            self.bioTextView.text = userprofile.bio
+            self.busRouteTextField.text = userprofile.bus
+            self.majorTextField.text = userprofile.major
+            self.gender = userprofile.gender
+            if !(userprofile.image.isEmpty || userprofile.image == "0")
+            {
+                self.profilePictureImageView.image = ProfileSetupViewController().stringToImage(userString: userprofile.image)
+                imageString = userprofile.image
+            }
+        }
     }
-
+    
+    //Putting text into their respective variables
+    //Author: Eton Kan
+    //Last Modify: Dec 2,2016
+    //Known Bugs: none
+    func didChangeText(textField: UITextField)
+    {
+        name = nameTextField.text!
+    }
+    
+    //Converting profile pictures to base 64 string
+    //Author: Eton Kan
+    //Last Modify: Dec 2,2016
+    //Known Bugs: none
     func imageToString(userImage: UIImage) -> String
     {
         let targetSize = CGSize(width: 200, height: 200)
@@ -143,23 +170,19 @@ class ProfileSetupViewController: UIViewController,
        
         let imageData = UIImageJPEGRepresentation(newImage!, 0.0)
         let base64String: String  = imageData!.base64EncodedString()
-        //let imageData = UIImageJPEGRepresentation(userImage, 0.0)
-        //let base64String: String  = imageData!.base64EncodedString()
         
         return base64String
     }
     
+    //Converting base 64 string to profile pictures
+    //Author: Eton Kan
+    //Last Modify: Dec 2,2016
+    //Known Bugs: none
     func stringToImage(userString: String) ->UIImage
     {
         let dataDecoded = NSData(base64Encoded: userString, options: NSData.Base64DecodingOptions.ignoreUnknownCharacters)!
         let image = UIImage(data: dataDecoded as Data)
         return image!
-    }
-    
-    override func didReceiveMemoryWarning()
-    {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // Purpose : Overrided public function in the UIImagePickerDelegate
@@ -210,6 +233,12 @@ class ProfileSetupViewController: UIViewController,
     //            First time cannot put information in to database (due to unable to get user id)
     @IBAction func saveProfile(_ sender: UIButton)
     {
+        interest = interestTextField.text
+        bio = bioTextView.text
+        busRoute = busRouteTextField.text!
+        name = nameTextField.text!
+        major = majorTextField.text!
+        
         if (globalpicture != nil)
         {
             imageString = imageToString(userImage: globalpicture!)
@@ -284,16 +313,6 @@ class ProfileSetupViewController: UIViewController,
         // Hide the keyboard
         textField.resignFirstResponder()
         return true
-    }
-    
-    // Creator : Daniel Tan
-    // Purpose : Implementing the optional functions to handle what the textField does when it ends editting
-    //           read which text field and stores the text from that field into the corresponding variable
-    func textFieldDidEndEditing(_ textField: UITextField)
-    {
-        name = nameTextField.text!
-        //globalname = name
-        
     }
     
     // Creator : Daniel Tan

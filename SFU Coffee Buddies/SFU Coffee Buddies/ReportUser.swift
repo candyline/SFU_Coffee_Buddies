@@ -111,6 +111,7 @@ class ReportUser: UIViewController, UITextViewDelegate, UINavigationControllerDe
     //Known Bugs: none
     @IBAction func submitAbuse(_ sender: UIButton)
     {
+        self.abuseMsg = reasonTextField.text
         if !(self.abuseMsg == "" || targetprofile.email == "" || targetprofile.username == "" || userprofile.email == "" || userprofile.username == "")
         {
             print("Begin .POST to database")

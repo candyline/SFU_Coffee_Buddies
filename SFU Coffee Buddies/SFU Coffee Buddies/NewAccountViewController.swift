@@ -40,9 +40,8 @@ class NewAccountViewController: UIViewController, UITextFieldDelegate
     {
         super.viewDidLoad()
         
-        // Assign delegates
-        emailTextField.delegate = self
-        pwTextField.delegate = self
+        emailTextField.addTarget(self,action: #selector(didChangeText(textField:)), for: .editingChanged)
+        pwTextField.addTarget(self,action: #selector(didChangeText(textField:)), for: .editingChanged)
         
         // Tap Gesture will close the keyboard, when tapping the view, will call the tappedAwayFunction
         let myGesture = UITapGestureRecognizer(target: self, action: #selector(NewAccountViewController.tappedAwayFunction(sender:)))
@@ -71,10 +70,11 @@ class NewAccountViewController: UIViewController, UITextFieldDelegate
         return true
     }*/
     
-    // Creator : Daniel Tan
-    // Purpose : Implementing the optional functions to handle what the textField does when it ends editting
-    //           read which text field and stores the text from that field into the corresponding variable
-    func textFieldDidEndEditing(_ textField: UITextField)
+    //Putting text into their respective variables
+    //Author: Eton Kan
+    //Last Modify: Dec 2,2016
+    //Known Bugs: none
+    func didChangeText(textField: UITextField)
     {
         if (textField == emailTextField)
         {
