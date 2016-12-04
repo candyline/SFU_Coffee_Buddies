@@ -286,6 +286,12 @@ class ProfileSetupViewController: UIViewController,
                     }
             }
         }
+        else
+        {
+            let alert = UIAlertController(title: "Alert", message: "Please fill in all fields to proceed", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     // Creator : Daniel Tan
@@ -296,15 +302,18 @@ class ProfileSetupViewController: UIViewController,
         if (identifier == "saveProfile")
         {
             // check if any field is empty
-            if (name == "" || busRoute == "" || gender == "" || major == "" || interest == "" || bio == ""){
+            if (name == "" || busRoute == "" || gender == "" || major == "" || interest == "" || bio == "")
+            {
                 return false
             }
                 
-            else{
+            else
+            {
                 return true
             }
         }
-        else {
+        else
+        {
             return true
         }
     }

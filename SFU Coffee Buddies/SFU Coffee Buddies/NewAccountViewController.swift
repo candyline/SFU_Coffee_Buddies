@@ -54,6 +54,10 @@ class NewAccountViewController: UIViewController, UITextFieldDelegate
         signUpButton.layer.cornerRadius = 5.0
         signUpButton.clipsToBounds = true
         
+        // Adds Observer for the view
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
     }
     
     override func didReceiveMemoryWarning()
@@ -134,6 +138,29 @@ class NewAccountViewController: UIViewController, UITextFieldDelegate
     {
         emailTextField.resignFirstResponder()
         pwTextField.resignFirstResponder()
+    }
+    
+    // Creator : Daniel Tan
+    // Purpose : When the keyboard pops up, the view will move up so the user can see the text view it is blocking
+    func keyboardWillShow(notification: NSNotification)
+    {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0{
+                self.view.frame.origin.y -= 100
+            }
+        }
+        
+    }
+    
+    // Creator : Daniel Tan
+    // Purpose : When the keyboard is retracted, will move the view back to the original position
+    func keyboardWillHide(notification: NSNotification)
+    {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += 100
+            }
+        }
     }
 
     // Purpose : Sends an email to the user to verify the authenticity of the SFU email
