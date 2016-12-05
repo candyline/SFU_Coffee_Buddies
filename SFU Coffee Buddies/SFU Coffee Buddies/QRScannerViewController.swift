@@ -29,6 +29,8 @@ class QRScannerViewController: UIViewController,
 {
 
     // Variables and Outlets
+    @IBOutlet weak var backButton: UIBarButtonItem!
+    @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var promptlbl: UITextView!
     @IBOutlet weak var lblQRCodeLabel: UILabel!
     @IBOutlet weak var lblQRCodeResult: UILabel!
@@ -65,7 +67,7 @@ class QRScannerViewController: UIViewController,
             if let qrCodeFrameView = qrCodeFrameView
             {
                 qrCodeFrameView.layer.borderColor = UIColor.blue.cgColor
-                qrCodeFrameView.layer.borderWidth = 10
+                qrCodeFrameView.layer.borderWidth = 5
                 view.addSubview(qrCodeFrameView)
                 view.bringSubview(toFront: qrCodeFrameView)
             }
@@ -92,6 +94,7 @@ class QRScannerViewController: UIViewController,
         view.bringSubview(toFront: promptlbl)
         view.bringSubview(toFront: lblQRCodeLabel)
         view.bringSubview(toFront: lblQRCodeResult)
+        view.bringSubview(toFront: navigationBar)
     }
     
     func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!)
