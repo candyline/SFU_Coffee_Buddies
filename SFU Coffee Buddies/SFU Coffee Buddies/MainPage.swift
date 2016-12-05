@@ -187,6 +187,7 @@ class MainPage: UIViewController
         localProfile.image = "0"
         localProfile.coffee = 0
         localProfile.coffeeCode = "0"
+        localProfile.chatUser.removeAll()
     }
     
     //User logout of the app and delete all user info stored
@@ -240,7 +241,8 @@ class MainPage: UIViewController
                 "blockUser" : userprofile.blockedUser,
                 "QRcode"    : userprofile.qrCode,
                 "image"     : userprofile.image,
-                "coffeeCode": userprofile.coffeeCode
+                "coffeeCode": userprofile.coffeeCode,
+                "chatUser"  : userprofile.chatUser
         ]
         print(parameters)
         Alamofire.request(appendedUserUrl, method: .put, parameters: parameters, encoding: JSONEncoding.default)

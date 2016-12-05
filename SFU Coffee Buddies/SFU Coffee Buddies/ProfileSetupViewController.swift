@@ -254,22 +254,23 @@ class ProfileSetupViewController: UIViewController,
             // Updating the user's information on the DB
             let parameters: [String: Any] =
             [
-                    "meeting"  : "false",
-                    "gender"   : self.gender,
-                    "pw"       : userprofile.pw,
-                    "email"    : userprofile.email,
-                    "bio"      : self.bio,
-                    "username" : self.name,
-                    "interest" : self.interest,
-                    "bus"      : self.busRoute,
-                    "major"    : self.major,
-                    "coffee"   : userprofile.coffee,
-                    "blockUser": userprofile.blockedUser,
-                    "QRcode"   : userprofile.qrCode,
-                    "image"    : self.imageString,
-                    "coffeeCode": userprofile.coffeeCode
+                    "meeting"   : "false",
+                    "gender"    : self.gender,
+                    "pw"        : userprofile.pw,
+                    "email"     : userprofile.email,
+                    "bio"       : self.bio,
+                    "username"  : self.name,
+                    "interest"  : self.interest,
+                    "bus"       : self.busRoute,
+                    "major"     : self.major,
+                    "coffee"    : userprofile.coffee,
+                    "blockUser" : userprofile.blockedUser,
+                    "QRcode"    : userprofile.qrCode,
+                    "image"     : self.imageString,
+                    "coffeeCode": userprofile.coffeeCode,
+                    "chatUser"  : userprofile.chatUser
             ]
-            //print(parameters)
+            print(parameters)
             Alamofire.request(appendedUserUrl, method: .put, parameters: parameters, encoding: JSONEncoding.default).responseString
             {
                     response in

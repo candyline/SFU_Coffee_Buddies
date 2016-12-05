@@ -46,6 +46,7 @@ struct Profile
     var email = globalemail
     var bus = "0"
     var major = "0"
+    var chatUser = [String]()
     var blockedUser = [String]()
     var qrCode = "0"
     var image = "0"
@@ -140,6 +141,8 @@ class ShakePage: UIViewController
     //Known Bugs: none
     func getDatafromServer(localProfile: inout Profile, dataBaseArray: JSON , index: Int)
     {
+        var chatUserExist = false
+        var blockUserExist = false
         //print(dataBaseArray)
         //print(index)
         //Enter the user's information into the Profile struct
@@ -210,25 +213,100 @@ class ShakePage: UIViewController
         {
             localProfile.coffeeCode = coffeeCode
         }
+        for chatUsers in 0 ... dataBaseArray[index]["chatUser"].count
+        {
+            if let chatingUser = dataBaseArray[index]["chatUser"][chatUsers].string
+            {
+                if localProfile.chatUser.count > 0
+                {
+                    for userChatList in 0 ... localProfile.chatUser.count-1
+                    {
+                        if chatingUser == localProfile.chatUser[userChatList]
+                        {
+                            chatUserExist = true
+                            break
+                        }
+                    }
+                    if !(chatUserExist)
+                    {
+                    localProfile.chatUser.append(chatingUser)
+                    }
+                    chatUserExist = false
+                }
+                else
+                {
+                    localProfile.blockedUser.append(chatingUser)
+                }
+            }
+        }
+
         for users in 0 ... dataBaseArray[index]["blockUser"].count
         {
             if let blockUser = dataBaseArray[index]["blockUser"][users].string
             {
                 if localProfile.blockedUser.count > 0
                 {
-                for userblocklist in 0 ... localProfile.blockedUser.count-1
-                {
-                    if blockUser != localProfile.blockedUser[userblocklist]
+                    for userblocklist in 0 ... localProfile.blockedUser.count-1
+                    {
+                        if blockUser == localProfile.blockedUser[userblocklist]
+                        {
+                            blockUserExist = true
+                            break
+                        }
+                    }
+                    if !(blockUserExist)
                     {
                         localProfile.blockedUser.append(blockUser)
                     }
-                }
+                        blockUserExist = false
                 }
                 else
                 {
                     localProfile.blockedUser.append(blockUser)
                 }
             }
+        }
+    }
+    
+    //Adding target email to chatUser array on database
+    //Author: Eton Kan
+    //Last Modify: Dec 2,2016
+    //Known Bugs: none
+    func chatTarget(localProfile: Profile, chattingEmail: String, meeting: String)
+    {
+        var tempProfile = Profile()
+        print("Blocking target user now")
+        //Append targetUser's email on to user's blockUser array
+        tempProfile.chatUser = localProfile.chatUser
+        tempProfile.chatUser.append(chattingEmail)
+        let appendedUserUrl = serverprofile + userprofile.id
+        // Store the information on the database
+        let parameters: [String: Any] =
+            [
+                "meeting"   : meeting,
+                "gender"    : localProfile.gender,
+                "pw"        : localProfile.pw, // user's password
+                "email"     : localProfile.email,
+                "bio"       : localProfile.bio,
+                "username"  : localProfile.username,
+                "interest"  : localProfile.interest,
+                "bus"       : localProfile.bus,
+                "major"     : localProfile.major,
+                "coffee"    : localProfile.coffee,
+                "blockUser" : localProfile.blockedUser,
+                "QRcode"    : localProfile.qrCode,
+                "image"     : localProfile.image,
+                "coffeeCode": localProfile.coffee,
+                "chatUser"  : tempProfile.chatUser,
+            ]
+        //print(parameters)
+        //Uploading updated user's information to database
+        Alamofire.request(appendedUserUrl, method: .put, parameters: parameters, encoding: JSONEncoding.default)
+            .responseString
+            {
+                response in
+                print(response)
+                print("chatTarget")
         }
     }
     
@@ -261,6 +339,7 @@ class ShakePage: UIViewController
                 "QRcode"    : localProfile.qrCode,
                 "image"     : localProfile.image,
                 "coffeeCode": localProfile.coffee,
+                "chatUser"  : localProfile.chatUser
         ]
         //print(parameters)
         //Uploading updated user's information to database
@@ -282,6 +361,7 @@ class ShakePage: UIViewController
         print("User say no :(")
         //Change the blocking of target and user so they will never see each other
         self.blockTarget(localProfile: userprofile, blockingEmail: targetprofile.email, meeting: userprofile.meeting)
+        MainPage().resetProfile(localProfile: &targetprofile)
         self.viewDidLoad()
     }
     
@@ -293,10 +373,13 @@ class ShakePage: UIViewController
     {
         //User accepted wants to chat with targetUser
         //Updating both user's blocking list to prevent repeated matching of the same user
-        //Change target's meeting to false on DataBase
+        //Change target and user's meeting to false on DataBase and put each other on blocking list so they will never find each other on the shake and match again
         self.blockTarget(localProfile: targetprofile, blockingEmail: userprofile.email, meeting: "false")
-        //Change user's meeting to false on DataBase
         self.blockTarget(localProfile: userprofile, blockingEmail: targetprofile.email, meeting: "false")
+        //Add user and target to chatUser array
+        self.chatTarget(localProfile: targetprofile, chattingEmail: userprofile.email, meeting: "false")
+        self.chatTarget(localProfile: userprofile, chattingEmail: targetprofile.email, meeting: "false")
+        
         //Go to chat page
     }
     //A function that detects shake motion either match or put the current user on the queue
@@ -372,6 +455,8 @@ class ShakePage: UIViewController
                             {
                                 if target_email != userprofile.email && target_meeting == self.yesMeeting
                                 {
+                                    print(target_email)
+                                    iscontinue = true
                                     //Checking if the targeted email is blocked or not by the user
                                     if userprofile.blockedUser.count > 0
                                     {
@@ -450,7 +535,8 @@ class ShakePage: UIViewController
                             "blockUser" : userprofile.blockedUser,
                             "QRcode"    : userprofile.qrCode,
                             "image"     : userprofile.image,
-                            "coffeeCode": userprofile.coffeeCode
+                            "coffeeCode": userprofile.coffeeCode,
+                            "chatUser"  : userprofile.chatUser
                         ]
                     //print(parameters)
                     //Updating user status of meeting to yes

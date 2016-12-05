@@ -83,7 +83,8 @@ class QRGeneratorViewController: UIViewController
                             "blockUser" : userprofile.blockedUser,
                             "QRcode"    : userprofile.qrCode,
                             "image"     : userprofile.image,
-                            "coffeeCode": userprofile.coffeeCode
+                            "coffeeCode": userprofile.coffeeCode,
+                            "chatUser"  : userprofile.chatUser
                     ]
                     //print(parameters)
                     //Uploading updated user info to database
