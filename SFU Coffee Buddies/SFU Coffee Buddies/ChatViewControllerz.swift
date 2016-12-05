@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SocketIO
 
 class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, UIGestureRecognizerDelegate {
 

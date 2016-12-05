@@ -1,4 +1,5 @@
 import UIKit
+import SocketIO
 
 class SocketIOManager: NSObject {
     // so we can call this anywhere in the code
