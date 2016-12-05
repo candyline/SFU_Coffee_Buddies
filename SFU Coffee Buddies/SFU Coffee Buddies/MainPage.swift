@@ -244,7 +244,7 @@ class MainPage: UIViewController
                 "coffeeCode": userprofile.coffeeCode,
                 "chatUser"  : userprofile.chatUser
         ]
-        print(parameters)
+        //print(parameters)
         Alamofire.request(appendedUserUrl, method: .put, parameters: parameters, encoding: JSONEncoding.default)
             .responseString
             {

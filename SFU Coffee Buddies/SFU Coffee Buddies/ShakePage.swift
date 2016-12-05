@@ -455,7 +455,7 @@ class ShakePage: UIViewController
                             {
                                 if target_email != userprofile.email && target_meeting == self.yesMeeting
                                 {
-                                    print(target_email)
+                                    //print(target_email)
                                     iscontinue = true
                                     //Checking if the targeted email is blocked or not by the user
                                     if userprofile.blockedUser.count > 0
