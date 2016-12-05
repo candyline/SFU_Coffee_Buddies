@@ -89,6 +89,7 @@ class ShakePage: UIViewController
     @IBOutlet weak var nextOne: UIButton!
     @IBOutlet weak var busTogether: UIButton!
     @IBOutlet weak var reportAbuse: UIButton!
+    @IBOutlet weak var qrCode: UIButton!
     
     //Initilize the page when user enter the page
     //Author: Eton Kan
@@ -128,6 +129,7 @@ class ShakePage: UIViewController
         nextOne.isHidden = true
         reportAbuse.isHidden = true
         busTogether.isHidden = true
+        qrCode.isHidden = true
         
         //making circular profile pic image
         targetProfilePic.layer.cornerRadius = targetProfilePic.frame.size.width/2
@@ -510,6 +512,7 @@ class ShakePage: UIViewController
                                     self.nextOne.isHidden = false
                                     self.reportAbuse.isHidden = false
                                     self.busTogether.isHidden = false
+                                    self.qrCode.isHidden = false
                                     return
                                 }
                             }
