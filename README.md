@@ -59,7 +59,7 @@ Do in any directory in terminal:
 -------------------------------------------------------------------------------------
 ## Go into the directory that contains the cartfile which should be the SFU Coffee Buddies directory ##
 
-     - carthage update --platform iOS --no-use-binaries
+     - carthage update --platform iOS,macosx --no-use-binaries
 
 and will fix the module compile version error
 
