@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E3CD3AE1DF523600097AE18 /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3CD3A81DF523600097AE18 /* BaseCell.swift */; };
+		4E3CD3AF1DF523600097AE18 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3CD3A91DF523600097AE18 /* ChatCell.swift */; };
+		4E3CD3B01DF523600097AE18 /* ChatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E3CD3AA1DF523600097AE18 /* ChatCell.xib */; };
+		4E3CD3B11DF523600097AE18 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3CD3AB1DF523600097AE18 /* ChatViewController.swift */; };
+		4E3CD3B21DF523600097AE18 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3CD3AC1DF523600097AE18 /* UserCell.swift */; };
+		4E3CD3B31DF523600097AE18 /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E3CD3AD1DF523600097AE18 /* UserCell.xib */; };
 		4EAABADB1DF3A4DD005C99E5 /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EAABADA1DF3A4DD005C99E5 /* SocketIOManager.swift */; };
 		7B00E9AC1DF201B7006B0904 /* compasscard.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7B00E9AB1DF201B7006B0904 /* compasscard.jpg */; };
 		7B00E9AE1DF205EA006B0904 /* stop sign.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B00E9AD1DF205EA006B0904 /* stop sign.png */; };
@@ -83,6 +89,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4E3CD3A81DF523600097AE18 /* BaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
+		4E3CD3A91DF523600097AE18 /* ChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
+		4E3CD3AA1DF523600097AE18 /* ChatCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatCell.xib; sourceTree = "<group>"; };
+		4E3CD3AB1DF523600097AE18 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		4E3CD3AC1DF523600097AE18 /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		4E3CD3AD1DF523600097AE18 /* UserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
 		4EAABADA1DF3A4DD005C99E5 /* SocketIOManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
 		7B00E9AB1DF201B7006B0904 /* compasscard.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = compasscard.jpg; sourceTree = "<group>"; };
 		7B00E9AD1DF205EA006B0904 /* stop sign.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stop sign.png"; sourceTree = "<group>"; };
@@ -158,6 +170,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E3CD3B41DF5236C0097AE18 /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4E3CD3A81DF523600097AE18 /* BaseCell.swift */,
+				4E3CD3A91DF523600097AE18 /* ChatCell.swift */,
+				4E3CD3AA1DF523600097AE18 /* ChatCell.xib */,
+				4E3CD3AC1DF523600097AE18 /* UserCell.swift */,
+				4E3CD3AD1DF523600097AE18 /* UserCell.xib */,
+			);
+			name = "Custom Cells";
+			sourceTree = "<group>";
+		};
 		ACB9BB9E1DADD2C600F550FF = {
 			isa = PBXGroup;
 			children = (
@@ -183,6 +207,7 @@
 		ACB9BBA91DADD2C600F550FF /* SFU Coffee Buddies */ = {
 			isa = PBXGroup;
 			children = (
+				4E3CD3B41DF5236C0097AE18 /* Custom Cells */,
 				ACB9BBEC1DCD44ED00F550FF /* Icons */,
 				ACB9BBAE1DADD2C600F550FF /* Main.storyboard */,
 				AC0973981DF4D64800191224 /* CodeScannedScene.swift */,
@@ -201,6 +226,7 @@
 				ACB9BBE81DC5282E00F550FF /* CodeViewController.swift */,
 				ACB9BBB11DADD2C600F550FF /* Assets.xcassets */,
 				4EAABADA1DF3A4DD005C99E5 /* SocketIOManager.swift */,
+				4E3CD3AB1DF523600097AE18 /* ChatViewController.swift */,
 				ACB9BBB31DADD2C600F550FF /* LaunchScreen.storyboard */,
 				ACB9BBB61DADD2C600F550FF /* Info.plist */,
 				ACB9BBFC1DCD99BF00F550FF /* SFU Coffee Buddies-Bridging-Header.h */,
@@ -327,7 +353,7 @@
 				TargetAttributes = {
 					ACB9BBA61DADD2C600F550FF = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = DCP8QRE785;
+						DevelopmentTeam = 98RXKD757B;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
@@ -375,10 +401,12 @@
 				ACB9BBB51DADD2C600F550FF /* LaunchScreen.storyboard in Resources */,
 				7B03FA961DF260370084AED5 /* home .jpg in Resources */,
 				D0E8869D1DE5C7F800BD23D8 /* Coffee_BlackStar.png in Resources */,
+				4E3CD3B01DF523600097AE18 /* ChatCell.xib in Resources */,
 				7B00E9AE1DF205EA006B0904 /* stop sign.png in Resources */,
 				ACB9BBB21DADD2C600F550FF /* Assets.xcassets in Resources */,
 				ACB9BBB01DADD2C600F550FF /* Main.storyboard in Resources */,
 				7B00E9B01DF207A5006B0904 /* Home Back.jpg in Resources */,
+				4E3CD3B31DF523600097AE18 /* UserCell.xib in Resources */,
 				7B03FA901DF255F40084AED5 /* shakephone.jpg in Resources */,
 				D0E886971DE5B9A800BD23D8 /* Coffee_Star.png in Resources */,
 				7BE588EC1DEF7B9600F7DC9D /* Login Pic.jpg in Resources */,
@@ -415,7 +443,10 @@
 				AC09738B1DD95C7900191224 /* QRScannerViewController.swift in Sources */,
 				ACB9BBE51DC5228200F550FF /* LoginViewController.swift in Sources */,
 				AC0973891DD950DF00191224 /* QRGeneratorViewController.swift in Sources */,
+				4E3CD3AF1DF523600097AE18 /* ChatCell.swift in Sources */,
 				ACB9BBAD1DADD2C600F550FF /* MainPage.swift in Sources */,
+				4E3CD3AE1DF523600097AE18 /* BaseCell.swift in Sources */,
+				4E3CD3B21DF523600097AE18 /* UserCell.swift in Sources */,
 				ACB9BBAB1DADD2C600F550FF /* AppDelegate.swift in Sources */,
 				ACB9BBE91DC5282E00F550FF /* CodeViewController.swift in Sources */,
 				D002A7171DDFCB5B00692B52 /* BusTogether.swift in Sources */,
@@ -426,6 +457,7 @@
 				D0B438841DC41387009C5FFC /* ShakePage.swift in Sources */,
 				AC0973991DF4D64800191224 /* CodeScannedScene.swift in Sources */,
 				ACFB4E581DCECBCC00E159D4 /* ProfilePageViewController.swift in Sources */,
+				4E3CD3B11DF523600097AE18 /* ChatViewController.swift in Sources */,
 				D05D33A21DDC218E00AD2EDA /* ReportUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -581,7 +613,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = DCP8QRE785;
+				DEVELOPMENT_TEAM = 98RXKD757B;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -601,7 +633,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = DCP8QRE785;
+				DEVELOPMENT_TEAM = 98RXKD757B;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
