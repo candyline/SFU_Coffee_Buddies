@@ -103,6 +103,11 @@ class Calendar: UIViewController,
         textField.endEditing(true)
     }
     
+    func tappedAwayFunction(sender: UITapGestureRecognizer)
+    {
+        locationTextField.resignFirstResponder()
+    }
+    
     //Set user's calendar with the coffee meeting time
     //Author: Eton Kan
     //Last Modify: Dec 2,2016
