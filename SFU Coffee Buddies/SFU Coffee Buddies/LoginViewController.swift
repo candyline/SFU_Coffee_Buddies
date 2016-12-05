@@ -63,8 +63,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate
         //Rounded Corner Image with red border
         img.layer.cornerRadius = 10.0
         img.clipsToBounds = true
-        img.layer.borderWidth = 3.0
-        img.layer.borderColor = UIColor.red.cgColor
+        //img.layer.borderWidth = 3.0
+        //img.layer.borderColor = UIColor.red.cgColor
         
         //Rounded Login Button 
         button.layer.cornerRadius = 5.0
