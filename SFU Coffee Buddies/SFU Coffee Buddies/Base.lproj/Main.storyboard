@@ -70,10 +70,10 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="coffee cup.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="4CZ-4J-CNM">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="coffee33.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="4CZ-4J-CNM">
                                 <frame key="frameInset" minX="119" minY="126" height="29.39%" maxX="119"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NeQ-br-NKc">
                                 <frame key="frameInset" minX="67" minY="503" height="35" maxX="68"/>
@@ -291,11 +291,6 @@
                                 <color key="barTintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
                                     <navigationItem title="Profile Setup" id="1ER-bW-6ed">
-                                        <barButtonItem key="leftBarButtonItem" title="Test" id="nXF-NO-4BB">
-                                            <connections>
-                                                <segue destination="6Px-S7-BsB" kind="presentation" id="rtC-6k-NV3"/>
-                                            </connections>
-                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="LIh-Y8-7i5">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2AP-I5-QT2">
                                                 <rect key="frame" x="325" y="7" width="34" height="30"/>
@@ -339,7 +334,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hxD-Z8-GMY">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hxD-Z8-GMY">
+                                <frame key="frameInset" minX="112" minY="525" width="244" height="132"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -383,11 +379,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Interest:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z3Z-2u-N5b">
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QWt-nG-8e8">
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </pickerView>
@@ -402,6 +393,11 @@
                                 <frame key="frameInset" minX="104" minY="88" width="172" height="172"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Interest:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z3Z-2u-N5b">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.90964716672897339" green="0.47324949502944946" blue="0.59007275104522705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -489,6 +485,11 @@
                                 <color key="barTintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
                                     <navigationItem title="Profile" id="pRl-id-lv0">
+                                        <barButtonItem key="leftBarButtonItem" title="Bus Together" id="htF-qQ-cVp">
+                                            <connections>
+                                                <segue destination="jEc-yf-ZDB" kind="presentation" id="5r3-pd-BI3"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Edit" id="sPd-e9-FDv">
                                             <connections>
                                                 <segue destination="T6X-4f-Nbd" kind="presentation" id="QGm-Ze-gTz"/>
@@ -587,10 +588,10 @@
                                     <navigationItem title="SFU Coffee Buddies" id="MQ4-SD-NJJ">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="xoy-cP-wAe">
                                             <connections>
-                                                <segue destination="T6X-4f-Nbd" kind="presentation" id="IMt-nU-c6D"/>
+                                                <segue destination="lj3-SR-thM" kind="presentation" id="g4g-oz-DCX"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Test Scan" id="fpU-3I-dnp">
+                                        <barButtonItem key="rightBarButtonItem" title="Scan" id="fpU-3I-dnp">
                                             <connections>
                                                 <segue destination="J21-ja-fTw" kind="presentation" id="yOd-ot-k9M"/>
                                             </connections>
@@ -1162,6 +1163,14 @@
                                 <color key="textColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cbN-NH-ldi">
+                                <frame key="frameInset" minX="160" minY="567" width="62" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="QR Code"/>
+                                <connections>
+                                    <segue destination="6Px-S7-BsB" kind="presentation" id="0ZP-M9-mbM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -1174,6 +1183,7 @@
                         <outlet property="nextOne" destination="dat-tn-YvF" id="6hz-gy-0Ym"/>
                         <outlet property="placedInQueue" destination="E6l-Fo-fqc" id="QCe-gy-GlA"/>
                         <outlet property="profileMissing" destination="U69-qN-WEq" id="ApD-br-9Ym"/>
+                        <outlet property="qrCode" destination="cbN-NH-ldi" id="o9G-Ey-UkS"/>
                         <outlet property="reportAbuse" destination="tL8-LL-g7z" id="DBa-VL-cXn"/>
                         <outlet property="shakePhone" destination="zb7-XB-5RG" id="D0H-bc-aVS"/>
                         <outlet property="targetBioLabel" destination="Lbk-1H-zcl" id="zeG-cg-27I"/>
@@ -1346,10 +1356,10 @@
                                 </items>
                             </navigationBar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DL4-Al-aPI">
-                                <frame key="frameInset" minX="112" minY="191" width="250" height="30"/>
+                                <frame key="frameInset" minX="111" minY="186" width="248" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M4n-2L-0J7">
@@ -1395,11 +1405,6 @@
                                 </date>
                                 <locale key="locale" localeIdentifier="en_CA"/>
                             </datePicker>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vcf-SF-EQo">
-                                <frame key="frameInset" minX="112" minY="125" height="162" maxX="15"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                            </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3AA-Hi-v9s">
                                 <frame key="frameInset" minX="152" minY="581" width="70" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1412,6 +1417,11 @@
                                     <action selector="submit:" destination="KT0-15-w81" eventType="touchUpInside" id="FWb-r3-bXg"/>
                                 </connections>
                             </button>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vcf-SF-EQo">
+                                <frame key="frameInset" minX="112" minY="120" height="162" maxX="15"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1435,7 +1445,7 @@
         <image name="Coffee_Star.png" width="880" height="840"/>
         <image name="Login Pic.jpg" width="391" height="600"/>
         <image name="Ren Coffee.jpeg" width="512" height="512"/>
-        <image name="coffee cup.jpg" width="148" height="194"/>
+        <image name="coffee33.jpg" width="148" height="194"/>
         <image name="compasscard.jpg" width="640" height="450"/>
         <image name="home .jpg" width="236" height="236"/>
         <image name="home-512 (1).png" width="30" height="30"/>
@@ -1444,8 +1454,8 @@
         <image name="user_male_circle_filled1600 (1).png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="rtC-6k-NV3"/>
-        <segue reference="QGm-Ze-gTz"/>
-        <segue reference="RVw-JX-04c"/>
+        <segue reference="g4g-oz-DCX"/>
+        <segue reference="0ZP-M9-mbM"/>
+        <segue reference="MXb-hJ-y2V"/>
     </inferredMetricsTieBreakers>
 </document>
